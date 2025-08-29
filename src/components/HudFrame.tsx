@@ -11,12 +11,11 @@ export default function HudFrame({ accent = 'cyan', className = '', children }: 
   const borderClass = accent === 'cyan' ? 'glass-border-cyan' : 'glass-border-magenta';
   return (
     <div className={`hud ${accentClass} glass ${borderClass} scan-sweep rounded-xl ${className}`}>
-      <span aria-hidden className="corner tl" />
-      <span aria-hidden className="corner tr" />
-      <span aria-hidden className="corner bl" />
-      <span aria-hidden className="corner br" />
+      <span aria-hidden="true" className="corner tl" />
+      <span aria-hidden="true" className="corner tr" />
+      <span aria-hidden="true" className="corner bl" />
+      <span aria-hidden="true" className="corner br" />
       {children}
     </div>
   );
 }
-

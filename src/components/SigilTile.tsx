@@ -5,10 +5,10 @@ type Props = {
 export default function SigilTile({ label }: Props) {
   return (
     <div className="hud hud-magenta group relative w-24 h-24 rounded-lg glass glass-border-magenta grid place-items-center hover:neon-glow-magenta transition-shadow scan-sweep" role="img" aria-label={label}>
-      <span aria-hidden className="corner tl" />
-      <span aria-hidden className="corner tr" />
-      <span aria-hidden className="corner bl" />
-      <span aria-hidden className="corner br" />
+      <span aria-hidden="true" className="corner tl" />
+      <span aria-hidden="true" className="corner tr" />
+      <span aria-hidden="true" className="corner bl" />
+      <span aria-hidden="true" className="corner br" />
       <svg
         width="48"
         height="48"
@@ -16,7 +16,7 @@ export default function SigilTile({ label }: Props) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="text-neon-magenta/90"
-        aria-hidden
+        aria-hidden="true"
       >
         <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.5" opacity="0.8" />
         <path d="M10 30L24 8l14 22" stroke="currentColor" strokeWidth="1.5" />

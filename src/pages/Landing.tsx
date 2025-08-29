@@ -1,17 +1,7 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-function usePrefersReducedMotion() {
-  const [reduced, setReduced] = useState(false);
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    setReduced(mq.matches);
-    const onChange = () => setReduced(mq.matches);
-    mq.addEventListener?.('change', onChange);
-    return () => mq.removeEventListener?.('change', onChange);
-  }, []);
-  return reduced;
-}
+import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
+import PortalTile from '@/components/PortalTile';
 
 function ProSVG() {
   return (
@@ -60,7 +50,6 @@ function MagickSVG() {
 export default function Landing() {
   const nav = useNavigate();
   const reduce = usePrefersReducedMotion();
-  const [hover, setHover] = useState<'pro' | 'mag' | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [bootDone, setBootDone] = useState(false);
   const [bootLines, setBootLines] = useState<string[]>([]);
@@ -151,70 +140,7 @@ export default function Landing() {
     return () => window.removeEventListener('mousemove', onMove);
   }, [reduce]);
 
-  const proGlow = hover === 'pro' ? 'neon-glow-cyan scale-[1.03] glitch' : 'shadow-none';
-  const magGlow = hover === 'mag' ? 'neon-glow-magenta scale-[1.03] glitch' : 'shadow-none';
-
-  const Tile = useMemo(
-    () =>
-      function Tile({
-        side,
-        onClick,
-        label,
-        children,
-      }: {
-        side: 'left' | 'right';
-        onClick: () => void;
-        label: string;
-        children: React.ReactNode;
-      }) {
-        const cyan = side === 'left';
-        return (
-          <button
-            onClick={onClick}
-            onMouseEnter={() => setHover(cyan ? 'pro' : 'mag')}
-            onMouseLeave={() => setHover(null)}
-            onFocus={() => setHover(cyan ? 'pro' : 'mag')}
-            onBlur={() => setHover(null)}
-            className={'hud ' + (cyan ? 'hud-cyan' : 'hud-magenta') + ' relative isolate w-[min(34rem,90vw)] h-[min(22rem,60vw)] rounded-2xl overflow-hidden transition-all duration-300 ease-snappy will-change-transform focus:outline-none focus-visible:focus-outline scan-sweep ' + (cyan ? 'glass glass-border-cyan' : 'glass glass-border-magenta')}
-            aria-label={label}
-          >
-            <span aria-hidden className="corner tl" />
-            <span aria-hidden className="corner tr" />
-            <span aria-hidden className="corner bl" />
-            <span aria-hidden className="corner br" />
-            <div
-              className={
-                'absolute inset-0 opacity-80 mix-blend-screen pointer-events-none ' +
-                (cyan ? 'text-neon-cyan' : 'text-neon-magenta')
-              }
-              aria-hidden
-            >
-              {children}
-            </div>
-            <div className="absolute inset-0" aria-hidden>
-              <div
-                className={
-                  'absolute inset-0 blur-2xl opacity-40 ' +
-                  (cyan ? 'bg-neon-cyan/40' : 'bg-neon-magenta/40')
-                }
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent" />
-              <div className="absolute -inset-24 rotate-12 opacity-10 bg-[radial-gradient(30%_60%_at_50%_50%,white,transparent)]" />
-            </div>
-            <span
-              className={
-                'absolute bottom-3 left-3 font-mono text-sm tracking-wide px-2 py-1 rounded bg-noir-900/70 border border-white/10 backdrop-blur transition-opacity neon-text-cyan ' +
-                (hover === (cyan ? 'pro' : 'mag') ? 'opacity-100' : 'opacity-0') +
-                (cyan ? ' text-neon-cyan' : ' text-neon-magenta')
-              }
-            >
-              [ {label} <span aria-hidden>▸</span> ]
-            </span>
-          </button>
-        );
-      },
-    [hover]
-  );
+  // Hover state removed; PortalTile handles hover/focus UI internally
 
   if (!bootDone) {
     return (
@@ -242,12 +168,11 @@ export default function Landing() {
       </h1>
       {(() => {
         const subtitle = 'Front-End Developer & Magickal Tattoo Artist';
+        type CSSVars = React.CSSProperties & Record<'--chars' | '--chars-ch', string | number>;
+        const vars: CSSVars = { '--chars': subtitle.length, '--chars-ch': `calc(${subtitle.length} * 1ch)` };
         return (
           <p className="-mt-6 text-sm sm:text-base text-slate-300 text-center">
-            <span
-              className="typewriter typewriter-animate font-mono"
-              style={{ ['--chars' as any]: subtitle.length, ['--chars-ch' as any]: `calc(${subtitle.length} * 1ch)` }}
-            >
+            <span className="typewriter typewriter-animate font-mono" style={vars}>
               {subtitle}
             </span>
           </p>
@@ -261,15 +186,15 @@ export default function Landing() {
         }}
       >
         <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-          <div className={`transition-transform ${proGlow}`}>
-            <Tile side="left" onClick={() => nav('/professional')} label="Enter Professional">
+          <div className={`transition-transform`}>
+            <PortalTile side="left" onClick={() => nav('/professional')} label="Enter Professional">
               <ProSVG />
-            </Tile>
+            </PortalTile>
           </div>
-          <div className={`transition-transform ${magGlow}`}>
-            <Tile side="right" onClick={() => nav('/magickal')} label="Enter Magickal">
+          <div className={`transition-transform`}>
+            <PortalTile side="right" onClick={() => nav('/magickal')} label="Enter Magickal">
               <MagickSVG />
-            </Tile>
+            </PortalTile>
           </div>
         </div>
       </div>

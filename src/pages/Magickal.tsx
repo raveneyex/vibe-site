@@ -1,14 +1,16 @@
 import SigilTile from '../components/SigilTile';
 import SkillChip from '../components/SkillChip';
 import { Link } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import HudFrame from '../components/HudFrame';
+import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 
 export default function Magickal() {
   const count = 12;
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState(0);
+  const uid = useId();
 
   const scrollToIndex = (i: number) => {
     const el = itemsRef.current[i];
@@ -17,16 +19,16 @@ export default function Magickal() {
     }
   };
 
-  const prev = () => {
+  const prev = useCallback(() => {
     const i = (index - 1 + count) % count;
     setIndex(i);
     scrollToIndex(i);
-  };
-  const next = () => {
+  }, [index, count]);
+  const next = useCallback(() => {
     const i = (index + 1) % count;
     setIndex(i);
     scrollToIndex(i);
-  };
+  }, [index, count]);
 
   useEffect(() => {
     const vp = viewportRef.current;
@@ -37,7 +39,7 @@ export default function Magickal() {
     };
     vp.addEventListener('keydown', onKey);
     return () => vp.removeEventListener('keydown', onKey);
-  }, [index]);
+  }, [index, prev, next]);
 
   return (
     <section className="mx-auto max-w-5xl space-y-10 font-mono">
@@ -76,23 +78,19 @@ export default function Magickal() {
             </div>
             <div className="mt-4 tick-divider-magenta" aria-hidden></div>
             {(() => {
-              type Planet = 'Sun'|'Moon'|'Mars'|'Mercury'|'Jupiter'|'Venus'|'Saturn';
-              const chaldean: Planet[] = ['Saturn','Jupiter','Mars','Sun','Venus','Mercury','Moon'];
-              const dayMap: Planet[] = ['Sun','Moon','Mars','Mercury','Jupiter','Venus','Saturn']; // 0=Sun..6=Sat
               const angels: Record<Planet,string> = { Sun:'Michael', Moon:'Gabriel', Mars:'Camael', Mercury:'Raphael', Jupiter:'Sachiel', Venus:'Anael', Saturn:'Cassiel' };
               const demons: Record<Planet,string> = { Sun:'Belphegor', Moon:'Lilith', Mars:'Asmodeus', Mercury:'Samael', Jupiter:'Beelzebub', Venus:'Astaroth', Saturn:'Satan' };
               const now = new Date();
-              const dayPlanet = dayMap[now.getDay() as 0|1|2|3|4|5|6];
-              const startIdx = chaldean.indexOf(dayPlanet);
+              const dayPlanet = DAY_PLANET_MAP[now.getDay() as 0|1|2|3|4|5|6];
+              const startIdx = CHALDEAN_ORDER.indexOf(dayPlanet);
               const hour = now.getHours();
               const hourIndex = (hour - 6 + 24) % 24; // assume sunrise ~06:00
-              const hourPlanet = chaldean[(startIdx + hourIndex) % 7];
+              const hourPlanet = CHALDEAN_ORDER[(startIdx + hourIndex) % 7];
               function moonPhaseInfo(d: Date): { label: string; fraction: number; waxing: boolean } {
-                const synodic = 29.530588853; // days
                 const epoch = Date.UTC(2000, 0, 6, 18, 14, 0); // known new moon
                 const days = (d.getTime() - epoch) / 86400000;
-                const cycle = ((days % synodic) + synodic) % synodic;
-                const frac = cycle / synodic;
+                const cycle = ((days % SYNODIC_MONTH_DAYS) + SYNODIC_MONTH_DAYS) % SYNODIC_MONTH_DAYS;
+                const frac = cycle / SYNODIC_MONTH_DAYS;
                 // label bands
                 let label: string;
                 if (frac < 0.03 || frac > 0.97) label = 'new moon';
@@ -109,7 +107,6 @@ export default function Magickal() {
                 return { label, fraction: Math.max(0, Math.min(1, illum)), waxing };
               }
               const mp = moonPhaseInfo(now);
-              const uid = 'moon' + Math.random().toString(36).slice(2, 8);
               const crescentPath = 'M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z';
               function MoonIconByLabel(label: string) {
                 if (label === 'new moon') {
@@ -164,7 +161,7 @@ export default function Magickal() {
                         <mask id={maskId}>
                           <rect x="0" y="0" width="24" height="24" fill="black" />
                           <circle cx="12" cy="12" r="9" fill="white" />
-                          {/* subtract a thin crescent on one side */}
+                      {/* subtract a thin crescent on one side */}
                           <path d={crescentPath} fill="black" opacity="1" transform={subtractRight ? undefined : 'translate(24 0) scale(-1 1)'} />
                         </mask>
                       </defs>
@@ -211,7 +208,7 @@ export default function Magickal() {
       </section>
 
       <article className="space-y-4 text-slate-300 leading-relaxed">
-        <p className="font-mono text-slate-200">Hello fellow seeker, I'm raveneyex.</p>
+        <p className="font-mono text-slate-200">Hello fellow seeker, I’m raveneyex.</p>
         <p>
           I work at the crossroads of technology, art, and magick. As a tattooer apprentice and practitioner of Chaos
           Magick, I explore how symbols, ritual, and creativity shape reality. My approach blends traditional occult
@@ -234,6 +231,8 @@ export default function Magickal() {
       <section className="space-y-3">
         <h2 className="text-xl font-semibold neon-text-magenta">Sigils</h2>
         <div className="relative px-8 sm:px-12">
+          {/* Live region to announce current slide for screen readers */}
+          <div aria-live="polite" role="status" className="sr-only">Sigil {index + 1} of {count}</div>
           <div
             ref={viewportRef}
             className="overflow-x-auto snap-x snap-mandatory pb-2 outline-none"

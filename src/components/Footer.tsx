@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-noir-900/70 backdrop-blur relative">
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-neon-cyan/30 via-white/10 to-neon-magenta/30" aria-hidden></div>
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-neon-cyan/30 via-white/10 to-neon-magenta/30" aria-hidden="true"></div>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-between">
         <div className="font-mono text-sm text-slate-400">
           <span className="text-neon-cyan">$</span> email:
