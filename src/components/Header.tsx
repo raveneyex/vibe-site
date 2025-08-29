@@ -22,10 +22,19 @@ export default function Header() {
             to="/magickal"
             className={({ isActive }: { isActive: boolean }) =>
               'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-              (isActive ? 'text-neon-magenta neon-text-magenta' : 'text-slate-300 hover:text-white')
+              (isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white')
             }
           >
             Magickal
+          </NavLink>
+          <NavLink
+            to="/tattoo"
+            className={({ isActive }: { isActive: boolean }) =>
+              'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
+              (isActive ? 'text-neon-magenta neon-text-magenta' : 'text-slate-300 hover:text-white')
+            }
+          >
+            Tattoo
           </NavLink>
         </nav>
       </div>

@@ -118,6 +118,13 @@
       linear-gradient(rgba(15,17,21,0.6), rgba(15,17,21,0.6)) padding-box,
       linear-gradient(120deg, rgba(45,226,230,0.35), rgba(0,255,163,0.35)) border-box;
   }
+  /* Pure cyan border variant for Tattoo */
+  .glass-border-cyan-pure {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(rgba(15,17,21,0.6), rgba(15,17,21,0.6)) padding-box,
+      linear-gradient(120deg, rgba(45,226,230,0.5), rgba(45,226,230,0.5)) border-box;
+  }
   .glass-border-magenta {
     border: 1px solid transparent;
     background:
@@ -193,3 +200,18 @@
 }
 
 @keyframes blink { 50% { opacity: 0; } }
+
+/* Additional utilities for purple accent */
+@layer utilities {
+  .neon-glow-purple { box-shadow: theme('boxShadow.neon-purple'); }
+  .hud-purple { --hud: theme('colors.neon.purple'); }
+  .glass-border-purple {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(rgba(15,17,21,0.6), rgba(15,17,21,0.6)) padding-box,
+      linear-gradient(120deg, rgba(168,85,247,0.35), rgba(168,85,247,0.35)) border-box;
+  }
+  .neon-text-purple { text-shadow: 0 0 6px rgba(168,85,247,0.6), 0 0 18px rgba(168,85,247,0.35); }
+  .tick-divider-purple { height: 1px; background:
+    repeating-linear-gradient(90deg, rgba(168,85,247,0.6) 0 12px, transparent 12px 16px) }
+}

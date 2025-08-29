@@ -1,51 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
-import PortalTile from '@/components/PortalTile';
+import HudFrame from '@/components/HudFrame';
+import { ProCardSVG, MagickCardSVG, TattooCardSVG } from '@/components/SectionIcons';
 
-function ProSVG() {
-  return (
-    <svg
-      viewBox="0 0 400 400"
-      className="w-full h-full"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="0" y="0" width="400" height="400" fill="none" />
-      <g stroke="#2de2e6" strokeOpacity="0.85" strokeWidth="1.2">
-        {Array.from({ length: 10 }).map((_, i) => (
-          <path key={i} d={`M ${40 + i*30} 40 L ${380 - i*18} 60 L ${360 - i*16} ${340 - i*18} L 40 ${360 - i*12} Z`} fill="none" />
-        ))}
-        <circle cx="200" cy="200" r="110" fill="none" />
-        <circle cx="200" cy="200" r="70" fill="none" />
-        <circle cx="200" cy="200" r="35" fill="none" />
-      </g>
-      <g stroke="#00ffa3" strokeOpacity="0.5">
-        {Array.from({ length: 16 }).map((_, i) => (
-          <line key={i} x1="200" y1="200" x2={200 + 110*Math.cos((i*Math.PI)/8)} y2={200 + 110*Math.sin((i*Math.PI)/8)} />
-        ))}
-      </g>
-    </svg>
-  );
-}
-
-function MagickSVG() {
-  return (
-    <svg viewBox="0 0 400 400" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="glow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-      </defs>
-      <g fill="none" stroke="#ff2a6d" strokeWidth="1.4" filter="url(#glow)">
-        <path d="M110 310c40-130 90-210 90-210s50 80 90 210c-20-15-43-25-90-25s-70 10-90 25z" />
-        <circle cx="200" cy="120" r="18" />
-        <path d="M160 230c10-12 28-20 40-20s30 8 40 20" />
-        <path d="M140 270c20-18 40-18 60-18s40 0 60 18" />
-        <path d="M200 100 v-25" />
-        <path d="M190 90 h20" />
-      </g>
-      <g fill="#ff2a6d" fillOpacity="0.08"><circle cx="200" cy="120" r="12"/></g>
-    </svg>
-  );
-}
+// Images moved to components/HeroImages
 
 export default function Landing() {
   const nav = useNavigate();
@@ -179,26 +138,61 @@ export default function Landing() {
         );
       })()}
       <div
-        className="relative grid place-items-center w-full"
+        className="relative w-full"
         style={{
           perspective: reduce ? undefined : '800px',
           transform: reduce ? undefined : 'rotateY(var(--parallax-x, 0)) rotateX(var(--parallax-y, 0))',
         }}
       >
-        <div className="w-full flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-8">
-          <div className={`transition-transform`}>
-            <PortalTile side="left" onClick={() => nav('/professional')} label="Enter Professional">
-              <ProSVG />
-            </PortalTile>
-          </div>
-          <div className={`transition-transform`}>
-            <PortalTile side="right" onClick={() => nav('/magickal')} label="Enter Magickal">
-              <MagickSVG />
-            </PortalTile>
-          </div>
+        <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 place-items-stretch">
+          <button
+            type="button"
+            onClick={() => nav('/professional')}
+            className="text-left hover:neon-glow-cyan transition-shadow focus:outline-none focus-visible:focus-outline"
+            aria-label="Enter Professional"
+          >
+            <HudFrame accent="cyan" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-cyan-pure">
+              <div className="text-slate-300">
+                <div className="w-full mb-3 text-neon-cyan/90" aria-hidden="true"><ProCardSVG /></div>
+                <h3 className="text-lg font-semibold tracking-wide mb-1">Professional</h3>
+                <p className="text-sm">Frontend development, design systems, and performance.</p>
+              </div>
+              <div className="mt-4 text-xs font-mono text-neon-cyan">[ Explore ▸ ]</div>
+            </HudFrame>
+          </button>
+          <button
+            type="button"
+            onClick={() => nav('/magickal')}
+            className="text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline"
+            aria-label="Enter Magickal"
+          >
+            <HudFrame accent="purple" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-purple">
+              <div className="text-slate-300">
+                <div className="w-full mb-3 text-neon-purple/90" aria-hidden="true"><MagickCardSVG /></div>
+                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-purple">Magickal</h3>
+                <p className="text-sm">Sigils, ritual diagrams, and esoteric explorations.</p>
+              </div>
+              <div className="mt-4 text-xs font-mono text-neon-purple">[ Enter ▸ ]</div>
+            </HudFrame>
+          </button>
+          <button
+            type="button"
+            onClick={() => nav('/tattoo')}
+            className="text-left hover:neon-glow-magenta transition-shadow focus:outline-none focus-visible:focus-outline"
+            aria-label="Enter Tattoo"
+          >
+            <HudFrame accent="magenta" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-magenta">
+              <div className="text-slate-300">
+                <div className="w-full mb-3 text-neon-magenta/90" aria-hidden="true"><TattooCardSVG /></div>
+                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-magenta">Tattoo</h3>
+                <p className="text-sm">Custom sigil tattoos and experimental flash sets.</p>
+              </div>
+              <div className="mt-4 text-xs font-mono text-neon-magenta">[ Discover ▸ ]</div>
+            </HudFrame>
+          </button>
         </div>
       </div>
-      <p className="sr-only">Select a portal: Professional or Magickal</p>
+      <p className="sr-only">Select a portal card: Professional, Magickal, or Tattoo</p>
     </section>
   );
 }

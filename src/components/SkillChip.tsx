@@ -1,9 +1,9 @@
-type Props = { label: string; accent?: 'cyan' | 'magenta' };
+type Props = { label: string; accent?: 'cyan' | 'magenta' | 'purple' };
 
 export default function SkillChip({ label, accent = 'cyan' }: Props) {
-  const border = accent === 'cyan' ? 'border-neon-cyan/40' : 'border-neon-magenta/40';
-  const glow = accent === 'cyan' ? 'hover:neon-glow-cyan' : 'hover:neon-glow-magenta';
-  const text = accent === 'cyan' ? 'text-neon-cyan' : 'text-neon-magenta';
+  const border = accent === 'cyan' ? 'border-neon-cyan/40' : accent === 'magenta' ? 'border-neon-magenta/40' : 'border-neon-purple/40';
+  const glow = accent === 'cyan' ? 'hover:neon-glow-cyan' : accent === 'magenta' ? 'hover:neon-glow-magenta' : 'hover:neon-glow-purple';
+  const text = accent === 'cyan' ? 'text-neon-cyan' : accent === 'magenta' ? 'text-neon-magenta' : 'text-neon-purple';
   return (
     <span
       className={`inline-flex items-center px-3 py-1 rounded-full border ${border} ${glow} text-xs font-mono ${text} bg-white/5 transition-shadow`}
@@ -12,4 +12,3 @@ export default function SkillChip({ label, accent = 'cyan' }: Props) {
     </span>
   );
 }
-

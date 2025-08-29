@@ -45,20 +45,20 @@ export default function Magickal() {
     <section className="mx-auto max-w-5xl space-y-10 font-mono">
       <header className="relative pb-4 flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-magenta">Ojo de Cuervo</h1>
+          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-purple">Ojo de Cuervo</h1>
           <p className="mt-2 text-slate-300 max-w-3xl">
           From sigils to systems: occult practice for the digital age.
           </p>
         </div>
         <Link to="/" className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">← back to nexus</Link>
-        <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-magenta/50 to-transparent" aria-hidden></div>
+        <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-purple/50 to-transparent" aria-hidden></div>
       </header>
 
       <section>
-        <HudFrame accent="magenta" className="p-5 relative overflow-hidden">
+        <HudFrame accent="purple" className="p-5 relative overflow-hidden">
           <div aria-hidden className="pointer-events-none absolute -inset-8 opacity-20">
             <svg viewBox="0 0 400 400" className="w-full h-full rotate-6" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" stroke="currentColor" className="text-neon-magenta">
+              <g fill="none" stroke="currentColor" className="text-neon-purple">
                 <circle cx="200" cy="200" r="160" opacity="0.4" />
                 <circle cx="200" cy="200" r="110" opacity="0.3" />
                 <circle cx="200" cy="200" r="70" opacity="0.25" />
@@ -73,10 +73,10 @@ export default function Magickal() {
             <div className="text-slate-300 text-[10px] uppercase tracking-widest">esoteric interests</div>
             <div className="mt-2 flex flex-wrap gap-2">
               {['Chaos magick', 'Luciferianism', 'Sigil magick', 'Technomancy'].map((s) => (
-                <SkillChip key={s} label={s} accent="magenta" />
+                <SkillChip key={s} label={s} accent="purple" />
               ))}
             </div>
-            <div className="mt-4 tick-divider-magenta" aria-hidden></div>
+            <div className="mt-4 tick-divider-purple" aria-hidden></div>
             {(() => {
               const angels: Record<Planet,string> = { Sun:'Michael', Moon:'Gabriel', Mars:'Camael', Mercury:'Raphael', Jupiter:'Sachiel', Venus:'Anael', Saturn:'Cassiel' };
               const demons: Record<Planet,string> = { Sun:'Belphegor', Moon:'Lilith', Mars:'Asmodeus', Mercury:'Samael', Jupiter:'Beelzebub', Venus:'Astaroth', Saturn:'Satan' };
@@ -229,7 +229,7 @@ export default function Magickal() {
       </article>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-semibold neon-text-magenta">Sigils</h2>
+        <h2 className="text-xl font-semibold neon-text-purple">Sigils</h2>
         <div className="relative px-8 sm:px-12">
           {/* Live region to announce current slide for screen readers */}
           <div aria-live="polite" role="status" className="sr-only">Sigil {index + 1} of {count}</div>
@@ -250,7 +250,7 @@ export default function Magickal() {
                   aria-roledescription="slide"
                   aria-label={`sigil ${i + 1} of ${count}`}
                 >
-                  <SigilTile label={`Sigil ${i + 1}`} />
+                  <SigilTile label={`Sigil ${i + 1}`} accent="purple" />
                 </div>
               ))}
             </div>
@@ -259,7 +259,7 @@ export default function Magickal() {
             <button
               type="button"
               onClick={prev}
-              className="pointer-events-auto ml-1 sm:ml-2 font-mono text-xs px-2 py-1 rounded glass glass-border-magenta hover:neon-glow-magenta focus:outline-none focus-visible:focus-outline"
+              className="pointer-events-auto ml-1 sm:ml-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
               aria-label="previous sigil"
             >
               ◂
@@ -267,7 +267,7 @@ export default function Magickal() {
             <button
               type="button"
               onClick={next}
-              className="pointer-events-auto mr-1 sm:mr-2 font-mono text-xs px-2 py-1 rounded glass glass-border-magenta hover:neon-glow-magenta focus:outline-none focus-visible:focus-outline"
+              className="pointer-events-auto mr-1 sm:mr-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
               aria-label="next sigil"
             >
               ▸
@@ -277,7 +277,7 @@ export default function Magickal() {
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
-                className={`h-1.5 w-1.5 rounded-full ${i === index ? 'bg-neon-magenta' : 'bg-white/20'}`}
+                className={`h-1.5 w-1.5 rounded-full ${i === index ? 'bg-neon-purple' : 'bg-white/20'}`}
                 aria-label={`go to sigil ${i + 1}`}
                 onClick={() => {
                   setIndex(i);
@@ -292,11 +292,11 @@ export default function Magickal() {
       <section className="space-y-4">
         <h2 className="text-xl font-semibold">Works in Progress</h2>
         <div className="grid sm:grid-cols-2 gap-4">
-          <article className="rounded-xl p-5 hover:neon-glow-magenta transition-shadow glass glass-border-magenta">
+          <article className="rounded-xl p-5 hover:neon-glow-purple transition-shadow glass glass-border-purple">
             <h3 className="text-lg font-semibold mb-2 tracking-wide">Tattoo Flash Set A</h3>
             <p className="text-sm text-slate-300">Explorations of protective glyphs and motion-based sigils.</p>
           </article>
-          <article className="rounded-xl p-5 hover:neon-glow-magenta transition-shadow glass glass-border-magenta">
+          <article className="rounded-xl p-5 hover:neon-glow-purple transition-shadow glass glass-border-purple">
             <h3 className="text-lg font-semibold mb-2 tracking-wide">Ritual Diagram Studies</h3>
             <p className="text-sm text-slate-300">Hybrid diagrams merging alchemical circles and UI flow maps.</p>
           </article>

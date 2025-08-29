@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Landing from './pages/Landing';
 import Professional from './pages/Professional';
 import Magickal from './pages/Magickal';
+import Tattoo from './pages/Tattoo';
 import { useEffect, useRef, useState } from 'react';
 import usePrefersReducedMotion from './hooks/usePrefersReducedMotion';
 
@@ -78,6 +79,14 @@ export default function App() {
           element={
             <PageShell>
               <Magickal />
+            </PageShell>
+          }
+        />
+        <Route
+          path="/tattoo"
+          element={
+            <PageShell>
+              <Tattoo />
             </PageShell>
           }
         />

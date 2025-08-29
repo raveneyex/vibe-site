@@ -1,10 +1,15 @@
 type Props = {
   label: string;
+  accent?: 'cyan' | 'magenta' | 'purple';
 };
 
-export default function SigilTile({ label }: Props) {
+export default function SigilTile({ label, accent = 'magenta' }: Props) {
+  const hudClass = accent === 'cyan' ? 'hud-cyan' : accent === 'magenta' ? 'hud-magenta' : 'hud-purple';
+  const borderClass = accent === 'cyan' ? 'glass-border-cyan' : accent === 'magenta' ? 'glass-border-magenta' : 'glass-border-purple';
+  const glowClass = accent === 'cyan' ? 'hover:neon-glow-cyan' : accent === 'magenta' ? 'hover:neon-glow-magenta' : 'hover:neon-glow-purple';
+  const textClass = accent === 'cyan' ? 'text-neon-cyan/90' : accent === 'magenta' ? 'text-neon-magenta/90' : 'text-neon-purple/90';
   return (
-    <div className="hud hud-magenta group relative w-24 h-24 rounded-lg glass glass-border-magenta grid place-items-center hover:neon-glow-magenta transition-shadow scan-sweep" role="img" aria-label={label}>
+    <div className={`hud ${hudClass} group relative w-24 h-24 rounded-lg glass ${borderClass} grid place-items-center ${glowClass} transition-shadow scan-sweep`} role="img" aria-label={label}>
       <span aria-hidden="true" className="corner tl" />
       <span aria-hidden="true" className="corner tr" />
       <span aria-hidden="true" className="corner bl" />
@@ -15,7 +20,7 @@ export default function SigilTile({ label }: Props) {
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="text-neon-magenta/90"
+        className={textClass}
         aria-hidden="true"
       >
         <circle cx="24" cy="24" r="18" stroke="currentColor" strokeWidth="1.5" opacity="0.8" />
