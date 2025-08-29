@@ -42,7 +42,7 @@ export const MagickCardSVG = () => (
 
 export const TattooCardSVG = () => (
   <svg viewBox="0 0 180 140" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(90,70)" fill="none" stroke="#ff2a6d" strokeWidth="2" strokeLinecap="round">
+    <g transform="translate(90,55)" fill="none" stroke="#ff2a6d" strokeWidth="2" strokeLinecap="round">
       {/* concentric sigil */}
       <circle r="42" opacity="0.95" />
       <circle r="18" opacity="0.95" />

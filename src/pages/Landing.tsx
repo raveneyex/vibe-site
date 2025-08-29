@@ -145,6 +145,20 @@ export default function Landing() {
       if (timer) clearTimeout(timer);
     };
   }, [hoverCard, reduce]);
+
+  // Update background tint color based on hovered card
+  useEffect(() => {
+    const root = document.documentElement;
+    const cyan = 'rgba(0,255,163,0.12)';
+    const purple = 'rgba(168,85,247,0.14)';
+    const red = 'rgba(255,56,100,0.14)';
+    const tint = hoverCard === 'mag' ? purple : hoverCard === 'tat' ? red : cyan;
+    root.style.setProperty('--tint', tint);
+    return () => {
+      // reset on unmount
+      root.style.setProperty('--tint', cyan);
+    };
+  }, [hoverCard]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
   // On hover out, animate back to default phrase (erase then type)
@@ -257,8 +271,8 @@ export default function Landing() {
             <HudFrame accent="cyan" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-cyan-pure">
               <div className="text-slate-300">
                 <div className="w-full mb-3 text-neon-cyan/90" aria-hidden="true"><ProCardSVG /></div>
-                <h3 className="text-lg font-semibold tracking-wide mb-1">Professional</h3>
-                <p className="text-sm">Frontend development, design systems, and performance.</p>
+                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">Professional</h3>
+                <p className="text-sm text-neon-cyan">Frontend development, design systems, and performance.</p>
               </div>
               <div className="mt-4 text-xs font-mono text-neon-cyan">[ Explore ▸ ]</div>
             </HudFrame>
@@ -277,7 +291,7 @@ export default function Landing() {
               <div className="text-slate-300">
                 <div className="w-full mb-3 text-neon-purple/90" aria-hidden="true"><MagickCardSVG /></div>
                 <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-purple">Magickal</h3>
-                <p className="text-sm">Sigils, ritual diagrams, and esoteric explorations.</p>
+                <p className="text-sm text-neon-purple">Sigils, ritual diagrams, and esoteric explorations.</p>
               </div>
               <div className="mt-4 text-xs font-mono text-neon-purple">[ Enter ▸ ]</div>
             </HudFrame>
@@ -296,7 +310,7 @@ export default function Landing() {
               <div className="text-slate-300">
                 <div className="w-full mb-3 text-neon-magenta/90" aria-hidden="true"><TattooCardSVG /></div>
                 <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-magenta">Tattoo</h3>
-                <p className="text-sm">Custom sigil tattoos and experimental flash sets.</p>
+                <p className="text-sm text-neon-magenta">Custom sigil tattoos and experimental flash sets.</p>
               </div>
               <div className="mt-4 text-xs font-mono text-neon-magenta">[ Discover ▸ ]</div>
             </HudFrame>

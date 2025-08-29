@@ -6,6 +6,9 @@ import HudFrame from '../components/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 
 export default function Magickal() {
+  useEffect(() => {
+    document.documentElement.style.setProperty('--tint', 'rgba(168,85,247,0.14)');
+  }, []);
   const count = 12;
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const viewportRef = useRef<HTMLDivElement | null>(null);

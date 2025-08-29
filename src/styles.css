@@ -10,6 +10,14 @@
 
 /* Aesthetic utilities */
 @layer utilities {
+  /* Background tint overlay controlled by --tint */
+  .bg-tint { position: fixed; inset: 0; pointer-events: none; }
+  .bg-tint::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-color: var(--tint, transparent);
+    transition: background-color 300ms ease;
+  }
   /* Vignette */
   .vignette::before {
     content: '';
