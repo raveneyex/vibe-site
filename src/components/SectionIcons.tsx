@@ -19,23 +19,18 @@ export const ProCardSVG = () => (
       <path d="M  24 0 L  8 -10" />
       <path d="M  24 0 L  8  10" />
       <path d="M 0 -14 V 12" opacity="0.8" />
-      <polyline points="-52,24 -40,10 -28,18 -16,4 -4,8 8,2 20,10 32,0 44,6 56,2" opacity="0.85" />
     </g>
   </svg>
 );
 
 export const MagickCardSVG = () => (
   <svg viewBox="0 0 180 140" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(90,65)" fill="none" stroke="#a855f7" strokeWidth="2">
-      <circle r="14" opacity="0.9" />
-      <circle r="40" opacity="0.6" />
-      <circle r="62" opacity="0.35" />
-      {Array.from({ length: 12 }).map((_, i) => (
-        <line key={i} x1="0" y1="0" x2={Math.cos((i * Math.PI) / 6) * 62} y2={Math.sin((i * Math.PI) / 6) * 62} opacity="0.5" />
-      ))}
-      {Array.from({ length: 8 }).map((_, i) => (
-        <circle key={i} cx={Math.cos((i * Math.PI) / 4) * 78} cy={Math.sin((i * Math.PI) / 4) * 78} r="3" fill="#a855f7" stroke="none" opacity="0.8" />
-      ))}
+    <g transform="translate(90,65)" fill="none" stroke="#a855f7" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round" opacity="0.9">
+      {/* Encircling rings (overall ~another 5% smaller, increased gap) */}
+      <circle r="60" />
+      <circle r="48" />
+      {/* Pentagram scaled so points touch the inner ring (r≈48) */}
+      <path d="M 0 -48 L 28.25 38.83 L -45.66 -14.87 L 45.66 -14.87 L -28.25 38.83 Z" />
     </g>
   </svg>
 );
@@ -50,12 +45,9 @@ export const TattooCardSVG = () => (
         <circle key={i} cx={Math.cos((i * Math.PI) / 4) * 52} cy={Math.sin((i * Math.PI) / 4) * 52} r="2.4" fill="#ff2a6d" stroke="none" opacity="0.95" />
       ))}
       <path d="M -12 0 L 12 0 M 0 -12 L 0 12" />
-      {/* needle: cyan body + tip */}
-      <path d="M -2 12 L 2 12 L 2 60 L -2 60 Z" fill="#ff2a6d" stroke="none" />
+      {/* needle shaft (stroke only) + tip */}
+      <path d="M 0 12 L 0 60" />
       <path d="M -5 60 L 5 60 L 0 76 Z" fill="#ff2a6d" stroke="none" />
-      <path d="M -3 76 L -3 88" />
-      <path d="M  0 76 L  0 88" />
-      <path d="M  3 76 L  3 88" />
     </g>
   </svg>
 );
