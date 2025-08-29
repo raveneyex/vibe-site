@@ -10,4 +10,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  server: {
+    // Bind and allow any hostname (for tunnels/reverse proxies)
+    host: true,
+    allowedHosts: true,
+  },
 });
