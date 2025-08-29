@@ -12,6 +12,7 @@ export default function Landing() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [bootDone, setBootDone] = useState(false);
   const [bootLines, setBootLines] = useState<string[]>([]);
+  const [titleText, setTitleText] = useState('Andres Ossa');
 
   useEffect(() => {
     const skip = () => {
@@ -82,6 +83,57 @@ export default function Landing() {
     };
   }, [reduce]);
 
+  // Animated CLI typing/erasing for the title
+  useEffect(() => {
+    const phrases = ['Andres Ossa', 'Raveneyex', 'Ojo de Cuervo'];
+    if (reduce) {
+      setTitleText(phrases[0]);
+      return;
+    }
+    let current = 0;
+    let pos = 0;
+    let phase: 'typing' | 'pause' | 'erasing' = 'typing';
+    let timer: number | undefined;
+    const TYPE = 80;
+    const ERASE = 50;
+    const PAUSE = 2300;
+    const schedule = (ms: number) => {
+      if (timer) clearTimeout(timer);
+      timer = window.setTimeout(run, ms);
+    };
+    const run = () => {
+      const full = phrases[current];
+      if (phase === 'typing') {
+        if (pos < full.length) {
+          pos += 1;
+          setTitleText(full.slice(0, pos));
+          schedule(TYPE);
+        } else {
+          phase = 'pause';
+          schedule(PAUSE);
+        }
+      } else if (phase === 'erasing') {
+        if (pos > 0) {
+          pos -= 1;
+          setTitleText(full.slice(0, pos));
+          schedule(ERASE);
+        } else {
+          current = (current + 1) % phrases.length;
+          phase = 'typing';
+          schedule(TYPE);
+        }
+      } else {
+        // pause complete -> start erasing
+        phase = 'erasing';
+        schedule(ERASE);
+      }
+    };
+    schedule(400);
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [reduce]);
+
   useEffect(() => {
     if (reduce) return;
     const el = containerRef.current;
@@ -122,8 +174,8 @@ export default function Landing() {
       className="relative flex flex-col items-center gap-10"
       style={{ transformStyle: 'preserve-3d' }}
     >
-      <h1 className="text-2xl sm:text-3xl font-mono text-center text-slate-200 cursor-blink rgb-split">
-        Andres Ossa
+      <h1 className="text-2xl sm:text-3xl font-mono text-center text-slate-200 cursor-blink rgb-split" aria-live="polite">
+        {titleText}
       </h1>
       {(() => {
         const subtitle = 'Front-End Developer & Magickal Tattoo Artist';
