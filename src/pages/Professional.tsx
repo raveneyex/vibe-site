@@ -3,11 +3,14 @@ import Card from '../components/Card';
 import { Link } from 'react-router-dom';
 import HudFrame from '../components/HudFrame';
 import { useEffect } from 'react';
+import { setMeta } from '@/utils/meta';
 import { ReactIcon, TypeScriptIcon, TailwindIcon, NodeIcon, TestingIcon, ViteIcon, RouterIcon, ReduxIcon, VitestIcon, CypressIcon } from '../components/icons';
 
 export default function Professional() {
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(0,255,163,0.12)');
+    document.documentElement.style.setProperty('--crt-rgb', '0,255,163');
+    setMeta('Professional — Andres Ossa', 'Frontend development, design systems, and performance.');
   }, []);
   return (
     <section className="mx-auto max-w-5xl space-y-10">

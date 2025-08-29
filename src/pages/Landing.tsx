@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
 import HudFrame from '@/components/HudFrame';
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from '@/components/SectionIcons';
+import useTypewriter from '@/hooks/useTypewriter';
 
 // Images moved to components/HeroImages
 
@@ -84,67 +85,8 @@ export default function Landing() {
     };
   }, [reduce]);
 
-  // Animated CLI typing/erasing for the title, driven by card hover
-  /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    const phraseFor = (h: null | 'pro' | 'mag' | 'tat') =>
-      h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa';
-    if (reduce) {
-      setTitleText(phraseFor(null));
-      return;
-    }
-    const target = phraseFor(hoverCard);
-    if (!hoverCard) return; // handled by separate effect to animate back to default
-    // Always erase the currently shown text first for consistency
-    const currentShown = titleText;
-    let pos = currentShown.length;
-    let phase: 'erasingFirst' | 'typing' | 'pause' | 'erasing' = 'erasingFirst';
-    let timer: number | undefined;
-    const TYPE = 80;
-    const ERASE = 50;
-    const PAUSE = 2300;
-    const schedule = (ms: number) => {
-      if (timer) clearTimeout(timer);
-      timer = window.setTimeout(run, ms);
-    };
-    const run = () => {
-      if (phase === 'erasingFirst') {
-        if (pos > 0) {
-          pos -= 1;
-          setTitleText(currentShown.slice(0, pos));
-          schedule(ERASE);
-        } else {
-          phase = 'typing';
-          schedule(TYPE);
-        }
-      } else if (phase === 'typing') {
-        if (pos < target.length) {
-          pos += 1;
-          setTitleText(target.slice(0, pos));
-          schedule(TYPE);
-        } else {
-          phase = 'pause';
-          schedule(PAUSE);
-        }
-      } else if (phase === 'erasing') {
-        if (pos > 0) {
-          pos -= 1;
-          setTitleText(target.slice(0, pos));
-          schedule(ERASE);
-        } else {
-          phase = 'typing';
-          schedule(TYPE);
-        }
-      } else {
-        phase = 'erasing';
-        schedule(ERASE);
-      }
-    };
-    schedule(200);
-    return () => {
-      if (timer) clearTimeout(timer);
-    };
-  }, [hoverCard, reduce]);
+  const phraseFor = (h: null | 'pro' | 'mag' | 'tat') => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
+  const { text: typedTitle, announce } = useTypewriter({ defaultText: 'Andres Ossa', target: hoverCard ? phraseFor(hoverCard) : null, reduce });
 
   // Update background tint color based on hovered card
   useEffect(() => {
@@ -161,39 +103,8 @@ export default function Landing() {
   }, [hoverCard]);
   /* eslint-enable react-hooks/exhaustive-deps */
 
-  // On hover out, animate back to default phrase (erase then type)
-  /* eslint-disable react-hooks/exhaustive-deps */
-  useEffect(() => {
-    if (reduce) return;
-    if (hoverCard !== null) return;
-    const DEFAULT = 'Andres Ossa';
-    if (titleText === DEFAULT) return;
-    let timer: number | undefined;
-    const TYPE = 80;
-    const ERASE = 50;
-    const current = titleText;
-    let pos = current.length;
-    const erase = () => {
-      if (pos > 0) {
-        pos -= 1;
-        setTitleText(current.slice(0, pos));
-        timer = window.setTimeout(erase, ERASE);
-      } else {
-        let p = 0;
-        const type = () => {
-          if (p < DEFAULT.length) {
-            p += 1;
-            setTitleText(DEFAULT.slice(0, p));
-            timer = window.setTimeout(type, TYPE);
-          }
-        };
-        timer = window.setTimeout(type, TYPE);
-      }
-    };
-    timer = window.setTimeout(erase, ERASE);
-    return () => { if (timer) clearTimeout(timer); };
-  }, [hoverCard, reduce]);
-  /* eslint-enable react-hooks/exhaustive-deps */
+  // Reflect hook output
+  useEffect(() => { setTitleText(typedTitle); }, [typedTitle]);
 
   useEffect(() => {
     if (reduce) return;
@@ -235,9 +146,10 @@ export default function Landing() {
       className="relative flex flex-col items-center gap-10"
       style={{ transformStyle: 'preserve-3d' }}
     >
-      <h1 className="text-2xl sm:text-3xl font-mono text-center text-slate-200 cursor-blink rgb-split" aria-live="polite">
+      <h1 className="text-2xl sm:text-3xl font-mono text-center text-slate-200 cursor-blink rgb-split">
         {titleText}
       </h1>
+      <span className="sr-only" aria-live="polite" role="status">{announce}</span>
       {(() => {
         const subtitle = 'Front-End Developer & Magickal Tattoo Artist';
         type CSSVars = React.CSSProperties & Record<'--chars' | '--chars-ch', string | number>;

@@ -1,11 +1,14 @@
 import HudFrame from '@/components/HudFrame';
 import SkillChip from '@/components/SkillChip';
 import { Link } from 'react-router-dom';
+import { setMeta } from '@/utils/meta';
 import { useEffect } from 'react';
 
 export default function Tattoo() {
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(255,56,100,0.14)');
+    document.documentElement.style.setProperty('--crt-rgb', '255,56,100');
+    setMeta('Tattoo — Ojo de Cuervo', 'Custom sigil tattoos and experimental flash sets.');
   }, []);
   return (
     <section className="mx-auto max-w-5xl space-y-10 font-sans">

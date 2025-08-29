@@ -2,12 +2,15 @@ import SigilTile from '../components/SigilTile';
 import SkillChip from '../components/SkillChip';
 import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { setMeta } from '@/utils/meta';
 import HudFrame from '../components/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 
 export default function Magickal() {
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(168,85,247,0.14)');
+    document.documentElement.style.setProperty('--crt-rgb', '168,85,247');
+    setMeta('Magickal — Ojo de Cuervo', 'Sigils, ritual diagrams, and esoteric explorations.');
   }, []);
   const count = 12;
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
