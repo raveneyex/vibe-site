@@ -7,8 +7,7 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
     css: true,
-    pool: 'forks',
-    threads: false,
-    isolate: false,
+    // Use threads locally for speed; forks on CI for stronger isolation/compat
+    pool: process.env.CI ? 'forks' : 'threads',
   },
 });
