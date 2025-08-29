@@ -13,6 +13,7 @@ export default function Landing() {
   const [bootDone, setBootDone] = useState(false);
   const [bootLines, setBootLines] = useState<string[]>([]);
   const [titleText, setTitleText] = useState('Andres Ossa');
+  const [hoverCard, setHoverCard] = useState<null | 'pro' | 'mag' | 'tat'>(null);
 
   useEffect(() => {
     const skip = () => {
@@ -83,16 +84,21 @@ export default function Landing() {
     };
   }, [reduce]);
 
-  // Animated CLI typing/erasing for the title
+  // Animated CLI typing/erasing for the title, driven by card hover
+  /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
-    const phrases = ['Andres Ossa', 'Raveneyex', 'Ojo de Cuervo'];
+    const phraseFor = (h: null | 'pro' | 'mag' | 'tat') =>
+      h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa';
     if (reduce) {
-      setTitleText(phrases[0]);
+      setTitleText(phraseFor(null));
       return;
     }
-    let current = 0;
-    let pos = 0;
-    let phase: 'typing' | 'pause' | 'erasing' = 'typing';
+    const target = phraseFor(hoverCard);
+    if (!hoverCard) return; // handled by separate effect to animate back to default
+    // Always erase the currently shown text first for consistency
+    const currentShown = titleText;
+    let pos = currentShown.length;
+    let phase: 'erasingFirst' | 'typing' | 'pause' | 'erasing' = 'erasingFirst';
     let timer: number | undefined;
     const TYPE = 80;
     const ERASE = 50;
@@ -102,11 +108,19 @@ export default function Landing() {
       timer = window.setTimeout(run, ms);
     };
     const run = () => {
-      const full = phrases[current];
-      if (phase === 'typing') {
-        if (pos < full.length) {
+      if (phase === 'erasingFirst') {
+        if (pos > 0) {
+          pos -= 1;
+          setTitleText(currentShown.slice(0, pos));
+          schedule(ERASE);
+        } else {
+          phase = 'typing';
+          schedule(TYPE);
+        }
+      } else if (phase === 'typing') {
+        if (pos < target.length) {
           pos += 1;
-          setTitleText(full.slice(0, pos));
+          setTitleText(target.slice(0, pos));
           schedule(TYPE);
         } else {
           phase = 'pause';
@@ -115,24 +129,57 @@ export default function Landing() {
       } else if (phase === 'erasing') {
         if (pos > 0) {
           pos -= 1;
-          setTitleText(full.slice(0, pos));
+          setTitleText(target.slice(0, pos));
           schedule(ERASE);
         } else {
-          current = (current + 1) % phrases.length;
           phase = 'typing';
           schedule(TYPE);
         }
       } else {
-        // pause complete -> start erasing
         phase = 'erasing';
         schedule(ERASE);
       }
     };
-    schedule(400);
+    schedule(200);
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [reduce]);
+  }, [hoverCard, reduce]);
+  /* eslint-enable react-hooks/exhaustive-deps */
+
+  // On hover out, animate back to default phrase (erase then type)
+  /* eslint-disable react-hooks/exhaustive-deps */
+  useEffect(() => {
+    if (reduce) return;
+    if (hoverCard !== null) return;
+    const DEFAULT = 'Andres Ossa';
+    if (titleText === DEFAULT) return;
+    let timer: number | undefined;
+    const TYPE = 80;
+    const ERASE = 50;
+    const current = titleText;
+    let pos = current.length;
+    const erase = () => {
+      if (pos > 0) {
+        pos -= 1;
+        setTitleText(current.slice(0, pos));
+        timer = window.setTimeout(erase, ERASE);
+      } else {
+        let p = 0;
+        const type = () => {
+          if (p < DEFAULT.length) {
+            p += 1;
+            setTitleText(DEFAULT.slice(0, p));
+            timer = window.setTimeout(type, TYPE);
+          }
+        };
+        timer = window.setTimeout(type, TYPE);
+      }
+    };
+    timer = window.setTimeout(erase, ERASE);
+    return () => { if (timer) clearTimeout(timer); };
+  }, [hoverCard, reduce]);
+  /* eslint-enable react-hooks/exhaustive-deps */
 
   useEffect(() => {
     if (reduce) return;
@@ -200,6 +247,10 @@ export default function Landing() {
           <button
             type="button"
             onClick={() => nav('/professional')}
+            onMouseEnter={() => setHoverCard('pro')}
+            onMouseLeave={() => setHoverCard(null)}
+            onFocus={() => setHoverCard('pro')}
+            onBlur={() => setHoverCard(null)}
             className="text-left hover:neon-glow-cyan transition-shadow focus:outline-none focus-visible:focus-outline"
             aria-label="Enter Professional"
           >
@@ -215,6 +266,10 @@ export default function Landing() {
           <button
             type="button"
             onClick={() => nav('/magickal')}
+            onMouseEnter={() => setHoverCard('mag')}
+            onMouseLeave={() => setHoverCard(null)}
+            onFocus={() => setHoverCard('mag')}
+            onBlur={() => setHoverCard(null)}
             className="text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline"
             aria-label="Enter Magickal"
           >
@@ -230,6 +285,10 @@ export default function Landing() {
           <button
             type="button"
             onClick={() => nav('/tattoo')}
+            onMouseEnter={() => setHoverCard('tat')}
+            onMouseLeave={() => setHoverCard(null)}
+            onFocus={() => setHoverCard('tat')}
+            onBlur={() => setHoverCard(null)}
             className="text-left hover:neon-glow-magenta transition-shadow focus:outline-none focus-visible:focus-outline"
             aria-label="Enter Tattoo"
           >
