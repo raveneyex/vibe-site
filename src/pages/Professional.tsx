@@ -3,8 +3,11 @@ import Card from '../components/Card';
 import { Link } from 'react-router-dom';
 import HudFrame from '../components/HudFrame';
 import { useEffect } from 'react';
+import data from '@/data.json';
 import { setMeta } from '@/utils/meta';
 import { ReactIcon, TypeScriptIcon, TailwindIcon, NodeIcon, TestingIcon, ViteIcon, RouterIcon, ReduxIcon, VitestIcon, CypressIcon } from '../components/icons';
+
+const { links } = data;
 
 export default function Professional() {
   useEffect(() => {
@@ -22,7 +25,7 @@ export default function Professional() {
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="https://github.com/raveneyex"
+              href={links.github}
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-xs sm:text-sm px-3 py-1.5 rounded-md glass glass-border-cyan neo-link inline-flex items-center gap-2"
@@ -31,13 +34,20 @@ export default function Professional() {
               github
             </a>
             <a
-              href="https://www.linkedin.com/in/aossaara/"
+              href={links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-xs sm:text-sm px-3 py-1.5 rounded-md glass glass-border-cyan neo-link inline-flex items-center gap-2"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8.98h5V24H0V8.98zM8.34 8.98h4.79v2.05h.07c.67-1.27 2.3-2.6 4.74-2.6 5.07 0 6 3.34 6 7.68V24h-5v-6.68c0-1.59-.03-3.63-2.21-3.63-2.21 0-2.55 1.73-2.55 3.52V24h-5V8.98z"/></svg>
               linkedin
+            </a>
+            <a
+              href={`mailto:${links.email.address}`}
+              className="font-mono text-xs sm:text-sm px-3 py-1.5 rounded-md glass glass-border-cyan neo-link inline-flex items-center gap-2"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v.35l8 5.33 8-5.33V7H4Zm16 10V9.12l-7.52 5.02a1 1 0 0 1-1.08 0L4 9.12V17h16Z"/></svg>
+              email
             </a>
             <a
               href="/AndresOssa-CV-2025.pdf"

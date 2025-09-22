@@ -1,3 +1,7 @@
+import data from '@/data.json';
+
+const { links } = data;
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/5 bg-noir-900/70 backdrop-blur relative">
@@ -6,16 +10,16 @@ export default function Footer() {
         <div className="font-mono text-sm text-slate-400">
           <span className="text-neon-cyan">$</span> email:
           <a
-            href="mailto:andres.ossa@example.com"
+            href={`mailto:${links.email.address}`}
             className="ml-2 underline decoration-dotted underline-offset-4 neo-link focus:outline-none focus-visible:focus-outline"
           >
-            andres.ossa@example.com
+            {links.email.display}
           </a>
         </div>
         <div className="flex items-center gap-4">
           <a
             className="text-slate-400 neo-link focus:outline-none focus-visible:focus-outline"
-            href="https://github.com/raveneyex"
+            href={links.github}
             aria-label="GitHub"
             target="_blank"
             rel="noopener noreferrer"
@@ -24,7 +28,7 @@ export default function Footer() {
           </a>
           <a
             className="text-slate-400 neo-link focus:outline-none focus-visible:focus-outline"
-            href="https://www.instagram.com/ojodecuervo.tattoo/"
+            href={links.instagram.url}
             aria-label="Instagram"
             target="_blank"
             rel="noopener noreferrer"

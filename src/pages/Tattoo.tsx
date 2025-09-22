@@ -3,6 +3,9 @@ import SkillChip from '@/components/SkillChip';
 import { Link } from 'react-router-dom';
 import { setMeta } from '@/utils/meta';
 import { useEffect } from 'react';
+import data from '@/data.json';
+
+const { links } = data;
 
 export default function Tattoo() {
   useEffect(() => {
@@ -66,7 +69,7 @@ export default function Tattoo() {
         <h2 className="text-xl font-semibold">Booking</h2>
         <p className="text-slate-300 leading-relaxed">
           Interested in a piece? Reach me via Instagram DM at
-          {' '}<a href="https://www.instagram.com/ojodecuervo.tattoo/" className="underline decoration-dotted underline-offset-4 neo-link" target="_blank" rel="noopener noreferrer">@ojodecuervo.tattoo</a>{' '}with a short note about the intention, placement, and size.
+          {' '}<a href={links.instagram.url} className="underline decoration-dotted underline-offset-4 neo-link" target="_blank" rel="noopener noreferrer">{links.instagram.handle}</a>{' '}with a short note about the intention, placement, and size.
         </p>
       </section>
     </section>
