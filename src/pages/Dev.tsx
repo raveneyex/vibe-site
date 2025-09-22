@@ -9,11 +9,11 @@ import { ReactIcon, TypeScriptIcon, TailwindIcon, NodeIcon, TestingIcon, ViteIco
 
 const { links } = data;
 
-export default function Professional() {
+export default function Dev() {
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(0,255,163,0.12)');
     document.documentElement.style.setProperty('--crt-rgb', '0,255,163');
-    setMeta('Professional — Andres Ossa', 'Frontend development, design systems, and performance.');
+    setMeta('Dev — Andres Ossa', 'Frontend development, design systems, and performance.');
   }, []);
   return (
     <section className="mx-auto max-w-5xl space-y-10">

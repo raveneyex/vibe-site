@@ -14,7 +14,7 @@ export default function Landing() {
   const [bootDone, setBootDone] = useState(false);
   const [bootLines, setBootLines] = useState<string[]>([]);
   const [titleText, setTitleText] = useState('Andres Ossa');
-  const [hoverCard, setHoverCard] = useState<null | 'pro' | 'mag' | 'tat'>(null);
+  const [hoverCard, setHoverCard] = useState<null | 'dev' | 'mag' | 'tat'>(null);
 
   useEffect(() => {
     const skip = () => {
@@ -85,7 +85,7 @@ export default function Landing() {
     };
   }, [reduce]);
 
-  const phraseFor = (h: null | 'pro' | 'mag' | 'tat') => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
+  const phraseFor = (h: null | 'dev' | 'mag' | 'tat') => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
   const { text: typedTitle, announce } = useTypewriter({ defaultText: 'Andres Ossa', target: hoverCard ? phraseFor(hoverCard) : null, reduce });
 
   // Update background tint color based on hovered card
@@ -172,19 +172,19 @@ export default function Landing() {
         <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 place-items-stretch">
           <button
             type="button"
-            onClick={() => nav('/professional')}
-            onMouseEnter={() => setHoverCard('pro')}
+            onClick={() => nav('/dev')}
+            onMouseEnter={() => setHoverCard('dev')}
             onMouseLeave={() => setHoverCard(null)}
-            onFocus={() => setHoverCard('pro')}
+            onFocus={() => setHoverCard('dev')}
             onBlur={() => setHoverCard(null)}
             className="text-left hover:neon-glow-cyan transition-shadow focus:outline-none focus-visible:focus-outline"
-            aria-label="Enter Professional"
+            aria-label="Enter Dev"
           >
             <HudFrame accent="cyan" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-cyan-pure">
               <div className="text-slate-300">
                 <div className="w-full mb-3 text-neon-cyan/90" aria-hidden="true"><ProCardSVG /></div>
-                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">Professional</h3>
-                <p className="text-sm text-neon-cyan">Frontend development, design systems, and performance.</p>
+                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">Dev Work</h3>
+                <p className="text-sm text-neon-cyan">JS development, user interfaces, and systems design.</p>
               </div>
               <div className="mt-4 text-xs font-mono text-neon-cyan">[ Explore ▸ ]</div>
             </HudFrame>
@@ -229,7 +229,7 @@ export default function Landing() {
           </button>
         </div>
       </div>
-      <p className="sr-only">Select a portal card: Professional, Magickal, or Tattoo</p>
+      <p className="sr-only">Select a portal card: Dev, Magickal, or Tattoo</p>
     </section>
   );
 }

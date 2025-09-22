@@ -10,13 +10,13 @@ export default function Header() {
         </Link>
         <nav aria-label="Primary" className="flex items-center gap-6">
           <NavLink
-            to="/professional"
+            to="/dev"
             className={({ isActive }: { isActive: boolean }) =>
               'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
               (isActive ? 'text-neon-cyan neon-text-cyan' : 'text-slate-300 hover:text-white')
             }
           >
-            Professional
+            Dev
           </NavLink>
           <NavLink
             to="/magickal"

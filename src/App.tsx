@@ -2,7 +2,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Landing from './pages/Landing';
-import Professional from './pages/Professional';
+import Dev from './pages/Dev';
 import Magickal from './pages/Magickal';
 import Tattoo from './pages/Tattoo';
 import { useEffect, useRef, useState } from 'react';
@@ -68,10 +68,10 @@ export default function App() {
           }
         />
         <Route
-          path="/professional"
+          path="/dev"
           element={
             <PageShell>
-              <Professional />
+              <Dev />
             </PageShell>
           }
         />
