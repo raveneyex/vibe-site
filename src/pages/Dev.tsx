@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import HudFrame from '../components/HudFrame';
-import { useEffect } from 'react';
 import data from '@/data.json';
-import { setMeta } from '@/utils/meta';
 import useDevProfile from '@/hooks/useDevProfile';
+import usePageBranding from '@/hooks/usePageBranding';
 import type { IconType } from 'react-icons';
 import {
   SiReact,
@@ -50,11 +49,12 @@ const contactLinks: {
 
 export default function Dev() {
   const { returnTo } = useDevProfile();
-  useEffect(() => {
-    document.documentElement.style.setProperty('--tint', 'rgba(0,255,163,0.12)');
-    document.documentElement.style.setProperty('--crt-rgb', '0,255,163');
-    setMeta('Dev Work — Andres Ossa', 'Frontend development, javascript, user interfaces, and systems design.');
-  }, []);
+  usePageBranding({
+    tint: 'rgba(0,255,163,0.12)',
+    crtRgb: '0,255,163',
+    title: 'Dev Work — Andres Ossa',
+    description: 'Frontend development, javascript, user interfaces, and systems design.',
+  });
   return (
     <section className="mx-auto max-w-5xl space-y-10">
       <header className="relative pb-4 flex items-end justify-between gap-4">
