@@ -185,8 +185,8 @@ export default function Landing() {
             <HudFrame accent="cyan" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-cyan-pure">
               <div className="text-slate-300">
                 <div className="w-full mb-3 text-neon-cyan/90" aria-hidden="true"><ProCardSVG /></div>
-                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">Dev</h3>
-                <p className="text-sm text-neon-cyan">Frontend development, design systems, and performance.</p>
+                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">Dev Work</h3>
+                <p className="text-sm text-neon-cyan">Frontend development, javascript, user interfaces, and systems design.</p>
               </div>
               <div className="mt-4 text-xs font-mono text-neon-cyan">[ Explore ▸ ]</div>
             </HudFrame>

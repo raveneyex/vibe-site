@@ -38,7 +38,7 @@ export default function Dev() {
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(0,255,163,0.12)');
     document.documentElement.style.setProperty('--crt-rgb', '0,255,163');
-    setMeta('Dev Work — Andres Ossa', 'Frontend development, JS, user interfaces, and systems design.');
+    setMeta('Dev Work — Andres Ossa', 'Frontend development, javascript, user interfaces, and systems design.');
   }, []);
   return (
     <section className="mx-auto max-w-5xl space-y-10">
