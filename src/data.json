@@ -10,5 +10,468 @@
       "address": "raveneyex@gmail.com",
       "display": "raveneyex@gmail.com"
     }
-  }
+  },
+  "professionalExperience": [
+    {
+      "company": "Rush Street Development",
+      "location": "Fully Remote Work, Colombia",
+      "title": "FrontEnd Developer",
+      "start": "2025-06-18",
+      "end": null,
+      "responsibilities": [
+        "Develop UI features using TypeScript, React and ReactQuery",
+        "Work with backend teams to integrate multiple payment providers",
+        "Add analytics to newly developed features to enable near real-time platform usage tracking",
+        "Collaborate with the platform team to deliver micro-frontend packages"
+      ],
+      "technologies": [
+        "React",
+        "Redux",
+        "TypeScript",
+        "Vitest",
+        "Vite"
+      ]
+    },
+    {
+      "company": "Recharm, Inc",
+      "location": "Fully Remote Work, Colombia/USA",
+      "title": "Senior FrontEnd Developer",
+      "start": "2025-01-14",
+      "end": "2025-04-09",
+      "responsibilities": [
+        "Collaborated with design to implement pixel-perfect user interfaces",
+        "Participated in code reviews across backend and frontend repositories",
+        "Developed UI features using TypeScript, React and ReactQuery",
+        "Partnered with design to establish the first elements of the company's design system",
+        "Added analytics instrumentation to new features for near real-time usage tracking"
+      ],
+      "technologies": [
+        "React",
+        "React Query",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "Jest",
+        "Supabase",
+        "tRPC"
+      ]
+    },
+    {
+      "company": "Hotel Engine, Inc",
+      "location": "Fully Remote Work, Colombia/USA",
+      "title": "Staff Engineer",
+      "team": "Blackwing",
+      "project": "Hydra Mobile Application",
+      "start": "2024-02-05",
+      "end": "2024-11-07",
+      "responsibilities": [
+        "Led a team of three to implement the mobile app for a new business vertical",
+        "Provided project estimations, technical designs, and close collaboration with project management",
+        "Implemented product features using React Native, TypeScript and Expo",
+        "Created unit and end-to-end tests for new features with Jest and Cypress",
+        "Applied the design system language to deliver consistent UI",
+        "Delivered ongoing code reviews for new feature work",
+        "Collaborated with the web team through code reviews and technical discussions",
+        "Worked closely with the Node.js backend team via shared design and review sessions"
+      ],
+      "technologies": [
+        "React Native",
+        "React",
+        "TypeScript",
+        "Cypress",
+        "Jest",
+        "Expo",
+        "Node.js"
+      ]
+    },
+    {
+      "company": "VMWare",
+      "location": "Fully Remote Work, Colombia/USA",
+      "title": "Staff Engineer I",
+      "team": "DevSecops-Interfaces",
+      "project": "TAP-GUI Supply Chain",
+      "start": "2022-01-10",
+      "end": "2024-01-31",
+      "responsibilities": [
+        "Implemented the GUI for the Supply Chain feature of the Tanzu Application Platform",
+        "Collaborated with product management to discover and shape new Supply Chain features",
+        "Worked with partner teams across Tanzu to integrate Supply Chain capabilities",
+        "Led development and maintenance of the ORM library used by Backstage-based frontend projects",
+        "Partnered with design on the look, feel, and UX of the shared components library",
+        "Led development and maintenance of the shared components library adopted by TAP frontends"
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Cartographer.sh",
+        "Tanzu Application Platform",
+        "Cypress",
+        "Jest",
+        "Webpack"
+      ]
+    },
+    {
+      "company": "Sonatype",
+      "location": "Fully Remote Work, Colombia/USA",
+      "title": "Senior Software Engineer",
+      "team": "Laurel-IQ",
+      "project": "Nexus Lifecycle",
+      "start": "2018-11-26",
+      "end": "2022-01-04",
+      "responsibilities": [
+        "Partnered with product management on discovery for new features",
+        "Met with customers to gather insights for upcoming capabilities",
+        "Collaborated with design and UX to deliver new functionality",
+        "Implemented features driven by discovery findings",
+        "Reviewed backend and frontend code for quality and consistency",
+        "Analyzed and proposed high quality fixes for production issues",
+        "Contributed to organization-wide frontend discussions",
+        "Maintained and extended the company UI library"
+      ],
+      "technologies": [
+        "React",
+        "Redux",
+        "Jasmine-Enzyme",
+        "Webpack",
+        "Sass",
+        "JWT",
+        "Angular.js",
+        "Java",
+        "Dropwizard"
+      ]
+    },
+    {
+      "company": "Velocity Partners",
+      "location": "Medellin, Colombia",
+      "title": "Senior 1 Front-End Developer",
+      "start": "2015-06-08",
+      "end": "2018-11-09",
+      "projects": [
+        {
+          "name": "Cision C",
+          "client": "Cision",
+          "clientUrl": "http://www.cision.com/us/",
+          "role": "Senior 1 Front-End Developer",
+          "start": "2016-06-04",
+          "end": "2018-11-09",
+          "responsibilities": [
+            "Developed new UI components aligned with product requirements",
+            "Provided support and maintenance for delivered components",
+            "Analyzed and delivered high quality fixes for existing bugs",
+            "Participated in company-wide UI discussions",
+            "Contributed updates to the company UI library"
+          ],
+          "technologies": [
+            "Node.js",
+            "Gulp",
+            "Yarn",
+            "Bootstrap",
+            "Sass",
+            "JWT",
+            "Angular",
+            "Babel",
+            "JSPM"
+          ]
+        },
+        {
+          "name": "Mindjet Crowdcast",
+          "client": "Mindjet LLC",
+          "clientUrl": "https://www.mindjet.com/",
+          "role": "Senior 1 Front-End Developer",
+          "start": "2015-08-03",
+          "end": "2016-06-17",
+          "responsibilities": [
+            "Supported the upcoming Crowdcast application",
+            "Analyzed bugs and implemented high quality fixes",
+            "Provided change impact analysis for proposed fixes",
+            "Developed new features for the application"
+          ],
+          "technologies": [
+            "Node.js",
+            "Angular.js",
+            "Gulp",
+            "Bootstrap",
+            "Less",
+            "Auth",
+            "JWT"
+          ]
+        },
+        {
+          "name": "Mindjet SpigitMobile",
+          "client": "Mindjet LLC",
+          "clientUrl": "https://www.mindjet.com/",
+          "role": "Senior 1 Front-End Developer",
+          "start": "2015-06-08",
+          "end": "2015-08-03",
+          "responsibilities": [
+            "Supported the existing SpigitMobile hybrid application",
+            "Analyzed and resolved bugs across browsers and devices",
+            "Delivered cross-browser and cross-device fixes",
+            "Provided change impact analysis for requested fixes"
+          ],
+          "technologies": [
+            "JSP backend",
+            "Angular.js",
+            "Apache Cordova",
+            "PhoneGap",
+            "CSS3"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Globant",
+      "location": "Medellin, Colombia",
+      "title": "Senior Web UI Developer",
+      "start": "2013-09-16",
+      "end": "2015-05-29",
+      "projects": [
+        {
+          "name": "SWAT Team",
+          "client": "National Geographic Society",
+          "clientUrl": "https://www.nationalgeographic.com/",
+          "role": "Senior Web UI Developer",
+          "start": "2014-01-01",
+          "end": "2015-05-29",
+          "responsibilities": [
+            "Provided SWAT-style support for existing applications",
+            "Analyzed reported bugs and proposed solutions",
+            "Delivered change impact analysis for proposed fixes",
+            "Developed small modules for a Django-powered backend",
+            "Complied with National Geographic coding guidelines"
+          ],
+          "technologies": [
+            "jQuery",
+            "Django",
+            "Vanilla JavaScript",
+            "Bootstrap",
+            "Google Analytics",
+            "Google Ads",
+            "CSS",
+            "CoffeeScript"
+          ]
+        },
+        {
+          "name": "National Transport LLC Redesign",
+          "client": "National Transport LLC",
+          "clientUrl": "http://www.nationaltransportllc.com/",
+          "role": "Semi-Senior Web UI Developer",
+          "start": "2013-09-16",
+          "end": "2013-12-20",
+          "responsibilities": [
+            "Reimplemented the front end of the client web portal",
+            "Adhered to coding guidelines and design mockups",
+            "Worked within agile development methodologies"
+          ],
+          "technologies": [
+            "Backbone.js",
+            "Drupal",
+            "Sass",
+            "Grunt",
+            "Bootstrap 2"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "PSL",
+      "location": "Itagui, Colombia",
+      "title": "Development Analyst II",
+      "start": "2012-01-09",
+      "end": "2013-08-16",
+      "projects": [
+        {
+          "name": "SEON WebApp",
+          "client": "SEON",
+          "clientUrl": "http://www.seon.com/",
+          "role": "Development Analyst II",
+          "start": "2013-07-01",
+          "end": "2013-08-16",
+          "responsibilities": [
+            "Implemented the AngularJS frontend for the SEON web application",
+            "Built reusable AngularJS modules",
+            "Developed backend endpoints to serve RESTful services",
+            "Integrated with a Java backend via REST",
+            "Followed SEON coding standards within Scrum"
+          ],
+          "technologies": [
+            "Java 1.x",
+            "Spring MVC",
+            "AngularJS",
+            "MySQL",
+            "CSS"
+          ]
+        },
+        {
+          "name": "Colsubsidio",
+          "client": "Colsubsidio",
+          "clientUrl": "https://www.colsubsidio.com/",
+          "role": "Development Analyst II",
+          "start": "2013-06-01",
+          "end": "2013-07-01",
+          "responsibilities": [
+            "Developed a calendar module for the web application",
+            "Delivered features aligned with Colsubsidio coding guidelines",
+            "Worked under Scrum methodology"
+          ],
+          "technologies": [
+            "Java 1.x",
+            "Spring MVC",
+            "MySQL"
+          ]
+        },
+        {
+          "name": "Arris Reports",
+          "client": "Arris, Inc.",
+          "clientUrl": "http://arris.com/",
+          "role": "Development Analyst II",
+          "start": "2013-05-01",
+          "end": "2013-06-01",
+          "responsibilities": [
+            "Designed and developed a reporting system",
+            "Implemented individual reports with database data",
+            "Complied with Arris coding guidelines within Scrum"
+          ],
+          "technologies": [
+            "C# .NET",
+            "MySQL",
+            "MS Reporting Services",
+            "MVC",
+            "Entity Framework",
+            "HTML",
+            "jQuery"
+          ]
+        },
+        {
+          "name": "Arris WorkAssure",
+          "client": "Arris, Inc.",
+          "clientUrl": "http://arris.com/",
+          "role": "Development Analyst II",
+          "start": "2013-03-01",
+          "end": "2013-05-01",
+          "responsibilities": [
+            "Developed the frontend for the next generation of WorkAssure workflow systems",
+            "Integrated with a C# backend through RESTful services",
+            "Followed Arris coding guidelines within Scrum",
+            "Delivered on-site collaboration in Portland, OR"
+          ],
+          "technologies": [
+            "C# .NET",
+            "Backbone.js",
+            "Sass",
+            "MVC",
+            "Entity Framework",
+            "HTML",
+            "jQuery"
+          ]
+        },
+        {
+          "name": "Yada-Yada",
+          "client": "BullHorn, Inc.",
+          "clientUrl": "http://www.bullhorn.com/",
+          "role": "Development Analyst II",
+          "start": "2012-09-15",
+          "end": "2013-05-01",
+          "notes": "50% time availability",
+          "responsibilities": [
+            "Developed a Gmail contextual gadget for the BullHorn CRM",
+            "Implemented HTML markup for the gadget",
+            "Integrated the solution with Gmail"
+          ],
+          "technologies": [
+            "HTML",
+            "LESS",
+            "jQuery",
+            "Gmail"
+          ]
+        },
+        {
+          "name": "Mosaic",
+          "client": "BullHorn, Inc.",
+          "clientUrl": "http://www.bullhorn.com/",
+          "role": "Development Analyst II",
+          "start": "2012-09-15",
+          "end": "2013-03-01",
+          "notes": "50% time availability",
+          "responsibilities": [
+            "Developed the frontend of BullHorn's recruiting CRM",
+            "Collaborated closely with the backend team",
+            "Worked under Scrum methodology"
+          ],
+          "technologies": [
+            "HTML",
+            "LESS",
+            "AngularJS"
+          ]
+        },
+        {
+          "name": "BMC Footprints",
+          "client": "BMC",
+          "clientUrl": "http://www.bmc.com/",
+          "role": "Development Analyst II",
+          "start": "2012-08-01",
+          "end": "2012-09-15",
+          "responsibilities": [
+            "Implemented a Microsoft Outlook integration module",
+            "Worked within Scrum methodology"
+          ],
+          "technologies": [
+            "Java 1.x",
+            "Spring MVC",
+            "Hibernate",
+            "Database-agnostic services"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "Universidad EAFIT \u2013 Unidad SAI",
+      "location": "Medellin, Colombia",
+      "title": "Development Analyst",
+      "start": "2012-01-01",
+      "end": "2012-07-30",
+      "project": "SAI",
+      "client": "Universidad EAFIT",
+      "clientUrl": "https://www.eafit.edu.co/",
+      "responsibilities": [
+        "Supported existing applications for the SAI unit",
+        "Analyzed and scoped new feature requests",
+        "Designed and implemented new features based on client needs",
+        "Investigated and resolved reported bugs",
+        "Provided change impact analysis while following EAFIT guidelines"
+      ],
+      "technologies": [
+        "Java 1.x",
+        "Struts",
+        "PL/SQL",
+        "jQuery",
+        "JasperReports"
+      ]
+    },
+    {
+      "company": "PSL",
+      "location": "Itagui, Colombia",
+      "title": "Development Analyst",
+      "start": "2011-05-01",
+      "end": "2011-12-20",
+      "project": "OTCFactor",
+      "client": "OTC Factex",
+      "clientUrl": "http://www.otcfactex.com/",
+      "responsibilities": [
+        "Developed a web application for factoring and invoice exchange",
+        "Implemented designs provided by system architects",
+        "Delivered new features per client requirements",
+        "Analyzed and resolved reported bugs",
+        "Provided change impact analysis while following coding guidelines",
+        "Worked under Scrum methodology"
+      ],
+      "technologies": [
+        "Java 1.x",
+        "jBrain",
+        "MySQL",
+        "JavaScript",
+        "DojoUI"
+      ]
+    }
+  ]
 }

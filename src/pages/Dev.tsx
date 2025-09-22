@@ -19,6 +19,7 @@ import {
   SiLinkedin,
 } from 'react-icons/si';
 import { FiDownload, FiMail } from 'react-icons/fi';
+import ProfessionalExperience from '@/components/ProfessionalExperience';
 
 const techStack: { icon: IconType; label: string }[] = [
   { icon: SiReact, label: 'react' },
@@ -150,6 +151,8 @@ export default function Dev() {
           </div>
         </HudFrame>
       </section>
+
+      <ProfessionalExperience />
 
     </section>
   );
