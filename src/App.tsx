@@ -6,10 +6,8 @@ import Dev from './pages/Dev';
 import Magickal from './pages/Magickal';
 import Tattoo from './pages/Tattoo';
 import { useEffect, useRef, useState } from 'react';
-import usePrefersReducedMotion from './hooks/usePrefersReducedMotion';
 
 function PageShell({ children }: { children: React.ReactNode }) {
-  const reduce = usePrefersReducedMotion();
   const [ready, setReady] = useState(false);
   const mainRef = useRef<HTMLElement | null>(null);
   useEffect(() => {
@@ -33,7 +31,7 @@ function PageShell({ children }: { children: React.ReactNode }) {
       <div
         className={
           'route-enter transition-all duration-500 ease-snappy will-change-transform' +
-          (ready && !reduce
+          (ready
             ? ' opacity-100 translate-y-0'
             : ' opacity-0 translate-y-2')
         }

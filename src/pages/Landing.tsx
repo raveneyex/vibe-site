@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import usePrefersReducedMotion from '@/hooks/usePrefersReducedMotion';
 import HudFrame from '@/components/HudFrame';
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from '@/components/SectionIcons';
 import useTypewriter from '@/hooks/useTypewriter';
@@ -10,7 +9,6 @@ import useDevProfile from '@/hooks/useDevProfile';
 
 export default function Landing() {
   const nav = useNavigate();
-  const reduce = usePrefersReducedMotion();
   const containerRef = useRef<HTMLDivElement>(null);
   const [bootDone, setBootDone] = useState(false);
   const [bootLines, setBootLines] = useState<string[]>([]);
@@ -23,7 +21,7 @@ export default function Landing() {
       sessionStorage.setItem('booted', '1');
       setBootDone(true);
     };
-    if (sessionStorage.getItem('booted') || reduce) {
+    if (sessionStorage.getItem('booted')) {
       setBootDone(true);
       return;
     }
@@ -85,10 +83,10 @@ export default function Landing() {
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('click', onClick);
     };
-  }, [reduce]);
+  }, []);
 
   const phraseFor = (h: null | 'dev' | 'mag' | 'tat') => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
-  const { text: typedTitle, announce } = useTypewriter({ defaultText: 'Andres Ossa', target: hoverCard ? phraseFor(hoverCard) : null, reduce });
+  const { text: typedTitle, announce } = useTypewriter({ defaultText: 'Andres Ossa', target: hoverCard ? phraseFor(hoverCard) : null });
 
   // Update background tint color based on hovered card
   useEffect(() => {
@@ -109,7 +107,6 @@ export default function Landing() {
   useEffect(() => { setTitleText(typedTitle); }, [typedTitle]);
 
   useEffect(() => {
-    if (reduce) return;
     const el = containerRef.current;
     if (!el) return;
     const onMove = (e: MouseEvent) => {
@@ -123,7 +120,7 @@ export default function Landing() {
     };
     window.addEventListener('mousemove', onMove);
     return () => window.removeEventListener('mousemove', onMove);
-  }, [reduce]);
+  }, []);
 
   // Hover state removed; PortalTile handles hover/focus UI internally
 
@@ -167,8 +164,8 @@ export default function Landing() {
       <div
         className="relative w-full"
         style={{
-          perspective: reduce ? undefined : '800px',
-          transform: reduce ? undefined : 'rotateY(var(--parallax-x, 0)) rotateX(var(--parallax-y, 0))',
+          perspective: '800px',
+          transform: 'rotateY(var(--parallax-x, 0)) rotateX(var(--parallax-y, 0))',
         }}
       >
         <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 place-items-stretch">

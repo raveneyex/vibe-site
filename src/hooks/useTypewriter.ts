@@ -6,10 +6,9 @@ type Options = {
   typeMs?: number;
   eraseMs?: number;
   pauseMs?: number;
-  reduce?: boolean;
 };
 
-export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50, pauseMs = 2300, reduce = false }: Options) {
+export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50, pauseMs = 2300 }: Options) {
   const [text, setText] = useState(defaultText);
   const [announce, setAnnounce] = useState<string>(defaultText);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -18,7 +17,6 @@ export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50, 
   useEffect(() => () => { if (timer.current) clearTimeout(timer.current); }, []);
 
   useEffect(() => {
-    if (reduce) { setText(defaultText); setAnnounce(defaultText); return; }
     if (timer.current) { clearTimeout(timer.current); timer.current = null; }
 
     // No active target: animate back to default (erase then type once)
@@ -67,7 +65,7 @@ export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50, 
     };
     timer.current = window.setTimeout(run, 200);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target, reduce]);
+  }, [target]);
 
   return { text, announce };
 }
