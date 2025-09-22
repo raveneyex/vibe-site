@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import data from '@/data.json';
 import SkillChip from '@/components/SkillChip';
+import { formatDateRange, parseDateToTime } from '@/utils/dates';
 
 type TimelineProject = {
   name: string;
@@ -29,22 +30,6 @@ type TimelineExperience = {
   projects?: TimelineProject[];
 };
 
-const formatter = new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric' });
-
-function formatDate(value?: string | null) {
-  if (!value) return 'Present';
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) return value;
-  return formatter.format(date);
-}
-
-function formatRange(start?: string, end?: string | null) {
-  if (!start && !end) return '';
-  const startText = start ? formatDate(start) : '';
-  const endText = end === null || !end ? 'Present' : formatDate(end);
-  return startText ? `${startText} – ${endText}` : endText;
-}
-
 export default function ProfessionalExperience() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [visibleItems, setVisibleItems] = useState<Record<string, boolean>>({});
@@ -55,7 +40,14 @@ export default function ProfessionalExperience() {
       : [];
     return raw
       .slice()
-      .sort((a, b) => new Date(b.start).getTime() - new Date(a.start).getTime());
+      .sort((a, b) => {
+        const aTime = parseDateToTime(a.start);
+        const bTime = parseDateToTime(b.start);
+        if (aTime === null && bTime === null) return 0;
+        if (aTime === null) return 1;
+        if (bTime === null) return -1;
+        return bTime - aTime;
+      });
   }, []);
 
   useEffect(() => {
@@ -131,7 +123,7 @@ export default function ProfessionalExperience() {
                     {experience.location && <div className="text-xs font-mono uppercase tracking-wider text-slate-400">{experience.location}</div>}
                   </div>
                   <div className="text-xs sm:text-sm font-mono text-slate-400 whitespace-nowrap">
-                    {formatRange(experience.start, experience.end)}
+                    {formatDateRange(experience.start, experience.end)}
                   </div>
                 </header>
 
@@ -190,7 +182,7 @@ export default function ProfessionalExperience() {
                             </div>
                             {(project.start || project.end) && (
                               <div className="text-[11px] font-mono text-slate-400 whitespace-nowrap">
-                                {formatRange(project.start, project.end)}
+                                {formatDateRange(project.start, project.end)}
                               </div>
                             )}
                           </div>
