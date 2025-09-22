@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { formatDateRange } from '@/utils/dates';
 import type { TimelineExperience } from './types';
 import JobProjects from './JobProjects';
@@ -8,20 +9,17 @@ import TimelineJobMarker from './TimelineJobMarker';
 interface JobProps {
   experience: TimelineExperience;
   itemKey: string;
-  isVisible?: boolean;
-  transitionDelay?: string;
+  animationDelay?: number;
 }
 
-export default function Job({ experience, itemKey, isVisible, transitionDelay = '0ms' }: JobProps) {
+export default function Job({ experience, itemKey, animationDelay = 0 }: JobProps) {
   return (
-    <article
-      key={itemKey}
-      data-exp-item
-      data-key={itemKey}
-      className={`relative glass glass-border-cyan rounded-xl p-5 transition-all duration-500 ease-snappy will-change-transform ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-      }`}
-      style={{ transitionDelay }}
+    <motion.article
+      className="relative glass glass-border-cyan rounded-xl p-5 transition-all duration-500 ease-snappy will-change-transform"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, ease: 'easeOut', delay: animationDelay }}
     >
       <TimelineJobMarker />
       <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
@@ -44,6 +42,6 @@ export default function Job({ experience, itemKey, isVisible, transitionDelay = 
       <JobTechnologies technologies={experience.technologies} itemKey={itemKey} />
 
       {experience.projects?.length ? <JobProjects projects={experience.projects} /> : null}
-    </article>
+    </motion.article>
   );
 }

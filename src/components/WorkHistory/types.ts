@@ -23,5 +23,3 @@ export type TimelineExperience = TimelineHighlights & {
   project?: string;
   projects?: TimelineProject[];
 };
-
-export type ExperienceVisibilityMap = Record<string, boolean>;
