@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import data from '@/data.json';
-import Experience from '@/components/professionalExperience/Experience';
-import type { ExperienceVisibilityMap, TimelineExperience } from '@/components/professionalExperience/types';
+import Experience from './Experience';
+import type { ExperienceVisibilityMap, TimelineExperience } from './types';
 import { parseDateToTime } from '@/utils/dates';
 
 export default function ProfessionalExperience() {

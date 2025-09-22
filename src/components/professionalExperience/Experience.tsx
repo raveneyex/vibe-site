@@ -1,7 +1,9 @@
 import { formatDateRange } from '@/utils/dates';
-import SkillChip from '@/components/SkillChip';
 import type { TimelineExperience } from './types';
 import Projects from './Projects';
+import ExperienceResponsibilities from './ExperienceResponsibilities';
+import ExperienceTechnologies from './ExperienceTechnologies';
+import TimelineExperienceMarker from './TimelineExperienceMarker';
 
 interface ExperienceProps {
   experience: TimelineExperience;
@@ -21,10 +23,7 @@ export default function Experience({ experience, itemKey, isVisible, transitionD
       }`}
       style={{ transitionDelay }}
     >
-      <span
-        className="absolute -left-[1.32rem] top-5 w-3 h-3 rounded-full border border-neon-cyan/70 bg-noir-900 shadow-[0_0_0_4px_rgba(0,255,163,0.12)]"
-        aria-hidden
-      ></span>
+      <TimelineExperienceMarker />
       <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-1">
           <h3 className="text-lg font-semibold text-slate-100">{experience.company}</h3>
@@ -32,24 +31,6 @@ export default function Experience({ experience, itemKey, isVisible, transitionD
             <span>{experience.title}</span>
             {experience.team && <span className="text-neon-cyan/70">• Team {experience.team}</span>}
             {experience.project && <span className="text-neon-cyan/70">• {experience.project}</span>}
-            {experience.client && (
-              <span className="text-neon-cyan/70">
-                •
-                {' '}
-                {experience.clientUrl ? (
-                  <a
-                    href={experience.clientUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline decoration-dotted underline-offset-4"
-                  >
-                    {experience.client}
-                  </a>
-                ) : (
-                  experience.client
-                )}
-              </span>
-            )}
           </div>
           {experience.location && <div className="text-xs font-mono uppercase tracking-wider text-slate-400">{experience.location}</div>}
         </div>
@@ -58,21 +39,9 @@ export default function Experience({ experience, itemKey, isVisible, transitionD
         </div>
       </header>
 
-      {experience.responsibilities?.length ? (
-        <ul className="mt-3 space-y-1.5 text-sm text-slate-300 list-disc list-inside">
-          {experience.responsibilities.map((item, idx) => (
-            <li key={`${item}-${idx}`}>{item}</li>
-          ))}
-        </ul>
-      ) : null}
+      <ExperienceResponsibilities responsibilities={experience.responsibilities} itemKey={itemKey} />
 
-      {experience.technologies?.length ? (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {experience.technologies.map((tech, idx) => (
-            <SkillChip key={`${experience.company}-tech-${tech}-${idx}`} label={tech} accent="cyan" />
-          ))}
-        </div>
-      ) : null}
+      <ExperienceTechnologies technologies={experience.technologies} itemKey={itemKey} />
 
       {experience.projects?.length ? <Projects projects={experience.projects} /> : null}
     </article>

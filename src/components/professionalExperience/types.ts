@@ -1,4 +1,9 @@
-export type TimelineProject = {
+type TimelineHighlights = {
+  responsibilities?: string[];
+  technologies?: string[];
+};
+
+export type TimelineProject = TimelineHighlights & {
   name: string;
   client?: string;
   clientUrl?: string;
@@ -6,22 +11,16 @@ export type TimelineProject = {
   start?: string;
   end?: string | null;
   notes?: string;
-  responsibilities?: string[];
-  technologies?: string[];
 };
 
-export type TimelineExperience = {
+export type TimelineExperience = TimelineHighlights & {
   company: string;
   location?: string;
   title: string;
   start: string;
   end?: string | null;
-  responsibilities?: string[];
-  technologies?: string[];
   team?: string;
   project?: string;
-  client?: string;
-  clientUrl?: string;
   projects?: TimelineProject[];
 };
 
