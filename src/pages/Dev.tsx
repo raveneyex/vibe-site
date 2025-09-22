@@ -6,10 +6,12 @@ import { useEffect } from 'react';
 import data from '@/data.json';
 import { setMeta } from '@/utils/meta';
 import { ReactIcon, TypeScriptIcon, TailwindIcon, NodeIcon, TestingIcon, ViteIcon, RouterIcon, ReduxIcon, VitestIcon, CypressIcon } from '../components/icons';
+import useDevProfile from '@/hooks/useDevProfile';
 
 const { links } = data;
 
 export default function Dev() {
+  const { returnTo } = useDevProfile();
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(0,255,163,0.12)');
     document.documentElement.style.setProperty('--crt-rgb', '0,255,163');
@@ -59,7 +61,7 @@ export default function Dev() {
             </a>
           </div>
         </div>
-        <Link to="/" className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">← back to nexus</Link>
+        <Link to={returnTo} className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">← back to nexus</Link>
         <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" aria-hidden></div>
       </header>
 

@@ -1,27 +1,19 @@
-import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const STORAGE_KEY = 'useDevProfile';
-
-const readFlag = () => {
-  if (typeof window === 'undefined') return false;
-  return sessionStorage.getItem(STORAGE_KEY) === 'true';
-};
+const PROFESSIONAL_PROFILE_PATH = '/professionalProfile';
+const FROM_PARAM = 'from';
+const FROM_PROFESSIONAL = 'professionalProfile';
+const DEV_PROFILE_PARAM = 'devProfile';
 
 export default function useDevProfile() {
   const location = useLocation();
-  const [devOnly, setDevOnly] = useState<boolean>(() => readFlag());
+  const params = new URLSearchParams(location.search);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(location.search);
-    if (params.has('devProfile')) {
-      sessionStorage.setItem(STORAGE_KEY, 'true');
-      setDevOnly(true);
-      return;
-    }
-    setDevOnly(readFlag());
-  }, [location.search]);
+  const devProfileParam = params.has(DEV_PROFILE_PARAM);
+  const fromParam = params.get(FROM_PARAM);
+  const devOnly =
+    location.pathname === PROFESSIONAL_PROFILE_PATH || devProfileParam || fromParam === FROM_PROFESSIONAL;
+  const returnTo = devOnly || fromParam === FROM_PROFESSIONAL ? PROFESSIONAL_PROFILE_PATH : '/';
 
-  return devOnly;
+  return { devOnly, returnTo };
 }

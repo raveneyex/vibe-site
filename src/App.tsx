@@ -68,6 +68,14 @@ export default function App() {
           }
         />
         <Route
+          path="/professionalProfile"
+          element={
+            <PageShell>
+              <Landing />
+            </PageShell>
+          }
+        />
+        <Route
           path="/dev"
           element={
             <PageShell>

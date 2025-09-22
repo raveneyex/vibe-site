@@ -1,6 +1,9 @@
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
+import useDevProfile from '@/hooks/useDevProfile';
 
 export default function Header() {
+  const location = useLocation();
+  const { devOnly } = useDevProfile();
   return (
     <header className="fixed top-0 inset-x-0 z-40 backdrop-blur bg-noir-900/60 border-b border-white/5" role="banner">
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-white/10 via-white/10 to-white/10" aria-hidden="true"></div>
@@ -11,31 +14,38 @@ export default function Header() {
         <nav aria-label="Primary" className="flex items-center gap-6">
           <NavLink
             to="/dev"
-            className={({ isActive }: { isActive: boolean }) =>
-              'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-              (isActive ? 'text-neon-cyan neon-text-cyan' : 'text-slate-300 hover:text-white')
-            }
+            className={({ isActive }: { isActive: boolean }) => {
+              const active = isActive || location.pathname === '/professionalProfile';
+              return (
+                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
+                (active ? 'text-neon-cyan neon-text-cyan' : 'text-slate-300 hover:text-white')
+              );
+            }}
           >
             Dev
           </NavLink>
-          <NavLink
-            to="/magickal"
-            className={({ isActive }: { isActive: boolean }) =>
-              'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-              (isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white')
-            }
-          >
-            Magickal
-          </NavLink>
-          <NavLink
-            to="/tattoo"
-            className={({ isActive }: { isActive: boolean }) =>
-              'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-              (isActive ? 'text-neon-magenta neon-text-magenta' : 'text-slate-300 hover:text-white')
-            }
-          >
-            Tattoo
-          </NavLink>
+          {!devOnly && (
+            <NavLink
+              to="/magickal"
+              className={({ isActive }: { isActive: boolean }) =>
+                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
+                (isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white')
+              }
+            >
+              Magickal
+            </NavLink>
+          )}
+          {!devOnly && (
+            <NavLink
+              to="/tattoo"
+              className={({ isActive }: { isActive: boolean }) =>
+                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
+                (isActive ? 'text-neon-magenta neon-text-magenta' : 'text-slate-300 hover:text-white')
+              }
+            >
+              Tattoo
+            </NavLink>
+          )}
         </nav>
       </div>
     </header>
