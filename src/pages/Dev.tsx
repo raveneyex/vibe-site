@@ -140,7 +140,7 @@ export default function Dev() {
       <section>
         <h2 className="text-xl font-semibold mb-3 neon-text-cyan">Tech Stack</h2>
         <HudFrame accent="cyan" className="p-4">
-          <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-4 place-items-center text-slate-300">
+          <div className="grid grid-flow-col auto-cols-fr gap-4 text-slate-300 place-items-center">
             {techStack.map(({ icon: Icon, label }) => (
               <div key={label} className="flex flex-col items-center gap-1">
                 <Icon className="text-neon-cyan" size={28} />
