@@ -1,9 +1,9 @@
-interface ExperienceResponsibilitiesProps {
+interface JobResponsibilitiesProps {
   responsibilities?: string[];
   itemKey: string;
 }
 
-export default function ExperienceResponsibilities({ responsibilities, itemKey }: ExperienceResponsibilitiesProps) {
+export default function JobResponsibilities({ responsibilities, itemKey }: JobResponsibilitiesProps) {
   if (!responsibilities?.length) return null;
 
   return (

@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import data from '@/data.json';
-import Experience from './Experience';
+import Job from './Job';
 import type { ExperienceVisibilityMap, TimelineExperience } from './types';
 import { parseDateToTime } from '@/utils/dates';
 
-export default function ProfessionalExperience() {
+export default function JobHistory() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [visibleItems, setVisibleItems] = useState<ExperienceVisibilityMap>({});
 
@@ -55,7 +55,7 @@ export default function ProfessionalExperience() {
             const isVisible = visibleItems[itemKey];
             const transitionDelay = `${Math.min(index, 6) * 70}ms`;
             return (
-              <Experience
+              <Job
                 key={itemKey}
                 itemKey={itemKey}
                 experience={experience}

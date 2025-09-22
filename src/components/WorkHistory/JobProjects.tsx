@@ -2,11 +2,11 @@ import SkillChip from '@/components/SkillChip';
 import type { TimelineProject } from './types';
 import { formatDateRange } from '@/utils/dates';
 
-interface ProjectsProps {
+interface JobProjectsProps {
   projects: TimelineProject[];
 }
 
-export default function Projects({ projects }: ProjectsProps) {
+export default function JobProjects({ projects }: JobProjectsProps) {
   return (
     <div className="mt-5 space-y-4 border-t border-white/5 pt-4">
       {projects.map((project, index) => {

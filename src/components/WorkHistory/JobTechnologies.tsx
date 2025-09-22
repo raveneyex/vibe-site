@@ -1,12 +1,12 @@
 import SkillChip from '@/components/SkillChip';
 
-interface ExperienceTechnologiesProps {
+interface JobTechnologiesProps {
   technologies?: string[];
   itemKey: string;
   accent?: 'cyan' | 'magenta' | 'purple';
 }
 
-export default function ExperienceTechnologies({ technologies, itemKey, accent = 'cyan' }: ExperienceTechnologiesProps) {
+export default function JobTechnologies({ technologies, itemKey, accent = 'cyan' }: JobTechnologiesProps) {
   if (!technologies?.length) return null;
 
   return (

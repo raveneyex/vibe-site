@@ -1,18 +1,18 @@
 import { formatDateRange } from '@/utils/dates';
 import type { TimelineExperience } from './types';
-import Projects from './Projects';
-import ExperienceResponsibilities from './ExperienceResponsibilities';
-import ExperienceTechnologies from './ExperienceTechnologies';
-import TimelineExperienceMarker from './TimelineExperienceMarker';
+import JobProjects from './JobProjects';
+import JobResponsibilities from './JobResponsibilities';
+import JobTechnologies from './JobTechnologies';
+import TimelineJobMarker from './TimelineJobMarker';
 
-interface ExperienceProps {
+interface JobProps {
   experience: TimelineExperience;
   itemKey: string;
   isVisible?: boolean;
   transitionDelay?: string;
 }
 
-export default function Experience({ experience, itemKey, isVisible, transitionDelay = '0ms' }: ExperienceProps) {
+export default function Job({ experience, itemKey, isVisible, transitionDelay = '0ms' }: JobProps) {
   return (
     <article
       key={itemKey}
@@ -23,7 +23,7 @@ export default function Experience({ experience, itemKey, isVisible, transitionD
       }`}
       style={{ transitionDelay }}
     >
-      <TimelineExperienceMarker />
+      <TimelineJobMarker />
       <header className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <div className="space-y-1">
           <h3 className="text-lg font-semibold text-slate-100">{experience.company}</h3>
@@ -39,11 +39,11 @@ export default function Experience({ experience, itemKey, isVisible, transitionD
         </div>
       </header>
 
-      <ExperienceResponsibilities responsibilities={experience.responsibilities} itemKey={itemKey} />
+      <JobResponsibilities responsibilities={experience.responsibilities} itemKey={itemKey} />
 
-      <ExperienceTechnologies technologies={experience.technologies} itemKey={itemKey} />
+      <JobTechnologies technologies={experience.technologies} itemKey={itemKey} />
 
-      {experience.projects?.length ? <Projects projects={experience.projects} /> : null}
+      {experience.projects?.length ? <JobProjects projects={experience.projects} /> : null}
     </article>
   );
 }
