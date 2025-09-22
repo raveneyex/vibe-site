@@ -1,12 +1,35 @@
-import SkillChip from '../components/SkillChip';
-import Card from '../components/Card';
 import { Link } from 'react-router-dom';
 import HudFrame from '../components/HudFrame';
 import { useEffect } from 'react';
 import data from '@/data.json';
 import { setMeta } from '@/utils/meta';
-import { ReactIcon, TypeScriptIcon, TailwindIcon, NodeIcon, TestingIcon, ViteIcon, RouterIcon, ReduxIcon, VitestIcon, CypressIcon } from '../components/icons';
 import useDevProfile from '@/hooks/useDevProfile';
+import type { IconType } from 'react-icons';
+import {
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiTestinglibrary,
+  SiVite,
+  SiReactrouter,
+  SiRedux,
+  SiVitest,
+  SiCypress,
+} from 'react-icons/si';
+
+const techStack: { icon: IconType; label: string }[] = [
+  { icon: SiReact, label: 'react' },
+  { icon: SiTypescript, label: 'ts' },
+  { icon: SiTailwindcss, label: 'tailwind' },
+  { icon: SiNodedotjs, label: 'node' },
+  { icon: SiTestinglibrary, label: 'testing' },
+  { icon: SiVite, label: 'vite' },
+  { icon: SiReactrouter, label: 'router' },
+  { icon: SiRedux, label: 'redux' },
+  { icon: SiVitest, label: 'vitest' },
+  { icon: SiCypress, label: 'cypress' },
+];
 
 const { links } = data;
 
@@ -15,7 +38,7 @@ export default function Dev() {
   useEffect(() => {
     document.documentElement.style.setProperty('--tint', 'rgba(0,255,163,0.12)');
     document.documentElement.style.setProperty('--crt-rgb', '0,255,163');
-    setMeta('Dev — Andres Ossa', 'Frontend development, design systems, and performance.');
+    setMeta('Dev Work — Andres Ossa', 'Frontend development, JS, user interfaces, and systems design.');
   }, []);
   return (
     <section className="mx-auto max-w-5xl space-y-10">
@@ -121,73 +144,19 @@ export default function Dev() {
       </article>
 
       <section>
-        <h2 className="text-xl font-semibold mb-3 neon-text-cyan">Selected Skills</h2>
-        <div className="flex flex-wrap gap-2">
-          {['React', 'TypeScript', 'Tailwind', 'Node.js', 'Testing Library', 'Vite', 'React Router'].map((s) => (
-            <SkillChip key={s} label={s} accent="cyan" />
-          ))}
-        </div>
-      </section>
-
-      <section>
         <h2 className="text-xl font-semibold mb-3 neon-text-cyan">Tech Stack</h2>
         <HudFrame accent="cyan" className="p-4">
           <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-10 gap-4 place-items-center text-slate-300">
-            <div className="flex flex-col items-center gap-1">
-              <ReactIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">react</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <TypeScriptIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">ts</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <TailwindIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">tailwind</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <NodeIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">node</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <TestingIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">testing</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <ViteIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">vite</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <RouterIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">router</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <ReduxIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">redux</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <VitestIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">vitest</span>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <CypressIcon className="text-neon-cyan" />
-              <span className="text-[11px] font-mono">cypress</span>
-            </div>
+            {techStack.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex flex-col items-center gap-1">
+                <Icon className="text-neon-cyan" size={28} />
+                <span className="text-[11px] font-mono">{label}</span>
+              </div>
+            ))}
           </div>
         </HudFrame>
       </section>
 
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Recent Work</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          <Card title="Media Platform Redesign" cta={{ label: 'View case study', href: '#' }} accent="cyan">
-            Led a component-driven redesign improving performance and accessibility across a large React app.
-          </Card>
-          <Card title="Realtime Analytics Dashboard" cta={{ label: 'View case study', href: '#' }} accent="cyan">
-            Delivered a fast, legible dashboard with virtualized tables and responsive charts.
-          </Card>
-        </div>
-      </section>
     </section>
   );
 }
