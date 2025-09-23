@@ -1,4 +1,4 @@
-import HudFrame from '@/components/NavDeck/HudFrame';
+import HudFrame from '@/components/Layout/HudFrame';
 import SkillChip from '@/components/SkillChip';
 import { Link } from 'react-router-dom';
 import data from '@/data.json';

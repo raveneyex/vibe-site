@@ -1,4 +1,4 @@
-import HudFrame from "./HudFrame";
+import HudFrame from "../Layout/HudFrame";
 import { NavCardVariant } from "./types";
 import clsx from "clsx";
 
