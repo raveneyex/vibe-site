@@ -1,5 +1,6 @@
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import useDevProfile from '@/hooks/useDevProfile';
+import clsx from 'clsx';
 
 export default function Header() {
   const location = useLocation();
@@ -16,9 +17,9 @@ export default function Header() {
             to="/dev"
             className={({ isActive }: { isActive: boolean }) => {
               const active = isActive || location.pathname === '/professionalProfile';
-              return (
-                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-                (active ? 'text-neon-cyan neon-text-cyan' : 'text-slate-300 hover:text-white')
+              return clsx(
+                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline',
+                active ? 'text-neon-cyan neon-text-cyan' : 'text-slate-300 hover:text-white'
               );
             }}
           >
@@ -28,8 +29,10 @@ export default function Header() {
             <NavLink
               to="/magickal"
               className={({ isActive }: { isActive: boolean }) =>
-                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-                (isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white')
+                clsx(
+                  'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline',
+                  isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white'
+                )
               }
             >
               Magickal
@@ -39,8 +42,10 @@ export default function Header() {
             <NavLink
               to="/tattoo"
               className={({ isActive }: { isActive: boolean }) =>
-                'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline ' +
-                (isActive ? 'text-neon-magenta neon-text-magenta' : 'text-slate-300 hover:text-white')
+                clsx(
+                  'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline',
+                  isActive ? 'text-neon-magenta neon-text-magenta' : 'text-slate-300 hover:text-white'
+                )
               }
             >
               Tattoo

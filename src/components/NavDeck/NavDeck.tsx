@@ -6,6 +6,7 @@ import { NavCardVariant, type HoverCard } from "./types";
 import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
 import useTypewriter from "@/hooks/useTypewriter";
 import NavCard from "./NavCard";
+import clsx from "clsx";
 
 function getHoverCardTitle(h: HoverCard) { 
   return h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa' 
@@ -52,7 +53,10 @@ export default function NavDeck() {
             onMouseLeave={() => setHoverCard(null)}
             variant={NavCardVariant.Cyan}
             logo={<ProCardSVG />}
-            className={`text-left hover:neon-glow-cyan transition-shadow focus:outline-none focus-visible:focus-outline ${devOnly ? 'sm:col-start-2' : ''}`}
+            className={clsx(
+              'text-left hover:neon-glow-cyan transition-shadow focus:outline-none focus-visible:focus-outline',
+              devOnly && 'sm:col-start-2'
+            )}
             ariaLabel="Enter Dev"
             text="Dev Work"
             subtitle="Frontend development, javascript, user interfaces, and systems design."
@@ -65,7 +69,7 @@ export default function NavDeck() {
               onMouseLeave={() => setHoverCard(null)}
               variant={NavCardVariant.Purple}
               logo={<MagickCardSVG />}
-              className="text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline"
+              className={clsx('text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline')}
               ariaLabel="Enter Magickal"
               text="Magick"
               subtitle="Sigils, rituals, and esoteric explorations"
@@ -79,7 +83,7 @@ export default function NavDeck() {
               onMouseLeave={() => setHoverCard(null)}
               variant={NavCardVariant.Magenta}
               logo={<TattooCardSVG />}
-              className="text-left hover:neon-glow-magenta transition-shadow focus:outline-none focus-visible:focus-outline"
+              className={clsx('text-left hover:neon-glow-magenta transition-shadow focus:outline-none focus-visible:focus-outline')}
               ariaLabel="Enter Tattoo"
               text="Tattoos"
               subtitle="Custom blackwork tattoos"

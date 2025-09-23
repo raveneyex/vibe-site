@@ -5,6 +5,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import HudFrame from '../components/NavDeck/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 import usePageBranding from '@/hooks/usePageBranding';
+import clsx from 'clsx';
 
 export default function Magickal() {
   usePageBranding({
@@ -284,7 +285,7 @@ export default function Magickal() {
             {Array.from({ length: count }).map((_, i) => (
               <button
                 key={i}
-                className={`h-1.5 w-1.5 rounded-full ${i === index ? 'bg-neon-purple' : 'bg-white/20'}`}
+                className={clsx('h-1.5 w-1.5 rounded-full', i === index ? 'bg-neon-purple' : 'bg-white/20')}
                 aria-label={`go to sigil ${i + 1}`}
                 onClick={() => {
                   setIndex(i);

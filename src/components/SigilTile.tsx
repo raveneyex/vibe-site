@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 type Props = {
   label: string;
   accent?: 'cyan' | 'magenta' | 'purple';
@@ -9,7 +11,16 @@ export default function SigilTile({ label, accent = 'magenta' }: Props) {
   const glowClass = accent === 'cyan' ? 'hover:neon-glow-cyan' : accent === 'magenta' ? 'hover:neon-glow-magenta' : 'hover:neon-glow-purple';
   const textClass = accent === 'cyan' ? 'text-neon-cyan/90' : accent === 'magenta' ? 'text-neon-magenta/90' : 'text-neon-purple/90';
   return (
-    <div className={`hud ${hudClass} group relative w-24 h-24 rounded-lg glass ${borderClass} grid place-items-center ${glowClass} transition-shadow scan-sweep`} role="img" aria-label={label}>
+    <div
+      className={clsx(
+        'hud group relative w-24 h-24 rounded-lg glass grid place-items-center transition-shadow scan-sweep',
+        hudClass,
+        borderClass,
+        glowClass
+      )}
+      role="img"
+      aria-label={label}
+    >
       <span aria-hidden="true" className="corner tl" />
       <span aria-hidden="true" className="corner tr" />
       <span aria-hidden="true" className="corner bl" />

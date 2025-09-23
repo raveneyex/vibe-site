@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 type Props = { label: string; accent?: 'cyan' | 'magenta' | 'purple' };
 
 export default function SkillChip({ label, accent = 'cyan' }: Props) {
@@ -6,7 +8,12 @@ export default function SkillChip({ label, accent = 'cyan' }: Props) {
   const text = accent === 'cyan' ? 'text-neon-cyan' : accent === 'magenta' ? 'text-neon-magenta' : 'text-neon-purple';
   return (
     <span
-      className={`inline-flex items-center px-3 py-1 rounded-full border ${border} ${glow} text-xs font-mono ${text} bg-white/5 transition-shadow`}
+      className={clsx(
+        'inline-flex items-center px-3 py-1 rounded-full border text-xs font-mono bg-white/5 transition-shadow',
+        border,
+        glow,
+        text
+      )}
     >
       {label}
     </span>
