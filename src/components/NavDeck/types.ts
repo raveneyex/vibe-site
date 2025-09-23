@@ -1,0 +1,1 @@
+export type HoverCard = null | 'dev' | 'mag' | 'tat';

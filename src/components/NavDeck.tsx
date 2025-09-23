@@ -1,34 +1,21 @@
 import useDevProfile from "@/hooks/useDevProfile";
-import useTypewriter from "@/hooks/useTypewriter";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HudFrame from "./HudFrame";
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from "./SectionIcons";
+import useNavDeckTypewriter from "@/hooks/useNavDeckTypewriter";
+import type { HoverCard } from "./NavDeck/types";
+import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
 
 export default function NavDeck() {
   const nav = useNavigate();
 
-  const [titleText, setTitleText] = useState('Andres Ossa');
-  const [hoverCard, setHoverCard] = useState<null | 'dev' | 'mag' | 'tat'>(null);
+  const [hoverCard, setHoverCard] = useState<HoverCard>(null);
   const { devOnly } = useDevProfile();
 
-  const phraseFor = (h: null | 'dev' | 'mag' | 'tat') => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
-  const { text: typedTitle, announce } = useTypewriter({ defaultText: 'Andres Ossa', target: hoverCard ? phraseFor(hoverCard) : null });
-  useEffect(() => { setTitleText(typedTitle); }, [typedTitle]);
-
-  // Update background tint color based on hovered card
-  useEffect(() => {
-    const root = document.documentElement;
-    const cyan = 'rgba(0,255,163,0.12)';
-    const purple = 'rgba(168,85,247,0.14)';
-    const red = 'rgba(255,56,100,0.14)';
-    const tint = hoverCard === 'mag' ? purple : hoverCard === 'tat' ? red : cyan;
-    root.style.setProperty('--tint', tint);
-    return () => {
-      // reset on unmount
-      root.style.setProperty('--tint', cyan);
-    };
-  }, [hoverCard]);
+  const { titleText, announce } = useNavDeckTypewriter(hoverCard);
+  useBackgroundTintOnHover(hoverCard);
+  
 
   return (
     <section
