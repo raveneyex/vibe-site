@@ -57,7 +57,7 @@ export default function NavDeck() {
             ariaLabel="Enter Dev"
             text="Dev Work"
             subtitle="Frontend development, javascript, user interfaces, and systems design."
-            cta="Explore ▸"
+            cta="Explore"
           />
           {!devOnly && (
             <NavCard
@@ -70,7 +70,7 @@ export default function NavDeck() {
               ariaLabel="Enter Magickal"
               text="Magick"
               subtitle="Sigils, rituals, and esoteric explorations"
-              cta="Enter ▸"
+              cta="Enter"
             />
           )}
           {!devOnly && (
@@ -84,7 +84,7 @@ export default function NavDeck() {
               ariaLabel="Enter Tattoo"
               text="Tattoos"
               subtitle="Custom blackwork tattoos"
-              cta="Discover ▸"
+              cta="Discover"
             />
           )}
         </div>

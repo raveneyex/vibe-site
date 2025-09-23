@@ -40,7 +40,7 @@ export default function NavCard(props: NavCardProps) {
           <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">{text}</h3>
           <p className={`text-sm text-neon-${variant}`}>{subtitle}</p>
         </div>
-        <div className={`mt-4 text-xs font-mono text-neon-${variant}`}>[ {cta} ]</div>
+        <div className={`mt-4 text-xs font-mono text-neon-${variant}`}>[ {cta} ▸]</div>
       </HudFrame>
     </button>
   )
