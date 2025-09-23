@@ -1,11 +1,11 @@
 import useDevProfile from "@/hooks/useDevProfile";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import HudFrame from "./HudFrame";
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from "./SectionIcons";
 import type { HoverCard } from "./types";
 import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
 import useTypewriter from "@/hooks/useTypewriter";
+import NavCard, { NavCardVariant } from "./NavCard";
 
 const getHoverCardTitle = (h: HoverCard) => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
 
@@ -47,66 +47,45 @@ export default function NavDeck() {
         className="relative w-full"
       >
         <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 place-items-stretch">
-          <button
-            type="button"
+          <NavCard
             onClick={() => nav(devOnly ? '/dev?from=professionalProfile' : '/dev')}
             onMouseEnter={() => setHoverCard('dev')}
             onMouseLeave={() => setHoverCard(null)}
-            onFocus={() => setHoverCard('dev')}
-            onBlur={() => setHoverCard(null)}
+            variant={NavCardVariant.Cyan}
+            logo={<ProCardSVG />}
             className={`text-left hover:neon-glow-cyan transition-shadow focus:outline-none focus-visible:focus-outline ${devOnly ? 'sm:col-start-2' : ''}`}
-            aria-label="Enter Dev"
-          >
-            <HudFrame accent="cyan" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-cyan-pure">
-              <div className="text-slate-300">
-                <div className="w-full mb-3 text-neon-cyan/90" aria-hidden="true"><ProCardSVG /></div>
-                <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-cyan">Dev Work</h3>
-                <p className="text-sm text-neon-cyan">Frontend development, javascript, user interfaces, and systems design.</p>
-              </div>
-              <div className="mt-4 text-xs font-mono text-neon-cyan">[ Explore ▸ ]</div>
-            </HudFrame>
-          </button>
+            ariaLabel="Enter Dev"
+            text="Dev Work"
+            subtitle="Frontend development, javascript, user interfaces, and systems design."
+            cta="Explore ▸"
+          />
           {!devOnly && (
-            <button
-              type="button"
+            <NavCard
               onClick={() => nav('/magickal')}
               onMouseEnter={() => setHoverCard('mag')}
               onMouseLeave={() => setHoverCard(null)}
-              onFocus={() => setHoverCard('mag')}
-              onBlur={() => setHoverCard(null)}
+              variant={NavCardVariant.Purple}
+              logo={<MagickCardSVG />}
               className="text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline"
-              aria-label="Enter Magickal"
-            >
-              <HudFrame accent="purple" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-purple">
-                <div className="text-slate-300">
-                  <div className="w-full mb-3 text-neon-purple/90" aria-hidden="true"><MagickCardSVG /></div>
-                  <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-purple">Magickal</h3>
-                  <p className="text-sm text-neon-purple">Sigils, ritual diagrams, and esoteric explorations.</p>
-                </div>
-                <div className="mt-4 text-xs font-mono text-neon-purple">[ Enter ▸ ]</div>
-              </HudFrame>
-            </button>
+              ariaLabel="Enter Magickal"
+              text="Magick"
+              subtitle="Sigils, rituals, and esoteric explorations"
+              cta="Enter ▸"
+            />
           )}
           {!devOnly && (
-            <button
-              type="button"
+            <NavCard
               onClick={() => nav('/tattoo')}
               onMouseEnter={() => setHoverCard('tat')}
               onMouseLeave={() => setHoverCard(null)}
-              onFocus={() => setHoverCard('tat')}
-              onBlur={() => setHoverCard(null)}
+              variant={NavCardVariant.Magenta}
+              logo={<TattooCardSVG />}
               className="text-left hover:neon-glow-magenta transition-shadow focus:outline-none focus-visible:focus-outline"
-              aria-label="Enter Tattoo"
-            >
-              <HudFrame accent="magenta" className="p-5 h-full flex flex-col items-stretch justify-between glass-border-magenta">
-                <div className="text-slate-300">
-                  <div className="w-full mb-3 text-neon-magenta/90" aria-hidden="true"><TattooCardSVG /></div>
-                  <h3 className="text-lg font-semibold tracking-wide mb-1 neon-text-magenta">Tattoo</h3>
-                  <p className="text-sm text-neon-magenta">Custom sigil tattoos and experimental flash sets.</p>
-                </div>
-                <div className="mt-4 text-xs font-mono text-neon-magenta">[ Discover ▸ ]</div>
-              </HudFrame>
-            </button>
+              ariaLabel="Enter Tattoo"
+              text="Tattoos"
+              subtitle="Custom blackwork tattoos"
+              cta="Discover ▸"
+            />
           )}
         </div>
       </div>
