@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import HudFrame from '../components/HudFrame';
+import HudFrame from '../components/NavDeck/HudFrame';
 import data from '@/data.json';
 import useDevProfile from '@/hooks/useDevProfile';
 import usePageBranding from '@/hooks/usePageBranding';

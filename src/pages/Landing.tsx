@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NavDeck from '@/components/NavDeck';
+import NavDeck from '@/components/NavDeck/NavDeck';
 
 export default function Landing() {
  

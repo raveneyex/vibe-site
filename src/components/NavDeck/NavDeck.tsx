@@ -3,24 +3,29 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HudFrame from "./HudFrame";
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from "./SectionIcons";
-import useNavDeckTypewriter from "@/hooks/useNavDeckTypewriter";
-import type { HoverCard } from "./NavDeck/types";
+import type { HoverCard } from "./types";
 import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
+import useTypewriter from "@/hooks/useTypewriter";
+
+const getHoverCardTitle = (h: HoverCard) => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
 
 export default function NavDeck() {
   const nav = useNavigate();
 
   const [hoverCard, setHoverCard] = useState<HoverCard>(null);
+  
   const { devOnly } = useDevProfile();
+  const { text: titleText, announce } = useTypewriter({ 
+    defaultText: 'Andres Ossa', 
+    target: hoverCard ? getHoverCardTitle(hoverCard) : null 
+  });
 
-  const { titleText, announce } = useNavDeckTypewriter(hoverCard);
   useBackgroundTintOnHover(hoverCard);
   
 
   return (
     <section
       className="relative flex flex-col items-center gap-10"
-      style={{ transformStyle: 'preserve-3d' }}
     >
       <h1 className="text-2xl sm:text-3xl font-mono text-center text-slate-200 cursor-blink rgb-split">
         {titleText}
@@ -40,10 +45,6 @@ export default function NavDeck() {
       })()}
       <div
         className="relative w-full"
-        style={{
-          perspective: '800px',
-          transform: 'rotateY(var(--parallax-x, 0)) rotateX(var(--parallax-y, 0))',
-        }}
       >
         <div className="mx-auto max-w-6xl grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 place-items-stretch">
           <button

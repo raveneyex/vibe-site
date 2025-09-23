@@ -2,7 +2,7 @@ import SigilTile from '../components/SigilTile';
 import SkillChip from '../components/SkillChip';
 import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import HudFrame from '../components/HudFrame';
+import HudFrame from '../components/NavDeck/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 import usePageBranding from '@/hooks/usePageBranding';
 
