@@ -1,10 +1,5 @@
 import HudFrame from "./HudFrame";
-
-export enum NavCardVariant {
-  Cyan = 'cyan',
-  Purple = 'purple',
-  Magenta = 'magenta'
-}
+import { NavCardVariant } from "./types";
 
 interface NavCardProps {
   onClick: () => void;
@@ -17,7 +12,6 @@ interface NavCardProps {
   cta: string;
   ariaLabel?: string;
   className?: string;
-
 }
 
 export default function NavCard(props: NavCardProps) {

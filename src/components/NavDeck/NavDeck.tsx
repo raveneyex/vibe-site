@@ -2,31 +2,30 @@ import useDevProfile from "@/hooks/useDevProfile";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from "./SectionIcons";
-import type { HoverCard } from "./types";
+import { NavCardVariant, type HoverCard } from "./types";
 import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
 import useTypewriter from "@/hooks/useTypewriter";
-import NavCard, { NavCardVariant } from "./NavCard";
+import NavCard from "./NavCard";
 
-const getHoverCardTitle = (h: HoverCard) => (h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa');
+function getHoverCardTitle(h: HoverCard) { 
+  return h === 'mag' ? 'Raveneyex' : h === 'tat' ? 'Ojo de Cuervo' : 'Andres Ossa' 
+};
 
 export default function NavDeck() {
   const nav = useNavigate();
 
   const [hoverCard, setHoverCard] = useState<HoverCard>(null);
-  
+
   const { devOnly } = useDevProfile();
-  const { text: titleText, announce } = useTypewriter({ 
-    defaultText: 'Andres Ossa', 
-    target: hoverCard ? getHoverCardTitle(hoverCard) : null 
+  const { text: titleText, announce } = useTypewriter({
+    defaultText: 'Andres Ossa',
+    target: hoverCard ? getHoverCardTitle(hoverCard) : null
   });
 
   useBackgroundTintOnHover(hoverCard);
-  
 
   return (
-    <section
-      className="relative flex flex-col items-center gap-10"
-    >
+    <section className="relative flex flex-col items-center gap-10">
       <h1 className="text-2xl sm:text-3xl font-mono text-center text-slate-200 cursor-blink rgb-split">
         {titleText}
       </h1>
