@@ -32,7 +32,7 @@ const techStack: { icon: IconType; label: string }[] = [
   { icon: SiCypress, label: 'cypress' },
 ];
 
-const { links } = data;
+const { links, dev: devData } = data;
 
 const contactLinks: {
   icon: IconType;
@@ -52,17 +52,21 @@ export default function Dev() {
   usePageBranding({
     tint: 'rgba(0,255,163,0.12)',
     crtRgb: '0,255,163',
-    title: 'Dev Work — Andres Ossa',
-    description: 'Frontend development, javascript, user interfaces, and systems design.',
+    title: devData.metadata.title,
+    description: devData.metadata.description
   });
+
+  const summaryParagraphs = devData.summary
+    .split(/\n\s*\n/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+  
   return (
     <section className="mx-auto max-w-5xl space-y-10">
       <header className="relative pb-4 flex items-end justify-between gap-4">
         <div className="space-y-3">
-          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-cyan">Andres Ossa - FrontEnd Developer</h1>
-          <p className="text-slate-300 max-w-3xl">
-            Turning complex ideas into intuitive digital experiences for over a decade.
-          </p>
+          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-cyan">{devData.title}</h1>
+          <p className="text-slate-300 max-w-3xl">{devData.subtitle}</p>
           <div className="flex flex-wrap items-center gap-3">
             {contactLinks.map(({ icon: Icon, label, href, external, download }) => (
               <a
@@ -118,24 +122,9 @@ export default function Dev() {
       </section>
 
       <article className="space-y-4 text-slate-300 leading-relaxed">
-        <p>
-          I’m Andres Ossa, a Frontend Developer with more than 11 years of experience turning complex ideas into clean,
-          functional interfaces. My work lives at the intersection of detail and usability: I care about writing
-          maintainable code as much as I care about creating experiences that feel intuitive to real people.
-        </p>
-        <p>
-          I’ve built products across a wide range of industries including media, entertainment, online gambling, and
-          travel. That variety has sharpened my ability to adapt quickly, learn domain-specific challenges, and design
-          solutions that balance technical requirements with user needs.
-        </p>
-        <p>
-          My focus is on modern web technologies, scalable frontends, and thoughtful UI design. I approach development
-          with discipline, curiosity, and a habit of solving problems at both the architectural and pixel level.
-        </p>
-        <p>
-          When I’m not debugging or shipping features, I’m usually experimenting with design, exploring new frameworks,
-          or honing my craft in other creative mediums.
-        </p>
+        {summaryParagraphs.map((paragraph, index) => (
+          <p key={index}>{paragraph}</p>
+        ))}
       </article>
 
       <section>
