@@ -10,14 +10,11 @@ import useTypewriter from "@/hooks/useTypewriter";
 import NavCard from "./NavCard";
 import clsx from "clsx";
 
-function getHoverCardTitle(h: HoverCard) { 
-  return h === 'magick' ? 'Raveneyex' : h === 'tattoo' ? 'Ojo de Cuervo' : 'Andres Ossa' 
-};
-
 type NavDeckCard = {
   title: string;
   subtitle: string;
   cta: string;
+  hoverTitle: string;
 };
 
 type NavDeckSubtitle = {
@@ -31,20 +28,28 @@ type NavDeckContent = Record<'dev' | 'magick' | 'tattoo', NavDeckCard> & {
 
 const navDeckContent = data.navDeck as NavDeckContent;
 
+const { dev: devCard, magick: magickCard, tattoo: tattooCard, subtitle: subtitleContent } = navDeckContent;
+
+const hoverTitles: Record<Exclude<HoverCard, null>, string> = {
+  dev: devCard.hoverTitle,
+  magick: magickCard.hoverTitle,
+  tattoo: tattooCard.hoverTitle
+};
+
 export default function NavDeck() {
   const nav = useNavigate();
+  const { devOnly } = useDevProfile();
 
   const [hoverCard, setHoverCard] = useState<HoverCard>(null);
-
-  const { devOnly } = useDevProfile();
+  
+  const hoverTarget = hoverCard ? hoverTitles[hoverCard] : hoverTitles['dev'];
   const { text: titleText, announce } = useTypewriter({
     defaultText: 'Andres Ossa',
-    target: hoverCard ? getHoverCardTitle(hoverCard) : null
+    target: hoverTarget
   });
 
   useBackgroundTintOnHover(hoverCard);
 
-  const { dev: devCard, magick: magickCard, tattoo: tattooCard, subtitle: subtitleContent } = navDeckContent;
   const deckSubtitle = devOnly ? subtitleContent.devOnly : subtitleContent.default;
 
   return (
