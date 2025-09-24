@@ -42,7 +42,18 @@
       "title": "Dev Work — Andres Ossa",
       "description":"Frontend development, javascript, user interfaces, and systems design."
     },
-    "summary": "I'm Andres Ossa, a Frontend Developer with more than 11 years of experience turning complex ideas into clean, functional interfaces. My work lives at the intersection of detail and usability: I care about writing maintainable code as much as I care about creating experiences that feel intuitive to real people.\n\nI've built products across a wide range of industries including media, entertainment, online gambling, and travel. That variety has sharpened my ability to adapt quickly, learn domain-specific challenges, and design solutions that balance technical requirements with user needs.\n\nMy focus is on modern web technologies, scalable frontends, and thoughtful UI design. I approach development with discipline, curiosity, and a habit of solving problems at both the architectural and pixel level.\n\nWhen I'm not debugging or shipping features, I'm usually experimenting with design, exploring new frameworks, or honing my craft in other creative mediums.",
+    "summary": "I'm Andres Ossa, a Frontend Developer with more than 12 years of experience turning complex ideas into clean, functional interfaces. My work lives at the intersection of detail and usability: I care about writing maintainable code as much as I care about creating experiences that feel intuitive to real people.\n\nI've built products across a wide range of industries including media, entertainment, online gambling, and travel. That variety has sharpened my ability to adapt quickly, learn domain-specific challenges, and design solutions that balance technical requirements with user needs.\n\nMy focus is on modern web technologies, scalable frontends, and thoughtful UI design. I approach development with discipline, curiosity, and a habit of solving problems at both the architectural and pixel level.\n\nWhen I'm not debugging or shipping features, I'm usually experimenting with design, exploring new frameworks, or honing my craft in other creative mediums.",
+    "stats": {
+      "experience": "12+ years",
+      "industries": [
+        "software nearshoring",
+        "media",
+        "entertainment",
+        "travel",
+        "online gambling",
+        "dev tooling"
+      ]
+    },
     "professionalExperience": [
       {
         "company": "Rush Street Development",

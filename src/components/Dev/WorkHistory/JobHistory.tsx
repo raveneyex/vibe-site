@@ -1,13 +1,17 @@
 import { useMemo } from 'react';
-import data from '@/data.json';
 import Job from './Job';
 import type { TimelineExperience } from './types';
 import { parseDateToTime } from '@/utils/dates';
 
-export default function JobHistory() {
+interface JobHistoryProps {
+  experience: TimelineExperience[]
+}
+
+export default function JobHistory(props: JobHistoryProps) {
+  const { experience } = props;
+
   const experiences = useMemo(() => {
-    const professionalExperienceData = data.dev.professionalExperience as TimelineExperience[];
-    return professionalExperienceData
+    return experience
       .slice()
       .sort((a, b) => {
         const aTime = parseDateToTime(a.start);
@@ -17,7 +21,7 @@ export default function JobHistory() {
         if (bTime === null) return -1;
         return bTime - aTime;
       });
-  }, []);
+  }, [experience]);
 
   return (
     <section className="space-y-4">
