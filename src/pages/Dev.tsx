@@ -32,7 +32,7 @@ export default function Dev() {
         <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" aria-hidden></div>
       </header>
 
-      <WorkStatsHud />
+      <WorkStatsHud stats={devData.stats} />
 
       <DevSummary summary={devData.summary} />
 
