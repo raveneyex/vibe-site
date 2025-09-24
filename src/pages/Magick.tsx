@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import usePageBranding from '@/hooks/usePageBranding';
 import data from '@/data.json';
 
-import EsotericInterests from '@/components/Magickal/EsotericInterests';
-import DailyMagickalAspects from '@/components/Magickal/DailyMagickalAspects';
-import MagickSummary from '@/components/Magickal/MagickSummary';
-import ThoughtFormsSlider from '@/components/Magickal/ThoughtFormsSlider';
+import EsotericInterests from '@/components/Magick/EsotericInterests';
+import DailyMagickalAspects from '@/components/Magick/DailyMagickalAspects';
+import MagickSummary from '@/components/Magick/MagickSummary';
+import ThoughtFormsSlider from '@/components/Magick/ThoughtFormsSlider';
 
-export default function Magickal() {
+export default function Magick() {
   const { magick } = data;
 
   usePageBranding({

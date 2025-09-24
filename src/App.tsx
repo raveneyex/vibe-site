@@ -3,7 +3,7 @@ import Header from './components/Layout/Header';
 import Footer from './components/Layout/Footer';
 import Landing from './pages/Landing';
 import Dev from './pages/Dev';
-import Magickal from './pages/Magickal';
+import Magick from './pages/Magick';
 import Tattoo from './pages/Tattoo';
 import PageShell from './components/Layout/PageShell';
 import BackgroundEffects from './components/Layout/BackgroundEffects';
@@ -41,10 +41,10 @@ export default function App() {
           }
         />
         <Route
-          path="/magickal"
+          path="/magick"
           element={
             <PageShell>
-              <Magickal />
+              <Magick />
             </PageShell>
           }
         />

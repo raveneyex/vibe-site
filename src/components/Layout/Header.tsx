@@ -27,7 +27,7 @@ export default function Header() {
           </NavLink>
           {!devOnly && (
             <NavLink
-              to="/magickal"
+              to="/magick"
               className={({ isActive }: { isActive: boolean }) =>
                 clsx(
                   'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline',
@@ -35,7 +35,7 @@ export default function Header() {
                 )
               }
             >
-              Magickal
+              Magick
             </NavLink>
           )}
           {!devOnly && (
