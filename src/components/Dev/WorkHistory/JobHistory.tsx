@@ -28,6 +28,8 @@ export default function JobHistory(props: JobHistoryProps) {
       });
   }, [experience]);
 
+  const [primaryExperience, ...restExperiences] = experiences;
+
   return (
     <section className="space-y-4">
       <header className="flex items-center justify-between gap-3">
@@ -49,36 +51,44 @@ export default function JobHistory(props: JobHistoryProps) {
           <span>{isOpen ? 'Hide' : 'Show'}</span>
         </button>
       </header>
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            id={contentId}
-            key="job-history"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="relative overflow-hidden"
-            aria-hidden={!isOpen}
-          >
-            <div className="absolute left-[0.55rem] top-0 bottom-0 w-px bg-neon-cyan/30" aria-hidden></div>
-            <div className="space-y-6 pl-6 py-1">
-              {experiences.map((experience, index) => {
-                const itemKey = `${experience.company}-${experience.title}-${experience.start}-${index}`;
-                const animationDelay = Math.min(index, 6) * 0.07;
-                return (
-                  <Job
-                    key={itemKey}
-                    itemKey={itemKey}
-                    experience={experience}
-                    animationDelay={animationDelay}
-                  />
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className="relative">
+        <div className="absolute left-[0.55rem] top-0 bottom-0 w-px bg-neon-cyan/30" aria-hidden></div>
+        <div className="space-y-6 pl-6 py-1">
+          {primaryExperience && (
+            <Job
+              itemKey={`${primaryExperience.company}-${primaryExperience.title}-${primaryExperience.start}-primary`}
+              experience={primaryExperience}
+              animationDelay={0}
+            />
+          )}
+          <AnimatePresence initial={false}>
+            {isOpen && restExperiences.length > 0 && (
+              <motion.div
+                id={contentId}
+                key="job-history-expanded"
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className="space-y-6 overflow-hidden"
+              >
+                {restExperiences.map((experience, index) => {
+                  const itemKey = `${experience.company}-${experience.title}-${experience.start}-${index + 1}`;
+                  const animationDelay = Math.min(index + 1, 6) * 0.07;
+                  return (
+                    <Job
+                      key={itemKey}
+                      itemKey={itemKey}
+                      experience={experience}
+                      animationDelay={animationDelay}
+                    />
+                  );
+                })}
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
     </section>
   );
 }
