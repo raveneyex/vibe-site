@@ -196,6 +196,23 @@
     .typewriter-animate { animation: none; }
   }
 
+  .techstack-swiper .swiper-pagination {
+    position: static;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .techstack-swiper .swiper-pagination-bullet {
+    background: rgba(45, 226, 230, 0.35);
+    opacity: 1;
+  }
+
+  .techstack-swiper .swiper-pagination-bullet-active {
+    background: rgba(45, 226, 230, 0.9);
+  }
+
   /* Global sweep line */
   .global-sweep::before { content: ''; position: fixed; left: 0; right: 0; top: -10%; height: 2px; pointer-events: none;
     background: linear-gradient(90deg, transparent, rgba(var(--crt-rgb, 0,255,163),0.3), transparent);
