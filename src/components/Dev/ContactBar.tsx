@@ -34,7 +34,7 @@ export default function ContactBar(props: ContactBarProps) {
   ];
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
+    <div className="flex flex-wrap items-center gap-3 !mt-[10px] pt-[10px]">
       {contactLinks.map(({ icon: Icon, label, href, external, download }) => (
         <a
           key={label}

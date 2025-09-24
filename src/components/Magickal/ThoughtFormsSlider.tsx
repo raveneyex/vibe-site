@@ -1,14 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperInstance } from 'swiper';
 import { Navigation, Keyboard, Autoplay } from "swiper/modules";
 import SigilTile from "../SigilTile";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 
+
 export default function ThoughtFormsSlider() {
   const count = 12;
-  const swiperRef = useRef<SwiperInstance | null>(null);
 
   const [index, setIndex] = useState(0);
   
@@ -19,18 +18,12 @@ export default function ThoughtFormsSlider() {
         <div aria-live="polite" role="status" className="sr-only">Sigil {index + 1} of {count}</div>
         <Swiper
           modules={[Navigation, Keyboard, Autoplay]}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
           onSlideChange={(swiper) => setIndex(swiper.realIndex)}
           slidesPerView={1}
           centeredSlides
           spaceBetween={32}
           keyboard={{ enabled: true, onlyInViewport: true }}
-          navigation={{
-            prevEl: '.sigil-carousel-prev',
-            nextEl: '.sigil-carousel-next',
-          }}
+          navigation={{ prevEl: '.sigil-carousel-prev', nextEl: '.sigil-carousel-next' }}
           autoplay={{ delay: 3500, disableOnInteraction: false }}
           loop
           className="sigil-swiper"
@@ -60,7 +53,6 @@ export default function ThoughtFormsSlider() {
             ▸
           </button>
         </div>
-        <div className="mt-8" />
       </div>
     </section>
   )

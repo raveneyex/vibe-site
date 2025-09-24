@@ -18,7 +18,7 @@ export default function EsotericInterests({ interests }: EsotericInterestsProps)
     <section className="space-y-3">
       <h2 className="text-xl font-semibold neon-text-purple">Esoteric Interests</h2>
       <HudFrame accent="purple" className="p-5">
-        <div className="hidden sm:flex flex-wrap gap-2 text-slate-300">
+        <div className="hidden sm:flex flex-wrap justify-center gap-2 text-slate-300">
           {interests.map((interest) => (
             <SkillChip key={interest} label={interest} accent="purple" />
           ))}
