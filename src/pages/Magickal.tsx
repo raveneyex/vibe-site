@@ -205,7 +205,7 @@ export default function Magickal() {
 
       <section className="space-y-3">
         <h2 className="text-xl font-semibold neon-text-purple">Sigils</h2>
-        <div className="relative px-8 sm:px-12">
+        <div className="relative">
           {/* Live region to announce current slide for screen readers */}
           <div aria-live="polite" role="status" className="sr-only">Sigil {index + 1} of {count}</div>
           <Swiper
@@ -235,7 +235,7 @@ export default function Magickal() {
               </SwiperSlide>
             ))}
           </Swiper>
-          <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-4 sm:px-6">
+          <div className="absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between px-2 sm:px-4 pointer-events-none">
             <button
               type="button"
               className="sigil-carousel-prev pointer-events-auto ml-1 sm:ml-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
