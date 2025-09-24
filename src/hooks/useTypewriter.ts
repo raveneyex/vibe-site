@@ -5,10 +5,9 @@ type Options = {
   target: string | null;
   typeMs?: number;
   eraseMs?: number;
-  pauseMs?: number;
 };
 
-export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50, pauseMs = 2300 }: Options) {
+export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50 }: Options) {
   const [text, setText] = useState(defaultText);
   const [announce, setAnnounce] = useState<string>(defaultText);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -22,48 +21,62 @@ export function useTypewriter({ defaultText, target, typeMs = 80, eraseMs = 50, 
     // No active target: animate back to default (erase then type once)
     if (!target) {
       if (text === defaultText) return;
-      let pos = text.length;
       const current = text;
-      const erase = () => {
-        if (pos > 0) {
-          pos -= 1; setText(current.slice(0, pos));
-          timer.current = window.setTimeout(erase, eraseMs);
+      let pos = current.length;
+
+      const typeDefault = () => {
+        if (pos < defaultText.length) {
+          pos += 1;
+          setText(defaultText.slice(0, pos));
+          timer.current = window.setTimeout(typeDefault, typeMs);
         } else {
-          let p = 0;
-          const type = () => {
-            if (p < defaultText.length) {
-              p += 1; setText(defaultText.slice(0, p));
-              timer.current = window.setTimeout(type, typeMs);
-            } else {
-              setAnnounce(defaultText);
-            }
-          };
-          timer.current = window.setTimeout(type, typeMs);
+          setAnnounce(defaultText);
         }
       };
-      timer.current = window.setTimeout(erase, eraseMs);
+
+      const eraseCurrent = () => {
+        if (pos > 0) {
+          pos -= 1;
+          setText(current.slice(0, pos));
+          timer.current = window.setTimeout(eraseCurrent, eraseMs);
+        } else {
+          timer.current = window.setTimeout(typeDefault, typeMs);
+        }
+      };
+
+      timer.current = window.setTimeout(eraseCurrent, eraseMs);
       return;
     }
 
-    // Active target: always erase first, then loop type/pause/erase while target stays the same
+    if (text === target) {
+      setAnnounce(target);
+      return;
+    }
+
     const current = text;
     let pos = current.length;
-    let phase: 'eraseFirst' | 'type' | 'pause' | 'eraseLoop' = 'eraseFirst';
-    const run = () => {
-      if (phase === 'eraseFirst') {
-        if (pos > 0) { pos -= 1; setText(current.slice(0, pos)); timer.current = window.setTimeout(run, eraseMs); }
-        else { phase = 'type'; timer.current = window.setTimeout(run, typeMs); }
-      } else if (phase === 'type') {
-        if (pos < (target as string).length) { pos += 1; setText((target as string).slice(0, pos)); timer.current = window.setTimeout(run, typeMs); }
-        else { setAnnounce(target as string); phase = 'pause'; timer.current = window.setTimeout(run, pauseMs); }
-      } else if (phase === 'eraseLoop') {
-        if (pos > 0) { pos -= 1; setText((target as string).slice(0, pos)); timer.current = window.setTimeout(run, eraseMs); }
-        else { phase = 'type'; timer.current = window.setTimeout(run, typeMs); }
-      } else { // pause -> eraseLoop
-        phase = 'eraseLoop'; timer.current = window.setTimeout(run, eraseMs);
+
+    const typeTarget = () => {
+      if (pos < (target as string).length) {
+        pos += 1;
+        setText((target as string).slice(0, pos));
+        timer.current = window.setTimeout(typeTarget, typeMs);
+      } else {
+        setAnnounce(target as string);
       }
     };
-    timer.current = window.setTimeout(run, 200);
+
+    const eraseCurrent = () => {
+      if (pos > 0) {
+        pos -= 1;
+        setText(current.slice(0, pos));
+        timer.current = window.setTimeout(eraseCurrent, eraseMs);
+      } else {
+        timer.current = window.setTimeout(typeTarget, typeMs);
+      }
+    };
+
+    timer.current = window.setTimeout(eraseCurrent, eraseMs);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [target]);
 
