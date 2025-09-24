@@ -1,34 +1,26 @@
-import SigilTile from '../components/SigilTile';
 import SkillChip from '../components/Layout/SkillChip';
 import { Link } from 'react-router-dom';
-import { useMemo, useRef, useState, useId } from 'react';
+import { useId } from 'react';
 import HudFrame from '../components/Layout/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 import usePageBranding from '@/hooks/usePageBranding';
 import data from '@/data.json';
-import type { Swiper as SwiperInstance } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
+import ThoughtFormsSlider from '@/components/Magick/ThoughtFormsSlider';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
+import MagickSummary from '@/components/Magick/MagickSummary';
 
 export default function Magickal() {
   const { magick } = data;
+  
   usePageBranding({
     tint: 'rgba(168,85,247,0.14)',
     crtRgb: '168,85,247',
     title: magick.metadata.title,
     description: magick.metadata.description,
   });
-  const summaryParagraphs = useMemo(() => {
-    return magick.summary
-      .split(/\n\s*\n/)
-      .map((paragraph) => paragraph.trim())
-      .filter(Boolean);
-  }, [magick.summary]);
-  const count = 12;
-  const [index, setIndex] = useState(0);
-  const swiperRef = useRef<SwiperInstance | null>(null);
+  
   const uid = useId();
 
   return (
@@ -44,19 +36,6 @@ export default function Magickal() {
 
       <section>
         <HudFrame accent="purple" className="p-5 relative overflow-hidden">
-          <div aria-hidden className="pointer-events-none absolute -inset-8 opacity-20">
-            <svg viewBox="0 0 400 400" className="w-full h-full rotate-6" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" stroke="currentColor" className="text-neon-purple">
-                <circle cx="200" cy="200" r="160" opacity="0.4" />
-                <circle cx="200" cy="200" r="110" opacity="0.3" />
-                <circle cx="200" cy="200" r="70" opacity="0.25" />
-                {Array.from({ length: 12 }).map((_, i) => (
-                  <line key={i} x1="200" y1="200" x2={200 + 140*Math.cos((i*Math.PI)/6)} y2={200 + 140*Math.sin((i*Math.PI)/6)} opacity="0.25" />
-                ))}
-                <path d="M120 230c20-18 40-18 80-18s60 0 80 18" opacity="0.25" />
-              </g>
-            </svg>
-          </div>
           <div className="relative z-10">
             <div className="text-slate-300 text-[10px] uppercase tracking-widest">esoteric interests</div>
             <div className="mt-2 flex flex-wrap gap-2">
@@ -195,65 +174,9 @@ export default function Magickal() {
         </HudFrame>
       </section>
 
-      <article className="space-y-4 text-slate-300 leading-relaxed">
-        {summaryParagraphs.map((paragraph, index) => (
-          <p key={index} className={index === 0 ? 'font-mono text-slate-200' : undefined}>
-            {paragraph}
-          </p>
-        ))}
-      </article>
+      <MagickSummary summary={magick.summary} />
 
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold neon-text-purple">Sigils</h2>
-        <div className="relative">
-          {/* Live region to announce current slide for screen readers */}
-          <div aria-live="polite" role="status" className="sr-only">Sigil {index + 1} of {count}</div>
-          <Swiper
-            modules={[Navigation, Keyboard, Autoplay]}
-            onSwiper={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            onSlideChange={(swiper) => setIndex(swiper.realIndex)}
-            slidesPerView={1}
-            centeredSlides
-            spaceBetween={32}
-            keyboard={{ enabled: true, onlyInViewport: true }}
-            navigation={{
-              prevEl: '.sigil-carousel-prev',
-              nextEl: '.sigil-carousel-next',
-            }}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            loop
-            className="sigil-swiper"
-            aria-label="sigil carousel"
-          >
-            {Array.from({ length: count }).map((_, i) => (
-              <SwiperSlide key={i} aria-label={`sigil ${i + 1} of ${count}`}>
-                <div className="flex justify-center py-12">
-                  <SigilTile label={`Sigil ${i + 1}`} accent="purple" size={3} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <div className="absolute inset-y-0 left-0 right-0 z-10 flex items-center justify-between px-2 sm:px-4 pointer-events-none">
-            <button
-              type="button"
-              className="sigil-carousel-prev pointer-events-auto ml-1 sm:ml-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
-              aria-label="previous sigil"
-            >
-              ◂
-            </button>
-            <button
-              type="button"
-              className="sigil-carousel-next pointer-events-auto mr-1 sm:mr-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
-              aria-label="next sigil"
-            >
-              ▸
-            </button>
-          </div>
-          <div className="mt-8" />
-        </div>
-      </section>
+      <ThoughtFormsSlider />
     </section>
   );
 }
