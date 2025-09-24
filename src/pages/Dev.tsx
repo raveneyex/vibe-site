@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import data from '@/data.json';
 import useDevProfile from '@/hooks/useDevProfile';
 import usePageBranding from '@/hooks/usePageBranding';
-import JobHistory from '@/components/Dev/WorkHistory/JobHistory';
 import TechStack from '@/components/Dev/TechStack';
 import DevSummary from '@/components/Dev/DevSummary';
 import ContactBar from '@/components/Dev/ContactBar';
 import WorkStatsHud from '@/components/Dev/WorkStatsHud';
+import JobHistory from '@/components/Dev/WorkHistory/JobHistory';
+import Education from '@/components/Dev/Education';
 
 const { links, dev: devData } = data;
 
@@ -39,6 +40,8 @@ export default function Dev() {
       <TechStack />
 
       <JobHistory experience={devData.professionalExperience}/>
+
+      <Education education={devData.education} />
 
     </section>
   );

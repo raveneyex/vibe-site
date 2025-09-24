@@ -516,6 +516,20 @@
           "DojoUI"
         ]
       }
-    ]
+    ],
+    "education": {
+      "highschool": {
+        "name": "Colegio Campestre El Remanso",
+        "location": "Sabaneta, Colombia",
+        "graduationYear": 2005
+      },
+      "university": {
+        "name": "Universidad EAFIT",
+        "location": "Medellin, Colombia",
+        "graduationYear": 2011,
+        "major": "Systems Engineering",
+        "finalGrade": "4.2/5"
+      }
+    }
   }
 }

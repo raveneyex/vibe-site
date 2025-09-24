@@ -30,24 +30,25 @@ export default function JobHistory(props: JobHistoryProps) {
 
   return (
     <section className="space-y-4">
-      <h2 className="text-xl font-semibold neon-text-cyan">
+      <header className="flex items-center justify-between gap-3">
+        <h2 className="text-xl font-semibold neon-text-cyan">Professional Experience</h2>
         <button
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
-          className="flex w-full items-center justify-between gap-3 text-left focus:outline-none focus-visible:focus-outline"
+          className="inline-flex items-center gap-2 rounded-md border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs font-mono tracking-wide text-slate-100 transition hover:bg-cyan-500/20 focus:outline-none focus-visible:focus-outline"
           aria-expanded={isOpen}
           aria-controls={contentId}
         >
-          <span>Professional Experience</span>
           <FiChevronDown
             className={clsx(
-              'shrink-0 text-base text-slate-300 transition-transform duration-200 ease-out transform',
+              'transition-transform duration-200 ease-out transform',
               isOpen ? 'rotate-0' : '-rotate-90'
             )}
             aria-hidden
           />
+          <span>{isOpen ? 'Hide' : 'Show'}</span>
         </button>
-      </h2>
+      </header>
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
