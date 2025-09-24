@@ -11,6 +11,30 @@
       "display": "raveneyex@gmail.com"
     }
   },
+  "navDeck": {
+    "subtitle": {
+      "default": "Front-End Developer / Magickal Weirdo / Tattoo Artist",
+      "devOnly": "Front-End Developer"
+    },
+    "dev": {
+      "hoverTitle": "Andres Ossa",
+      "title": "Dev Work",
+      "subtitle": "Frontend development, javascript, user interfaces, and systems design.",
+      "cta": "Explore"
+    },
+    "magick": {
+      "hoverTitle": "Raveneyex",
+      "title": "Magickal Practice",
+      "subtitle": "Sigils, rituals and esoteric explorations",
+      "cta": "Dive"
+    },
+    "tattoo": {
+      "hoverTitle": "Ojo de Cuervo",
+      "title": "Tattoo Work",
+      "subtitle": "Custom blackwork tattoos. Floral & Dark themes.",
+      "cta": "Discover"
+    }
+  },
   "professionalExperience": [
     {
       "company": "Rush Street Development",

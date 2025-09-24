@@ -1,4 +1,4 @@
-export type HoverCard = null | 'dev' | 'mag' | 'tat';
+export type HoverCard = null | 'dev' | 'magick' | 'tattoo';
 
 export enum NavCardVariant {
   Cyan = 'cyan',
