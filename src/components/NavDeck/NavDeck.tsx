@@ -72,7 +72,7 @@ export default function NavDeck() {
           />
           {!devOnly && (
             <NavCard
-              onClick={() => nav('/magickal')}
+              onClick={() => nav('/magick')}
               onMouseEnter={() => setHoverCard('magick')}
               onMouseLeave={() => setHoverCard(null)}
               variant={NavCardVariant.Purple}
