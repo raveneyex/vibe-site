@@ -1,19 +1,27 @@
 import SigilTile from '../components/SigilTile';
 import SkillChip from '../components/Layout/SkillChip';
 import { Link } from 'react-router-dom';
-import { useCallback, useEffect, useId, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import HudFrame from '../components/Layout/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 import usePageBranding from '@/hooks/usePageBranding';
 import clsx from 'clsx';
+import data from '@/data.json';
 
 export default function Magickal() {
+  const { magick } = data;
   usePageBranding({
     tint: 'rgba(168,85,247,0.14)',
     crtRgb: '168,85,247',
-    title: 'Magickal — Ojo de Cuervo',
-    description: 'Sigils, ritual diagrams, and esoteric explorations.',
+    title: magick.metadata.title,
+    description: magick.metadata.description,
   });
+  const summaryParagraphs = useMemo(() => {
+    return magick.summary
+      .split(/\n\s*\n/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean);
+  }, [magick.summary]);
   const count = 12;
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const viewportRef = useRef<HTMLDivElement | null>(null);
@@ -53,10 +61,8 @@ export default function Magickal() {
     <section className="mx-auto max-w-5xl space-y-10 font-mono">
       <header className="relative pb-4 flex items-end justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-purple">Ojo de Cuervo</h1>
-          <p className="mt-2 text-slate-300 max-w-3xl">
-          From sigils to systems: occult practice for the digital age.
-          </p>
+          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-purple">{magick.title}</h1>
+          <p className="mt-2 text-slate-300 max-w-3xl">{magick.subtitle}</p>
         </div>
         <Link to="/" className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">← back to nexus</Link>
         <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-purple/50 to-transparent" aria-hidden></div>
@@ -216,24 +222,11 @@ export default function Magickal() {
       </section>
 
       <article className="space-y-4 text-slate-300 leading-relaxed">
-        <p className="font-mono text-slate-200">Hello fellow seeker, I’m raveneyex.</p>
-        <p>
-          I work at the crossroads of technology, art, and magick. As a tattooer apprentice and practitioner of Chaos
-          Magick, I explore how symbols, ritual, and creativity shape reality. My approach blends traditional occult
-          practices with modern tools—sigils drawn in ink and skin, scripts written in code, and digital systems treated
-          as living, symbolic structures.
-        </p>
-        <p>
-          For me, magick isn’t separate from technology—it’s another interface. A ritual diagram and a software
-          architecture diagram serve the same purpose: channeling intent, building structure, and bringing ideas into
-          form. Whether I’m sketching a design, writing a spell, or coding a system, the work is always about
-          transformation.
-        </p>
-        <p>
-          I’m fascinated by the overlap between ancient traditions and modern culture, the way hidden patterns run
-          through both. My art, tattoos, and rituals are experiments in making those patterns visible—and using them to
-          create change.
-        </p>
+        {summaryParagraphs.map((paragraph, index) => (
+          <p key={index} className={index === 0 ? 'font-mono text-slate-200' : undefined}>
+            {paragraph}
+          </p>
+        ))}
       </article>
 
       <section className="space-y-3">
@@ -294,20 +287,6 @@ export default function Magickal() {
               />
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="space-y-4">
-        <h2 className="text-xl font-semibold">Works in Progress</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          <article className="rounded-xl p-5 hover:neon-glow-purple transition-shadow glass glass-border-purple">
-            <h3 className="text-lg font-semibold mb-2 tracking-wide">Tattoo Flash Set A</h3>
-            <p className="text-sm text-slate-300">Explorations of protective glyphs and motion-based sigils.</p>
-          </article>
-          <article className="rounded-xl p-5 hover:neon-glow-purple transition-shadow glass glass-border-purple">
-            <h3 className="text-lg font-semibold mb-2 tracking-wide">Ritual Diagram Studies</h3>
-            <p className="text-sm text-slate-300">Hybrid diagrams merging alchemical circles and UI flow maps.</p>
-          </article>
         </div>
       </section>
     </section>
