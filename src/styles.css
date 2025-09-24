@@ -190,6 +190,12 @@
   .typewriter-animate { animation: typing steps(var(--chars)) var(--type-dur,1.8s) both; }
   @keyframes typing { from { width: 0ch; } to { width: var(--chars-ch); } }
 
+  @media (max-width: 640px) {
+    .typewriter { white-space: normal; width: auto; }
+    .typewriter::after { display: none; }
+    .typewriter-animate { animation: none; }
+  }
+
   /* Global sweep line */
   .global-sweep::before { content: ''; position: fixed; left: 0; right: 0; top: -10%; height: 2px; pointer-events: none;
     background: linear-gradient(90deg, transparent, rgba(var(--crt-rgb, 0,255,163),0.3), transparent);
