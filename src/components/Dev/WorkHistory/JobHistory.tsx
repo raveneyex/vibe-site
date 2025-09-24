@@ -70,7 +70,8 @@ export default function JobHistory(props: JobHistoryProps) {
                 animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="space-y-6 overflow-hidden"
+                className="space-y-6"
+                style={{ overflow: 'visible' }}
               >
                 {restExperiences.map((experience, index) => {
                   const itemKey = `${experience.company}-${experience.title}-${experience.start}-${index + 1}`;
