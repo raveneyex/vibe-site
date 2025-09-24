@@ -6,10 +6,8 @@ import { parseDateToTime } from '@/utils/dates';
 
 export default function JobHistory() {
   const experiences = useMemo(() => {
-    const raw = Array.isArray((data as { professionalExperience?: TimelineExperience[] }).professionalExperience)
-      ? (data as { professionalExperience?: TimelineExperience[] }).professionalExperience!
-      : [];
-    return raw
+    const professionalExperienceData = data.dev.professionalExperience as TimelineExperience[];
+    return professionalExperienceData
       .slice()
       .sort((a, b) => {
         const aTime = parseDateToTime(a.start);

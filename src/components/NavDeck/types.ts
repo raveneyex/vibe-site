@@ -5,3 +5,19 @@ export enum NavCardVariant {
   Purple = 'purple',
   Magenta = 'magenta'
 }
+
+export type NavDeckCard = {
+  title: string;
+  subtitle: string;
+  cta: string;
+  hoverTitle: string;
+};
+
+export type NavDeckSubtitle = {
+  default: string;
+  devOnly: string;
+};
+
+export type NavDeckContent = Record<'dev' | 'magick' | 'tattoo', NavDeckCard> & {
+  subtitle: NavDeckSubtitle;
+};

@@ -4,27 +4,11 @@ import type { CSSProperties } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ProCardSVG, MagickCardSVG, TattooCardSVG } from "./SectionIcons";
-import { NavCardVariant, type HoverCard } from "./types";
+import { NavCardVariant, NavDeckContent, type HoverCard } from "./types";
 import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
 import useTypewriter from "@/hooks/useTypewriter";
 import NavCard from "./NavCard";
 import clsx from "clsx";
-
-type NavDeckCard = {
-  title: string;
-  subtitle: string;
-  cta: string;
-  hoverTitle: string;
-};
-
-type NavDeckSubtitle = {
-  default: string;
-  devOnly: string;
-};
-
-type NavDeckContent = Record<'dev' | 'magick' | 'tattoo', NavDeckCard> & {
-  subtitle: NavDeckSubtitle;
-};
 
 const navDeckContent = data.navDeck as NavDeckContent;
 
@@ -44,7 +28,7 @@ export default function NavDeck() {
   
   const hoverTarget = hoverCard ? hoverTitles[hoverCard] : hoverTitles['dev'];
   const { text: titleText, announce } = useTypewriter({
-    defaultText: 'Andres Ossa',
+    defaultText: hoverTitles['dev'],
     target: hoverTarget
   });
 
