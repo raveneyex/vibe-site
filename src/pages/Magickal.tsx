@@ -1,12 +1,16 @@
 import SigilTile from '../components/SigilTile';
 import SkillChip from '../components/Layout/SkillChip';
 import { Link } from 'react-router-dom';
-import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
+import { useMemo, useRef, useState, useId } from 'react';
 import HudFrame from '../components/Layout/HudFrame';
 import { CHALDEAN_ORDER, DAY_PLANET_MAP, type Planet, SYNODIC_MONTH_DAYS } from '@/constants';
 import usePageBranding from '@/hooks/usePageBranding';
-import clsx from 'clsx';
 import data from '@/data.json';
+import type { Swiper as SwiperInstance } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Keyboard, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 export default function Magickal() {
   const { magick } = data;
@@ -23,39 +27,9 @@ export default function Magickal() {
       .filter(Boolean);
   }, [magick.summary]);
   const count = 12;
-  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const viewportRef = useRef<HTMLDivElement | null>(null);
   const [index, setIndex] = useState(0);
+  const swiperRef = useRef<SwiperInstance | null>(null);
   const uid = useId();
-
-  const scrollToIndex = (i: number) => {
-    const el = itemsRef.current[i];
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    }
-  };
-
-  const prev = useCallback(() => {
-    const i = (index - 1 + count) % count;
-    setIndex(i);
-    scrollToIndex(i);
-  }, [index, count]);
-  const next = useCallback(() => {
-    const i = (index + 1) % count;
-    setIndex(i);
-    scrollToIndex(i);
-  }, [index, count]);
-
-  useEffect(() => {
-    const vp = viewportRef.current;
-    if (!vp) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
-    };
-    vp.addEventListener('keydown', onKey);
-    return () => vp.removeEventListener('keydown', onKey);
-  }, [index, prev, next]);
 
   return (
     <section className="mx-auto max-w-5xl space-y-10 font-mono">
@@ -234,59 +208,50 @@ export default function Magickal() {
         <div className="relative px-8 sm:px-12">
           {/* Live region to announce current slide for screen readers */}
           <div aria-live="polite" role="status" className="sr-only">Sigil {index + 1} of {count}</div>
-          <div
-            ref={viewportRef}
-            className="overflow-x-auto snap-x snap-mandatory pb-2 outline-none"
-            role="region"
-            aria-roledescription="carousel"
+          <Swiper
+            modules={[Navigation, Keyboard, Autoplay]}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            onSlideChange={(swiper) => setIndex(swiper.realIndex)}
+            slidesPerView={1}
+            centeredSlides
+            spaceBetween={32}
+            keyboard={{ enabled: true, onlyInViewport: true }}
+            navigation={{
+              prevEl: '.sigil-carousel-prev',
+              nextEl: '.sigil-carousel-next',
+            }}
+            autoplay={{ delay: 3500, disableOnInteraction: false }}
+            loop
+            className="sigil-swiper"
             aria-label="sigil carousel"
-            tabIndex={0}
           >
-            <div className="flex gap-3 py-2 min-w-max">
-              {Array.from({ length: count }).map((_, i) => (
-                <div
-                  key={i}
-                  ref={(el) => (itemsRef.current[i] = el)}
-                  className="snap-center shrink-0"
-                  aria-roledescription="slide"
-                  aria-label={`sigil ${i + 1} of ${count}`}
-                >
-                  <SigilTile label={`Sigil ${i + 1}`} accent="purple" />
+            {Array.from({ length: count }).map((_, i) => (
+              <SwiperSlide key={i} aria-label={`sigil ${i + 1} of ${count}`}>
+                <div className="flex justify-center py-12">
+                  <SigilTile label={`Sigil ${i + 1}`} accent="purple" size={3} />
                 </div>
-              ))}
-            </div>
-          </div>
-          <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none">
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between pointer-events-none px-4 sm:px-6">
             <button
               type="button"
-              onClick={prev}
-              className="pointer-events-auto ml-1 sm:ml-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
+              className="sigil-carousel-prev pointer-events-auto ml-1 sm:ml-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
               aria-label="previous sigil"
             >
               ◂
             </button>
             <button
               type="button"
-              onClick={next}
-              className="pointer-events-auto mr-1 sm:mr-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
+              className="sigil-carousel-next pointer-events-auto mr-1 sm:mr-2 font-mono text-xs px-2 py-1 rounded glass glass-border-purple hover:neon-glow-purple focus:outline-none focus-visible:focus-outline"
               aria-label="next sigil"
             >
               ▸
             </button>
           </div>
-          <div className="mt-2 flex items-center justify-center gap-2">
-            {Array.from({ length: count }).map((_, i) => (
-              <button
-                key={i}
-                className={clsx('h-1.5 w-1.5 rounded-full', i === index ? 'bg-neon-purple' : 'bg-white/20')}
-                aria-label={`go to sigil ${i + 1}`}
-                onClick={() => {
-                  setIndex(i);
-                  scrollToIndex(i);
-                }}
-              />
-            ))}
-          </div>
+          <div className="mt-8" />
         </div>
       </section>
     </section>
