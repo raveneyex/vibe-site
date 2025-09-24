@@ -2,7 +2,7 @@ import { useState, useId } from 'react';
 import clsx from 'clsx';
 import { FiChevronDown } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
-import SkillChip from '@/components/SkillChip';
+import SkillChip from '@/components/Layout/SkillChip';
 import type { TimelineProject } from './types';
 import { formatDateRange } from '@/utils/dates';
 

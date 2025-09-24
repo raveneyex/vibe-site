@@ -1,4 +1,4 @@
-import SkillChip from '@/components/SkillChip';
+import SkillChip from '@/components/Layout/SkillChip';
 
 interface JobTechnologiesProps {
   technologies?: string[];

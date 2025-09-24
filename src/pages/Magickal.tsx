@@ -1,5 +1,5 @@
 import SigilTile from '../components/SigilTile';
-import SkillChip from '../components/SkillChip';
+import SkillChip from '../components/Layout/SkillChip';
 import { Link } from 'react-router-dom';
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import HudFrame from '../components/Layout/HudFrame';

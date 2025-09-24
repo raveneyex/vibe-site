@@ -1,5 +1,5 @@
 import HudFrame from '@/components/Layout/HudFrame';
-import SkillChip from '@/components/SkillChip';
+import SkillChip from '@/components/Layout/SkillChip';
 import { Link } from 'react-router-dom';
 import data from '@/data.json';
 import usePageBranding from '@/hooks/usePageBranding';
