@@ -13,8 +13,13 @@ export default function Header() {
     <header className="fixed top-0 inset-x-0 z-40 backdrop-blur bg-noir-900/60 border-b border-white/5" role="banner">
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-white/10 via-white/10 to-white/10" aria-hidden="true"></div>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <Link to="/" className="font-mono text-slate-200 text-sm tracking-wider hover:text-white focus:outline-none focus-visible:focus-outline rgb-split">
-          Andres Ossa
+        <Link
+          to="/"
+          className="font-mono text-slate-200 text-sm tracking-wider hover:text-white focus:outline-none focus-visible:focus-outline rgb-split"
+          aria-label="Andres Ossa"
+        >
+          <span className="sm:hidden">A.O</span>
+          <span className="hidden sm:inline">Andres Ossa</span>
         </Link>
         <div className="flex items-center gap-6">
           <nav aria-label={headerLabels.primaryNavLabel} className="flex items-center gap-6">
