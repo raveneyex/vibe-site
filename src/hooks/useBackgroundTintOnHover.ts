@@ -8,7 +8,7 @@ const red = 'rgba(255,56,100,0.14)';
 
 export default function useBackgroundTintOnHover(hoverCard: HoverCard) {
   useEffect(() => { 
-    const tint = hoverCard === 'mag' ? purple : hoverCard === 'tat' ? red : cyan;
+    const tint = hoverCard === 'magick' ? purple : hoverCard === 'tattoo' ? red : cyan;
     root.style.setProperty('--tint', tint);
     return () => {
       // reset on unmount
