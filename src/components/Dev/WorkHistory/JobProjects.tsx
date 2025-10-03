@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import SkillChip from '@/components/Layout/SkillChip';
 import type { TimelineProject } from './types';
 import { formatDateRange } from '@/utils/dates';
+import useLabels from '@/hooks/useLabels';
 
 interface JobProjectsProps {
   projects: TimelineProject[];
@@ -13,6 +14,8 @@ interface JobProjectsProps {
 export default function JobProjects({ projects }: JobProjectsProps) {
   const [isOpen, setIsOpen] = useState(false);
   const contentId = useId();
+  const labels = useLabels();
+  const experienceLabels = labels.dev.experience;
 
   if (!projects?.length) {
     return null;
@@ -27,7 +30,7 @@ export default function JobProjects({ projects }: JobProjectsProps) {
         aria-expanded={isOpen}
         aria-controls={contentId}
       >
-        <span>Projects</span>
+        <span>{experienceLabels.projects}</span>
         <FiChevronDown
           className={clsx(
             'shrink-0 text-slate-400 transition-transform duration-200 ease-out transform',

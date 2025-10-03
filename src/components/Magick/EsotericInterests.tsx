@@ -4,19 +4,22 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import useLabels from '@/hooks/useLabels';
 
 interface EsotericInterestsProps {
   interests: string[];
 }
 
 export default function EsotericInterests({ interests }: EsotericInterestsProps) {
+  const labels = useLabels();
+  const title = labels.magick.esotericInterests;
   if (!interests.length) {
     return null;
   }
 
   return (
     <section className="space-y-3">
-      <h2 className="text-xl font-semibold neon-text-purple">Esoteric Interests</h2>
+      <h2 className="text-xl font-semibold neon-text-purple">{title}</h2>
       <HudFrame accent="purple" className="p-5">
         <div className="hidden sm:flex flex-wrap justify-center gap-2 text-slate-300">
           {interests.map((interest) => (

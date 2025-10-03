@@ -6,6 +6,7 @@ import "swiper/css/pagination";
 import HudFrame from "@/components/Layout/HudFrame";
 import { IconType } from "react-icons";
 import { SiReact, SiTypescript, SiTailwindcss, SiNodedotjs, SiVite, SiReactrouter, SiRedux, SiVitest, SiCypress } from "react-icons/si";
+import useLabels from '@/hooks/useLabels';
 
 const techStack: { icon: IconType; label: string }[] = [
   { icon: SiReact, label: 'react' },
@@ -20,9 +21,11 @@ const techStack: { icon: IconType; label: string }[] = [
 ];
 
 export default function TechStack() {
+  const labels = useLabels();
+  const techStackLabels = labels.dev.techStack;
   return (
     <section>
-      <h2 className="text-xl font-semibold mb-3 neon-text-cyan">Tech Stack</h2>
+      <h2 className="text-xl font-semibold mb-3 neon-text-cyan">{techStackLabels.title}</h2>
       <HudFrame accent="cyan" className="p-4">
         <div className="hidden text-slate-300 sm:grid grid-flow-col auto-cols-fr gap-4 place-items-center">
           {techStack.map(({ icon: Icon, label }) => (

@@ -1,14 +1,18 @@
 import data from '@/data.json';
+import useLabels from '@/hooks/useLabels';
 
 const { links } = data;
 
 export default function Footer() {
+  const labels = useLabels();
+  const footerLabels = labels.layout.footer;
+
   return (
     <footer className="border-t border-white/5 bg-noir-900/70 backdrop-blur relative">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-neon-cyan/30 via-white/10 to-neon-magenta/30" aria-hidden="true"></div>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-8 flex items-center justify-between">
         <div className="font-mono text-sm text-slate-400">
-          <span className="text-neon-cyan">$</span> email:
+          <span className="text-neon-cyan">$</span> {footerLabels.emailPrefix}
           <a
             href={`mailto:${links.email.address}`}
             className="ml-2 underline decoration-dotted underline-offset-4 neo-link focus:outline-none focus-visible:focus-outline"
@@ -20,7 +24,7 @@ export default function Footer() {
           <a
             className="text-slate-400 neo-link focus:outline-none focus-visible:focus-outline"
             href={links.github}
-            aria-label="GitHub"
+            aria-label={footerLabels.githubAria}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -29,7 +33,7 @@ export default function Footer() {
           <a
             className="text-slate-400 neo-link focus:outline-none focus-visible:focus-outline"
             href={links.instagram.url}
-            aria-label="Instagram"
+            aria-label={footerLabels.instagramAria}
             target="_blank"
             rel="noopener noreferrer"
           >

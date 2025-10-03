@@ -3,58 +3,36 @@ import NavDeck from '@/components/NavDeck/NavDeck';
 import LanguageModal from '@/components/Layout/LanguageModal';
 import {
   LANGUAGE_CHANGE_EVENT,
-  LANGUAGE_LABEL,
   type LanguageCode,
   getStoredLanguage,
   setStoredLanguage,
 } from '@/utils/language';
+import useLabels from '@/hooks/useLabels';
+import formatTemplate from '@/utils/formatTemplate';
 
 const BOOT_KEY = 'booted';
 
-function getBootMessages(language: LanguageCode) {
+function getBootMessages(sequence: string[], languageName: string) {
   const hex = (n: number) => n.toString(16).padStart(4, '0');
   const devId = hex(Math.floor(Math.random() * 0xffff));
   const mac = Array.from({ length: 6 }, () => Math.floor(Math.random() * 256).toString(16).padStart(2, '0')).join(':');
   const kb = 8192 + Math.floor(Math.random() * 8192);
   const sigilCount = 8 + Math.floor(Math.random() * 16);
-  const msgs = [
-    '> booting up...',
-    '> bios v0.8 — raveneyex',
-    `> device id: 0x${devId}`,
-    '> checking memory...',
-    `> memory: ${kb} kb ok`,
-    '> probing buses: isa ok, pci ok',
-    '> dma: enabled',
-    `> net: disabled (mac ${mac})`,
-    '> init video: crt/mono ok',
-    '> init input: ps/2 ok',
-    '> scanning modules...',
-    '> setting up tattoo equipment...',
-    '> sterilizing: autoclave cycle ok',
-    '> needles: sterile packs verified',
-    '> inks: black/grey set loaded',
-    '> machine: coil calibration ok',
-    '> power supply: stable 6.5v',
-    '> stencil: transfer gel ready',
-    `> locale: ${LANGUAGE_LABEL[language]}`,
-    '> loading magick systems...',
-    '> grimoire: loaded',
-    `> sigils: compiled (${sigilCount})`,
-    '> circle: charged',
-    '> intent: bound',
-    '> wards: enabled',
-    '> banishing: protocol armed',
-    '> modules: ui, router, sigils, hud ok',
-    '> filesystem: mounted / (ro)',
-    '> entropy: seeded',
-    '> ready',
-    '> press any key to enter',
-  ];
+  const tokens = {
+    devId,
+    mac,
+    kb,
+    sigilCount,
+    languageName,
+  } as const;
 
-  return msgs;
+  return sequence.map((message) => formatTemplate(message, tokens));
 }
 
 export default function Landing() {
+  const labels = useLabels();
+  const bootLabels = labels.landing.boot;
+  const languageNames = labels.shared.languageNames;
   const [language, setLanguage] = useState<LanguageCode | null>(() => {
     if (typeof window === 'undefined') return null;
     return getStoredLanguage();
@@ -66,6 +44,7 @@ export default function Landing() {
   });
 
   const [bootLines, setBootLines] = useState<string[]>([]);
+  const languageName = language ? languageNames[language] ?? language : '';
 
   useEffect(() => {
     if (bootDone || !language) {
@@ -83,7 +62,7 @@ export default function Landing() {
 
     setBootLines([]);
 
-    const msgs = getBootMessages(language);
+    const msgs = getBootMessages(bootLabels.sequence, languageName);
     let i = 0;
     let cancelled = false;
     let intervalId: number | null = null;
@@ -148,7 +127,7 @@ export default function Landing() {
         window.removeEventListener('click', onClick);
       }
     };
-  }, [bootDone, language]);
+  }, [bootDone, language, bootLabels.sequence, languageName]);
 
   useEffect(() => {
     if (typeof window === 'undefined') {
@@ -188,15 +167,15 @@ export default function Landing() {
           <div className="absolute inset-0 rounded-2xl border border-cyan-400/50 bg-noir-900/80 shadow-[0_0_45px_#00ffa366]" aria-hidden />
           <div className="relative overflow-hidden rounded-2xl p-6 sm:p-8 backdrop-blur">
             <div className="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.3em] text-cyan-300/80">
-              <span>{'// boot sequence'}</span>
-              <span>{LANGUAGE_LABEL[language]}</span>
+              <span>{bootLabels.header}</span>
+              <span>{languageName}</span>
             </div>
             {bootLines.map((l, idx) => (
               <div key={idx} className="whitespace-pre">
                 {l}
               </div>
             ))}
-            {bootLines.length === 0 && <div>&gt; BOOTING...</div>}
+            {bootLines.length === 0 && <div>{bootLabels.fallback}</div>}
           </div>
         </div>
       </section>

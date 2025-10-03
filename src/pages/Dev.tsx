@@ -11,6 +11,7 @@ import WorkStatsHud from '@/components/Dev/WorkStatsHud';
 import JobHistory from '@/components/Dev/WorkHistory/JobHistory';
 import Education from '@/components/Dev/Education';
 import type { TimelineExperience } from '@/components/Dev/WorkHistory/types';
+import useLabels from '@/hooks/useLabels';
 
 type DevContent = {
   title: string;
@@ -45,6 +46,7 @@ const { links } = data;
 
 export default function Dev() {
   const language = usePreferredLanguage();
+  const labels = useLabels();
   const devTranslations = data.dev.translations as Record<LanguageCode, DevContent>;
   const devData = devTranslations[language] ?? devTranslations.en;
   const { returnTo } = useDevProfile();
@@ -63,7 +65,7 @@ export default function Dev() {
           <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-cyan">{devData.title}</h1>
           <p className="text-slate-300 max-w-3xl">{devData.subtitle}</p>
         </div>
-        <Link to={returnTo} className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">← back to nexus</Link>
+        <Link to={returnTo} className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">{labels.shared.backToNexus}</Link>
         <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent" aria-hidden></div>
       </header>
       <ContactBar links={links}/>

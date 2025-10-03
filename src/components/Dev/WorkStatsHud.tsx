@@ -1,4 +1,5 @@
 import HudFrame from "../Layout/HudFrame";
+import useLabels from '@/hooks/useLabels';
 
 interface WorkStatsHudProps {
   stats: Record<string, string | string[]>
@@ -15,6 +16,8 @@ function formatLabel(key: string) {
 export default function WorkStatsHud(props: WorkStatsHudProps) {
   const { stats } = props;
   const entries = Object.entries(stats ?? {});
+  const labels = useLabels();
+  const statLabels = labels.dev.stats ?? {};
 
   if (entries.length === 0) {
     return null;
@@ -25,7 +28,7 @@ export default function WorkStatsHud(props: WorkStatsHudProps) {
       <HudFrame accent="cyan" className="p-5">
         <div className="text-sm text-slate-300">
           {entries.map(([key, value], index) => {
-            const label = formatLabel(key);
+            const label = statLabels[key] ?? formatLabel(key);
             const displayValue = Array.isArray(value) ? value.join(', ') : value;
             return (
               <div key={key}>

@@ -1,6 +1,7 @@
 import { IconType } from "react-icons";
 import { FiMail, FiDownload } from "react-icons/fi";
 import { SiGithub, SiLinkedin } from "react-icons/si";
+import useLabels from '@/hooks/useLabels';
 
 interface ContactBarProps {
   links: {
@@ -19,6 +20,8 @@ interface ContactBarProps {
 
 export default function ContactBar(props: ContactBarProps) {
   const { links } = props;
+  const labels = useLabels();
+  const contactLabels = labels.dev.contact;
   
   const contactLinks: {
     icon: IconType;
@@ -27,10 +30,10 @@ export default function ContactBar(props: ContactBarProps) {
     external?: boolean;
     download?: boolean;
   }[] = [
-    { icon: SiGithub, label: 'github', href: links.github, external: true },
-    { icon: SiLinkedin, label: 'linkedin', href: links.linkedin, external: true },
-    { icon: FiMail, label: 'email', href: `mailto:${links.email.address}` },
-    { icon: FiDownload, label: 'download cv', href: '/AndresOssa-CV-2025.pdf', download: true },
+    { icon: SiGithub, label: contactLabels.github, href: links.github, external: true },
+    { icon: SiLinkedin, label: contactLabels.linkedin, href: links.linkedin, external: true },
+    { icon: FiMail, label: contactLabels.email, href: `mailto:${links.email.address}` },
+    { icon: FiDownload, label: contactLabels.downloadCv, href: '/AndresOssa-CV-2025.pdf', download: true },
   ];
 
   return (

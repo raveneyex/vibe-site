@@ -9,6 +9,7 @@ import DailyMagickalAspects from '@/components/Magick/DailyMagickalAspects';
 import MagickSummary from '@/components/Magick/MagickSummary';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ThoughtFormsSlider from '@/components/Magick/ThoughtFormsSlider';
+import useLabels from '@/hooks/useLabels';
 
 type MagickContent = {
   title: string;
@@ -23,6 +24,7 @@ type MagickContent = {
 
 export default function Magick() {
   const language = usePreferredLanguage();
+  const labels = useLabels();
   const magickTranslations = data.magick.translations as Record<LanguageCode, MagickContent>;
   const magick = magickTranslations[language] ?? magickTranslations.en;
 
@@ -40,7 +42,7 @@ export default function Magick() {
           <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-purple">{magick.title}</h1>
           <p className="mt-2 text-slate-300 max-w-3xl">{magick.subtitle}</p>
         </div>
-        <Link to="/" className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">← back to nexus</Link>
+        <Link to="/" className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">{labels.shared.backToNexus}</Link>
         <div className="absolute left-0 right-0 -bottom-px h-px bg-gradient-to-r from-transparent via-neon-purple/50 to-transparent" aria-hidden></div>
       </header>
 

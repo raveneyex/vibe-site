@@ -1,0 +1,372 @@
+{
+  "en": {
+    "shared": {
+      "backToNexus": "\u2190 back to nexus",
+      "languageNames": {
+        "en": "english",
+        "es": "spanish"
+      }
+    },
+    "layout": {
+      "skipToContent": "Skip to content",
+      "header": {
+        "primaryNavLabel": "Primary",
+        "nav": {
+          "dev": "Dev",
+          "tattoo": "Tattoo",
+          "magick": "Magick"
+        }
+      },
+      "languageDropdown": {
+        "selectChannel": "select channel",
+        "currentLanguage": "Current language",
+        "optionLabels": {
+          "en": "English",
+          "es": "Espa\u00f1ol"
+        },
+        "optionCodes": {
+          "en": "> en-us",
+          "es": "> es-la"
+        }
+      },
+      "languageModal": {
+        "headerLeft": "// INIT.SYSTEM",
+        "headerRight": "LANGUAGE NEGOTIATION",
+        "intro": [
+          "> incoming connection established",
+          "> identify preferred command channel"
+        ],
+        "englishButton": {
+          "label": "[ ENGLISH ]",
+          "code": "> en-us",
+          "description": "standard operating channel"
+        },
+        "spanishButton": {
+          "label": "[ ESPA\u00d1OL ]",
+          "code": "> es-la",
+          "description": "transorbital latin protocol"
+        },
+        "footer": "// confirm selection to resume boot"
+      },
+      "footer": {
+        "emailPrefix": "email:",
+        "githubAria": "GitHub",
+        "instagramAria": "Instagram"
+      }
+    },
+    "landing": {
+      "boot": {
+        "header": "// boot sequence",
+        "fallback": "> BOOTING...",
+        "sequence": [
+          "> booting up...",
+          "> bios v0.8 \u2014 raveneyex",
+          "> device id: 0x{devId}",
+          "> checking memory...",
+          "> memory: {kb} kb ok",
+          "> probing buses: isa ok, pci ok",
+          "> dma: enabled",
+          "> net: disabled (mac {mac})",
+          "> init video: crt/mono ok",
+          "> init input: ps/2 ok",
+          "> scanning modules...",
+          "> setting up tattoo equipment...",
+          "> sterilizing: autoclave cycle ok",
+          "> needles: sterile packs verified",
+          "> inks: black/grey set loaded",
+          "> machine: coil calibration ok",
+          "> power supply: stable 6.5v",
+          "> stencil: transfer gel ready",
+          "> locale: {languageName}",
+          "> loading magick systems...",
+          "> grimoire: loaded",
+          "> sigils: compiled ({sigilCount})",
+          "> circle: charged",
+          "> intent: bound",
+          "> wards: enabled",
+          "> banishing: protocol armed",
+          "> modules: ui, router, sigils, hud ok",
+          "> filesystem: mounted / (ro)",
+          "> entropy: seeded",
+          "> ready",
+          "> press any key to enter"
+        ]
+      }
+    },
+    "navDeck": {
+      "ariaEnter": "Enter {title}",
+      "srSelect": "Select a portal card: {options}"
+    },
+    "dev": {
+      "contact": {
+        "github": "github",
+        "linkedin": "linkedin",
+        "email": "email",
+        "downloadCv": "download cv"
+      },
+      "education": {
+        "title": "Education",
+        "highschool": "High School",
+        "university": "University",
+        "graduated": "Graduated:",
+        "major": "Major",
+        "finalGrade": "Final Grade:"
+      },
+      "experience": {
+        "title": "Professional Experience",
+        "show": "Show",
+        "hide": "Hide",
+        "projects": "Projects"
+      },
+      "stats": {
+        "experience": "EXPERIENCE",
+        "industries": "INDUSTRIES"
+      },
+      "techStack": {
+        "title": "Tech Stack"
+      }
+    },
+    "magick": {
+      "esotericInterests": "Esoteric Interests",
+      "dailyAspects": {
+        "title": "Daily Planetary Alignments",
+        "planetaryHour": "planetary hour",
+        "dayRuler": "day ruler",
+        "angel": "angel",
+        "demon": "demon",
+        "moonPhase": "moon phase",
+        "phases": {
+          "new": "new moon",
+          "waxingCrescent": "waxing crescent",
+          "firstQuarter": "first quarter",
+          "waxingGibbous": "waxing gibbous",
+          "full": "full moon",
+          "waningGibbous": "waning gibbous",
+          "lastQuarter": "last quarter",
+          "waningCrescent": "waning crescent"
+        }
+      }
+    },
+    "tattoo": {
+      "metaTitle": "Tattoo \u2014 Ojo de Cuervo",
+      "metaDescription": "Custom sigil tattoos and experimental flash sets.",
+      "title": "Tattoo",
+      "subtitle": "Custom sigil tattoos and exploratory flash, blending craft and intent.",
+      "focus": {
+        "label": "focus",
+        "value": "sigils, blackwork, linework"
+      },
+      "approach": {
+        "label": "approach",
+        "value": "intent-led, collaborative, clean"
+      },
+      "booking": {
+        "label": "booking",
+        "value": "by request (dm/instagram)"
+      },
+      "services": [
+        "Sigil design",
+        "Stencil prep",
+        "Aftercare"
+      ],
+      "offeringsTitle": "Offerings",
+      "offerings": [
+        {
+          "title": "Custom Sigil Tattoos",
+          "description": "Personal sigils designed from your intent; minimal and precise linework."
+        },
+        {
+          "title": "Flash & Studies",
+          "description": "Experimental sets exploring protection glyphs, geometry, and motion."
+        }
+      ],
+      "bookingTitle": "Booking",
+      "bookingDescription": "Interested in a piece? Reach me via Instagram DM at {handle} with a short note about the intention, placement, and size."
+    }
+  },
+  "es": {
+    "shared": {
+      "backToNexus": "\u2190 volver al nexo",
+      "languageNames": {
+        "en": "ingl\u00e9s",
+        "es": "espa\u00f1ol"
+      }
+    },
+    "layout": {
+      "skipToContent": "Saltar al contenido",
+      "header": {
+        "primaryNavLabel": "Principal",
+        "nav": {
+          "dev": "Dev",
+          "tattoo": "Tatuajes",
+          "magick": "Magia"
+        }
+      },
+      "languageDropdown": {
+        "selectChannel": "selecciona canal",
+        "currentLanguage": "Idioma actual",
+        "optionLabels": {
+          "en": "Ingl\u00e9s",
+          "es": "Espa\u00f1ol"
+        },
+        "optionCodes": {
+          "en": "> en-us",
+          "es": "> es-la"
+        }
+      },
+      "languageModal": {
+        "headerLeft": "// INIT.SYSTEM",
+        "headerRight": "NEGOCIACI\u00d3N DE IDIOMA",
+        "intro": [
+          "> conexi\u00f3n entrante establecida",
+          "> identificar canal de comandos preferido"
+        ],
+        "englishButton": {
+          "label": "[ INGL\u00c9S ]",
+          "code": "> en-us",
+          "description": "canal operativo est\u00e1ndar"
+        },
+        "spanishButton": {
+          "label": "[ ESPA\u00d1OL ]",
+          "code": "> es-la",
+          "description": "protocolo latino transorbital"
+        },
+        "footer": "// confirma la selecci\u00f3n para continuar el arranque"
+      },
+      "footer": {
+        "emailPrefix": "correo:",
+        "githubAria": "GitHub",
+        "instagramAria": "Instagram"
+      }
+    },
+    "landing": {
+      "boot": {
+        "header": "// secuencia de arranque",
+        "fallback": "> INICIANDO...",
+        "sequence": [
+          "> iniciando...",
+          "> bios v0.8 \u2014 raveneyex",
+          "> id del dispositivo: 0x{devId}",
+          "> comprobando memoria...",
+          "> memoria: {kb} kb ok",
+          "> sondeo de buses: isa ok, pci ok",
+          "> dma: habilitado",
+          "> red: deshabilitada (mac {mac})",
+          "> iniciando video: crt/mono ok",
+          "> iniciando entrada: ps/2 ok",
+          "> escaneando m\u00f3dulos...",
+          "> preparando equipo de tatuaje...",
+          "> esterilizaci\u00f3n: ciclo de autoclave ok",
+          "> agujas: paquetes est\u00e9riles verificados",
+          "> tintas: set negro/gris cargado",
+          "> m\u00e1quina: calibraci\u00f3n de bobina ok",
+          "> fuente: 6.5v estable",
+          "> stencil: gel de transferencia listo",
+          "> idioma: {languageName}",
+          "> cargando sistemas m\u00e1gicos...",
+          "> grimorio: cargado",
+          "> sigilos: compilados ({sigilCount})",
+          "> c\u00edrculo: cargado",
+          "> intenci\u00f3n: fijada",
+          "> resguardos: habilitados",
+          "> destierro: protocolo armado",
+          "> m\u00f3dulos: ui, router, sigils, hud ok",
+          "> sistema de archivos: montado / (ro)",
+          "> entrop\u00eda: sembrada",
+          "> listo",
+          "> presiona cualquier tecla para ingresar"
+        ]
+      }
+    },
+    "navDeck": {
+      "ariaEnter": "Ingresar a {title}",
+      "srSelect": "Selecciona una tarjeta portal: {options}"
+    },
+    "dev": {
+      "contact": {
+        "github": "github",
+        "linkedin": "linkedin",
+        "email": "correo",
+        "downloadCv": "descargar cv"
+      },
+      "education": {
+        "title": "Educaci\u00f3n",
+        "highschool": "Bachillerato",
+        "university": "Universidad",
+        "graduated": "Graduaci\u00f3n:",
+        "major": "Carrera",
+        "finalGrade": "Promedio final:"
+      },
+      "experience": {
+        "title": "Experiencia Profesional",
+        "show": "Mostrar",
+        "hide": "Ocultar",
+        "projects": "Proyectos"
+      },
+      "stats": {
+        "experience": "EXPERIENCIA",
+        "industries": "INDUSTRIAS"
+      },
+      "techStack": {
+        "title": "Stack Tecnol\u00f3gico"
+      }
+    },
+    "magick": {
+      "esotericInterests": "Intereses Esot\u00e9ricos",
+      "dailyAspects": {
+        "title": "Alineaciones Planetarias Diarias",
+        "planetaryHour": "hora planetaria",
+        "dayRuler": "regente del d\u00eda",
+        "angel": "\u00e1ngel",
+        "demon": "demonio",
+        "moonPhase": "fase lunar",
+        "phases": {
+          "new": "luna nueva",
+          "waxingCrescent": "luna creciente",
+          "firstQuarter": "cuarto creciente",
+          "waxingGibbous": "gibosa creciente",
+          "full": "luna llena",
+          "waningGibbous": "gibosa menguante",
+          "lastQuarter": "cuarto menguante",
+          "waningCrescent": "luna menguante"
+        }
+      }
+    },
+    "tattoo": {
+      "metaTitle": "Tatuajes \u2014 Ojo de Cuervo",
+      "metaDescription": "Tatuajes sigilo personalizados y sets de flash experimentales.",
+      "title": "Tatuajes",
+      "subtitle": "Tatuajes sigilo personalizados y flash exploratorio, uniendo oficio e intenci\u00f3n.",
+      "focus": {
+        "label": "enfoque",
+        "value": "sigilos, blackwork, trazos"
+      },
+      "approach": {
+        "label": "m\u00e9todo",
+        "value": "guiado por la intenci\u00f3n, colaborativo, pulcro"
+      },
+      "booking": {
+        "label": "reservas",
+        "value": "por solicitud (dm/instagram)"
+      },
+      "services": [
+        "Dise\u00f1o de sigilos",
+        "Preparaci\u00f3n de stencil",
+        "Cuidados posteriores"
+      ],
+      "offeringsTitle": "Servicios",
+      "offerings": [
+        {
+          "title": "Tatuajes de Sigilos Personalizados",
+          "description": "Sigilos personales dise\u00f1ados desde tu intenci\u00f3n; l\u00edneas minimalistas y precisas."
+        },
+        {
+          "title": "Flash y Estudios",
+          "description": "Sets experimentales que exploran glifos de protecci\u00f3n, geometr\u00eda y movimiento."
+        }
+      ],
+      "bookingTitle": "Reservas",
+      "bookingDescription": "\u00bfInteresado en una pieza? Escr\u00edbeme por Instagram DM a {handle} con una nota breve sobre la intenci\u00f3n, ubicaci\u00f3n y tama\u00f1o."
+    }
+  }
+}

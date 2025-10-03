@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import {
   LANGUAGE_CHANGE_EVENT,
   LANGUAGE_KEY,
-  LANGUAGE_LABEL,
-  LANGUAGE_OPTIONS,
   type LanguageCode,
   getStoredLanguage,
   setStoredLanguage,
 } from '@/utils/language';
+import useLabels from '@/hooks/useLabels';
+
+const LANGUAGE_CODES: LanguageCode[] = ['en', 'es'];
 
 function resolveInitialLanguage(): LanguageCode {
   return getStoredLanguage() ?? 'en';
@@ -17,6 +18,9 @@ export default function LanguageDropdown() {
   const [open, setOpen] = useState(false);
   const [language, setLanguage] = useState<LanguageCode>(() => resolveInitialLanguage());
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const labels = useLabels();
+  const dropdownLabels = labels.layout.languageDropdown;
+  const languageNames = labels.shared.languageNames;
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -76,7 +80,9 @@ export default function LanguageDropdown() {
     setOpen(false);
   };
 
-  const summaryLabel = LANGUAGE_LABEL[language];
+  const summaryLabel = languageNames[language] ?? language;
+  const optionLabels = dropdownLabels.optionLabels;
+  const optionCodes = dropdownLabels.optionCodes;
 
   return (
     <div ref={containerRef} className="relative">
@@ -102,9 +108,11 @@ export default function LanguageDropdown() {
           role="listbox"
           className="absolute right-0 mt-2 w-48 rounded-lg border border-[#00ffa3]/40 bg-noir-950/95 p-2 shadow-[0_0_35px_#00ffa333]"
         >
-          <div className="px-2 pb-2 text-[0.55rem] uppercase tracking-[0.35em] text-cyan-200/60">select channel</div>
-          {LANGUAGE_OPTIONS.map(({ code, label }) => {
+          <div className="px-2 pb-2 text-[0.55rem] uppercase tracking-[0.35em] text-cyan-200/60">{dropdownLabels.selectChannel}</div>
+          {LANGUAGE_CODES.map((code) => {
             const active = code === language;
+            const label = optionLabels[code] ?? code.toUpperCase();
+            const codeLabel = optionCodes[code] ?? `> ${code}`;
             return (
               <button
                 key={code}
@@ -119,13 +127,13 @@ export default function LanguageDropdown() {
                 }`}
               >
                 <span>{`[ ${label} ]`}</span>
-                <span className="text-[0.6rem] text-cyan-200/70">{`> ${code}`}</span>
+                <span className="text-[0.6rem] text-cyan-200/70">{codeLabel}</span>
               </button>
             );
           })}
         </div>
       )}
-      <span className="sr-only">Current language {summaryLabel}</span>
+      <span className="sr-only">{dropdownLabels.currentLanguage} {summaryLabel}</span>
     </div>
   );
 }

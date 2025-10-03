@@ -2,10 +2,13 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import useDevProfile from '@/hooks/useDevProfile';
 import clsx from 'clsx';
 import LanguageDropdown from '@/components/Layout/LanguageDropdown';
+import useLabels from '@/hooks/useLabels';
 
 export default function Header() {
   const location = useLocation();
   const { devOnly } = useDevProfile();
+  const labels = useLabels();
+  const headerLabels = labels.layout.header;
   return (
     <header className="fixed top-0 inset-x-0 z-40 backdrop-blur bg-noir-900/60 border-b border-white/5" role="banner">
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-white/10 via-white/10 to-white/10" aria-hidden="true"></div>
@@ -14,7 +17,7 @@ export default function Header() {
           Andres Ossa
         </Link>
         <div className="flex items-center gap-6">
-          <nav aria-label="Primary" className="flex items-center gap-6">
+          <nav aria-label={headerLabels.primaryNavLabel} className="flex items-center gap-6">
             <NavLink
               to="/dev"
               className={({ isActive }: { isActive: boolean }) => {
@@ -25,7 +28,7 @@ export default function Header() {
                 );
               }}
             >
-              Dev
+              {headerLabels.nav.dev}
             </NavLink>
             {!devOnly && (
               <NavLink
@@ -37,7 +40,7 @@ export default function Header() {
                   )
                 }
               >
-                Tattoo
+                {headerLabels.nav.tattoo}
               </NavLink>
             )}
             {!devOnly && (
@@ -50,7 +53,7 @@ export default function Header() {
                   )
                 }
               >
-                Magick
+                {headerLabels.nav.magick}
               </NavLink>
             )}
           </nav>
