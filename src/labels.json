@@ -181,7 +181,41 @@
         }
       ],
       "bookingTitle": "Booking",
-      "bookingDescription": "Interested in a piece? Reach me via Instagram DM at {handle} with a short note about the intention, placement, and size."
+      "bookingDescription": "Interested in a piece? Reach me via Instagram DM at {handle} with a short note about the intention, placement, and size.",
+      "instagramSpotlight": {
+        "label": "Connect",
+        "description": "Booking, flash drops, healed shots, and process videos live on Instagram first. Slide into the DMs with your idea, placement, and preferred timing.",
+        "cta": "Open Instagram \u25b8"
+      },
+      "interestsSection": {
+        "title": "What I'm obsessing over",
+        "description": "A rotating mix of ritual motifs that spark the current season of work.",
+        "linkLabel": "{handle} on IG"
+      },
+      "interests": [
+        {
+          "title": "Blackwork Sigils",
+          "description": "Heavy contrast, ritual geometry, and high-commitment statement pieces crafted to feel ancient and alive."
+        },
+        {
+          "title": "Fine-Line Glyphs",
+          "description": "Delicate linear spells, micro details, and hidden runes that sit close to the skin and whisper rather than shout."
+        },
+        {
+          "title": "Esoteric Narratives",
+          "description": "Mythic symbolism, occult botanicals, and cosmic folklore woven into custom compositions just for you."
+        }
+      ],
+      "bookingCta": {
+        "title": "Book your piece",
+        "ctaHint": "Send me a DM with references, placement, and availability \u25b8"
+      },
+      "gallery": {
+        "title": "Portfolio preview",
+        "description": "A quick taste of the vibe \u2014 placeholders for now while the archive loads in.",
+        "tapHint": "Tap an image to open",
+        "imageAltPrefix": "Tattoo placeholder"
+      }
     }
   },
   "es": {
@@ -366,7 +400,41 @@
         }
       ],
       "bookingTitle": "Reservas",
-      "bookingDescription": "\u00bfInteresado en una pieza? Escr\u00edbeme por Instagram DM a {handle} con una nota breve sobre la intenci\u00f3n, ubicaci\u00f3n y tama\u00f1o."
+      "bookingDescription": "\u00bfInteresado en una pieza? Escr\u00edbeme por Instagram DM a {handle} con una nota breve sobre la intenci\u00f3n, ubicaci\u00f3n y tama\u00f1o.",
+      "instagramSpotlight": {
+        "label": "Conecta",
+        "description": "Las reservas, los flash drops, las fotos de curaci\u00f3n y los procesos aparecen primero en Instagram. Escr\u00edbeme por DM con tu idea, ubicaci\u00f3n y disponibilidad preferida.",
+        "cta": "Abrir Instagram \u25b8"
+      },
+      "interestsSection": {
+        "title": "Obsesiones actuales",
+        "description": "Una mezcla rotativa de motivos rituales que encienden la temporada actual del trabajo.",
+        "linkLabel": "{handle} en IG"
+      },
+      "interests": [
+        {
+          "title": "Sigilos en blackwork",
+          "description": "Contraste pesado, geometr\u00eda ritual y piezas de alto compromiso dise\u00f1adas para sentirse antiguas y vivas."
+        },
+        {
+          "title": "Glifos de l\u00ednea fina",
+          "description": "Hechizos lineales delicados, microdetalles y runas ocultas que susurran en lugar de gritar."
+        },
+        {
+          "title": "Narrativas esot\u00e9ricas",
+          "description": "Simbolismo m\u00edtico, bot\u00e1nica oculta y folclore c\u00f3smico tejidos en composiciones personalizadas para ti."
+        }
+      ],
+      "bookingCta": {
+        "title": "Agenda tu pieza",
+        "ctaHint": "Env\u00edame un DM con referencias, ubicaci\u00f3n y disponibilidad \u25b8"
+      },
+      "gallery": {
+        "title": "Vista previa del portafolio",
+        "description": "Un vistazo r\u00e1pido a la vibra \u2014 referencias temporales por ahora mientras cargo el archivo.",
+        "tapHint": "Toca una imagen para abrirla",
+        "imageAltPrefix": "Placeholder de tatuaje"
+      }
     }
   }
 }
