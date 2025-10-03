@@ -5,6 +5,7 @@ import data from '@/data.json';
 import EsotericInterests from '@/components/Magick/EsotericInterests';
 import DailyMagickalAspects from '@/components/Magick/DailyMagickalAspects';
 import MagickSummary from '@/components/Magick/MagickSummary';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars 
 import ThoughtFormsSlider from '@/components/Magick/ThoughtFormsSlider';
 
 export default function Magick() {
@@ -34,7 +35,10 @@ export default function Magick() {
 
       <EsotericInterests interests={magick.interests} />
 
-      <ThoughtFormsSlider />
+      {/* 
+        Disable until we figure out a good way to host our images
+        <ThoughtFormsSlider /> 
+      */}
       
     </section>
   );
