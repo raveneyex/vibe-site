@@ -18,73 +18,54 @@ function getMoonPhaseInfo(date: Date) {
   else if (fraction < 0.78) label = "last quarter";
   else label = "waning crescent";
 
-  return { label, fraction, waxing: fraction < 0.5 };
+  const illumination = fraction <= 0.5 ? fraction * 2 : (1 - fraction) * 2;
+
+  return { label, illumination, waxing: fraction < 0.5 };
 }
 
-function MoonIcon({ label, fraction }: { label: string; fraction: number }) {
+function MoonIcon({ illumination, waxing }: { illumination: number; waxing: boolean }) {
   const uid = useId();
-  const crescentPath = "M15.5 24c0-6.351 3.002-11.722 7.5-15-1.58-.635-3.318-1-5.14-1C12.61 8 7 13.82 7 21s5.61 13 10.86 13c1.822 0 3.56-.365 5.14-1-4.498-3.278-7.5-8.649-7.5-15Z";
+  const radius = 9;
+  const center = 12;
 
-  if (label === "new moon") {
+  if (illumination <= 0.05) {
     return (
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="text-slate-200">
-        <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.12" />
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.25" opacity="0.6" />
+        <circle cx="12" cy="12" r="7" fill="currentColor" opacity="0.08" />
       </svg>
     );
   }
-  if (label === "full moon") {
+  if (illumination >= 0.95) {
     return (
       <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="text-slate-200">
         <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.9" />
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
+        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.1" opacity="0.6" />
       </svg>
     );
   }
-  if (label === "first quarter" || label === "last quarter") {
-    const right = label === "first quarter";
-    const clipId = `${uid}-${right ? "r" : "l"}`;
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="text-slate-200">
-        <defs>
-          <clipPath id={clipId}>
-            {right ? <rect x="12" y="3" width="9" height="18" /> : <rect x="3" y="3" width="9" height="18" />}
-          </clipPath>
-        </defs>
-        <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.9" clipPath={`url(#${clipId})`} />
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
-      </svg>
-    );
-  }
-  if (label === "waxing crescent" || label === "waning crescent") {
-    const flip = label === "waning crescent";
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="text-slate-200">
-        <path d={crescentPath} fill="currentColor" opacity="0.9" transform={flip ? "translate(24 0) scale(-1 1)" : undefined} />
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
-      </svg>
-    );
-  }
-  if (label === "waxing gibbous" || label === "waning gibbous") {
-    const subtractRight = label === "waning gibbous";
-    const maskId = `${uid}-${subtractRight ? "gr" : "gl"}`;
-    return (
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="text-slate-200">
-        <defs>
-          <mask id={maskId}>
-            <rect x="0" y="0" width="24" height="24" fill="black" />
-            <circle cx="12" cy="12" r="9" fill="white" />
-            <path d={crescentPath} fill="black" transform={subtractRight ? undefined : "translate(24 0) scale(-1 1)"} />
-          </mask>
-        </defs>
-        <circle cx="12" cy="12" r="9" fill="currentColor" opacity="0.9" mask={`url(#${maskId})`} />
-        <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
-      </svg>
-    );
-  }
+  const maskId = `${uid}-moon-mask`;
+  const shadeId = `${uid}-moon-shade`;
+  const offset = radius * (1 - illumination);
+  const occluderCx = waxing ? center - offset : center + offset;
+  const gradientStart = waxing ? (illumination < 0.5 ? 0.15 : 0.35) : (illumination < 0.5 ? 0.65 : 0.85);
+  const gradientEnd = waxing ? 0.85 : 0.15;
+
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden className="text-slate-200">
-      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.2" opacity="0.6" />
+      <defs>
+        <mask id={maskId}>
+          <rect x="0" y="0" width="24" height="24" fill="black" />
+          <circle cx={center} cy="12" r={radius} fill="white" />
+          <circle cx={occluderCx} cy="12" r={radius} fill="black" />
+        </mask>
+        <linearGradient id={shadeId} x1={waxing ? "0%" : "100%"} y1="0%" x2={waxing ? "100%" : "0%"} y2="0%">
+          <stop offset={waxing ? gradientStart : gradientEnd} stopColor="currentColor" stopOpacity="0.95" />
+          <stop offset={waxing ? gradientEnd : gradientStart} stopColor="currentColor" stopOpacity="0.45" />
+        </linearGradient>
+      </defs>
+      <circle cx={center} cy="12" r={radius} fill={`url(#${shadeId})`} mask={`url(#${maskId})`} />
+      <circle cx={center} cy="12" r={radius} fill="none" stroke="currentColor" strokeWidth="1.1" opacity="0.65" />
     </svg>
   );
 }
@@ -145,8 +126,8 @@ export default function DailyMagickalAspects() {
         <div>
           <div className="text-slate-400 uppercase tracking-wider text-[10px]">moon phase</div>
           <div className="flex items-center gap-2">
-            <MoonIcon label={moonPhase.label} fraction={moonPhase.fraction} />
-            <span>{moonPhase.label}</span>
+            <MoonIcon illumination={moonPhase.illumination} waxing={moonPhase.waxing} />
+            <span className="capitalize">{moonPhase.label}</span>
           </div>
         </div>
       </div>
