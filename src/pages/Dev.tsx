@@ -2,16 +2,51 @@ import { Link } from 'react-router-dom';
 import data from '@/data.json';
 import useDevProfile from '@/hooks/useDevProfile';
 import usePageBranding from '@/hooks/usePageBranding';
+import usePreferredLanguage from '@/hooks/usePreferredLanguage';
+import type { LanguageCode } from '@/utils/language';
 import TechStack from '@/components/Dev/TechStack';
 import DevSummary from '@/components/Dev/DevSummary';
 import ContactBar from '@/components/Dev/ContactBar';
 import WorkStatsHud from '@/components/Dev/WorkStatsHud';
 import JobHistory from '@/components/Dev/WorkHistory/JobHistory';
 import Education from '@/components/Dev/Education';
+import type { TimelineExperience } from '@/components/Dev/WorkHistory/types';
 
-const { links, dev: devData } = data;
+type DevContent = {
+  title: string;
+  subtitle: string;
+  metadata: {
+    title: string;
+    description: string;
+  };
+  summary: string;
+  stats: {
+    experience: string;
+    industries: string[];
+  };
+  professionalExperience: TimelineExperience[];
+  education: {
+    highschool: {
+      name: string;
+      location: string;
+      graduationYear: number;
+    };
+    university: {
+      name: string;
+      location: string;
+      graduationYear: number;
+      major: string;
+      finalGrade: string;
+    };
+  };
+};
+
+const { links } = data;
 
 export default function Dev() {
+  const language = usePreferredLanguage();
+  const devTranslations = data.dev.translations as Record<LanguageCode, DevContent>;
+  const devData = devTranslations[language] ?? devTranslations.en;
   const { returnTo } = useDevProfile();
   
   usePageBranding({

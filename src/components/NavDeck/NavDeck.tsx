@@ -1,34 +1,35 @@
-import data from "@/data.json";
-import useDevProfile from "@/hooks/useDevProfile";
-import type { CSSProperties } from "react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { ProCardSVG, MagickCardSVG, TattooCardSVG } from "./SectionIcons";
-import { NavCardVariant, NavDeckContent, type HoverCard } from "./types";
-import useBackgroundTintOnHover from "@/hooks/useBackgroundTintOnHover";
-import useTypewriter from "@/hooks/useTypewriter";
-import NavCard from "./NavCard";
-import clsx from "clsx";
-
-const navDeckContent = data.navDeck as NavDeckContent;
-
-const { dev: devCard, magick: magickCard, tattoo: tattooCard, subtitle: subtitleContent } = navDeckContent;
-
-const hoverTitles: Record<Exclude<HoverCard, null>, string> = {
-  dev: devCard.hoverTitle,
-  magick: magickCard.hoverTitle,
-  tattoo: tattooCard.hoverTitle
-};
+import data from '@/data.json';
+import useDevProfile from '@/hooks/useDevProfile';
+import usePreferredLanguage from '@/hooks/usePreferredLanguage';
+import type { CSSProperties } from 'react';
+import { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ProCardSVG, MagickCardSVG, TattooCardSVG } from './SectionIcons';
+import { NavCardVariant, type NavDeckTranslations, type NavDeckContent, type HoverCard } from './types';
+import useBackgroundTintOnHover from '@/hooks/useBackgroundTintOnHover';
+import useTypewriter from '@/hooks/useTypewriter';
+import NavCard from './NavCard';
+import clsx from 'clsx';
 
 export default function NavDeck() {
   const nav = useNavigate();
   const { devOnly } = useDevProfile();
+  const language = usePreferredLanguage();
+  const translations = data.navDeck.translations as NavDeckTranslations;
+  const navDeckContent: NavDeckContent = translations[language] ?? translations.en;
+  const { dev: devCard, magick: magickCard, tattoo: tattooCard, subtitle: subtitleContent } = navDeckContent;
+
+  const hoverTitles = useMemo<Record<Exclude<HoverCard, null>, string>>(() => ({
+    dev: devCard.hoverTitle,
+    magick: magickCard.hoverTitle,
+    tattoo: tattooCard.hoverTitle,
+  }), [devCard.hoverTitle, magickCard.hoverTitle, tattooCard.hoverTitle]);
 
   const [hoverCard, setHoverCard] = useState<HoverCard>(null);
   
-  const hoverTarget = hoverCard ? hoverTitles[hoverCard] : hoverTitles['dev'];
+  const hoverTarget = hoverCard ? hoverTitles[hoverCard] : hoverTitles.dev;
   const { text: titleText, announce } = useTypewriter({
-    defaultText: hoverTitles['dev'],
+    defaultText: hoverTitles.dev,
     target: hoverTarget
   });
 

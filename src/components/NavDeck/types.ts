@@ -1,3 +1,5 @@
+import type { LanguageCode } from '@/utils/language';
+
 export type HoverCard = null | 'dev' | 'magick' | 'tattoo';
 
 export enum NavCardVariant {
@@ -21,3 +23,6 @@ export type NavDeckSubtitle = {
 export type NavDeckContent = Record<'dev' | 'magick' | 'tattoo', NavDeckCard> & {
   subtitle: NavDeckSubtitle;
 };
+
+export type NavDeckTranslations = Record<LanguageCode, NavDeckContent>;
+

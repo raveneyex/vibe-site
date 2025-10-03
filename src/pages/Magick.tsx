@@ -1,15 +1,30 @@
 import { Link } from 'react-router-dom';
 import usePageBranding from '@/hooks/usePageBranding';
+import usePreferredLanguage from '@/hooks/usePreferredLanguage';
+import type { LanguageCode } from '@/utils/language';
 import data from '@/data.json';
 
 import EsotericInterests from '@/components/Magick/EsotericInterests';
 import DailyMagickalAspects from '@/components/Magick/DailyMagickalAspects';
 import MagickSummary from '@/components/Magick/MagickSummary';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ThoughtFormsSlider from '@/components/Magick/ThoughtFormsSlider';
 
+type MagickContent = {
+  title: string;
+  subtitle: string;
+  metadata: {
+    title: string;
+    description: string;
+  };
+  summary: string;
+  interests: string[];
+};
+
 export default function Magick() {
-  const { magick } = data;
+  const language = usePreferredLanguage();
+  const magickTranslations = data.magick.translations as Record<LanguageCode, MagickContent>;
+  const magick = magickTranslations[language] ?? magickTranslations.en;
 
   usePageBranding({
     tint: 'rgba(168,85,247,0.14)',
