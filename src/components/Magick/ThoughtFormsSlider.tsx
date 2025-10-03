@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Keyboard, Autoplay } from "swiper/modules";
-import SigilTile from "../SigilTile";
+import SigilTile from "@/components/SigilTile";
 import { useState } from "react";
 import 'swiper/css';
 import 'swiper/css/navigation';

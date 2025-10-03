@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import { formatDateRange } from '@/utils/dates';
-import type { TimelineExperience } from './types';
-import JobProjects from './JobProjects';
-import JobResponsibilities from './JobResponsibilities';
-import JobTechnologies from './JobTechnologies';
-import TimelineJobMarker from './TimelineJobMarker';
+import type { TimelineExperience } from '@/components/Dev/WorkHistory/types';
+import JobProjects from '@/components/Dev/WorkHistory/JobProjects';
+import JobResponsibilities from '@/components/Dev/WorkHistory/JobResponsibilities';
+import JobTechnologies from '@/components/Dev/WorkHistory/JobTechnologies';
+import TimelineJobMarker from '@/components/Dev/WorkHistory/TimelineJobMarker';
 
 interface JobProps {
   experience: TimelineExperience;

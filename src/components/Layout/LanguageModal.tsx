@@ -1,4 +1,4 @@
-import HudFrame from './HudFrame';
+import HudFrame from '@/components/Layout/HudFrame';
 import type { LanguageCode } from '@/utils/language';
 import useLabels from '@/hooks/useLabels';
 

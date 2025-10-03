@@ -59,19 +59,10 @@ export default function LanguageDropdown() {
     };
 
     setIsMobile(query.matches);
-
-    if (typeof query.addEventListener === 'function') {
-      query.addEventListener('change', handleChange);
-    } else if (typeof query.addListener === 'function') {
-      query.addListener(handleChange);
-    }
-
+    query.addEventListener('change', handleChange);
+    
     return () => {
-      if (typeof query.removeEventListener === 'function') {
-        query.removeEventListener('change', handleChange);
-      } else if (typeof query.removeListener === 'function') {
-        query.removeListener(handleChange);
-      }
+      query.removeEventListener('change', handleChange);
     };
   }, []);
 

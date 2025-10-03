@@ -1,4 +1,4 @@
-import HudFrame from "../Layout/HudFrame";
+import HudFrame from "@/components/Layout/HudFrame";
 import useLabels from '@/hooks/useLabels';
 
 type EducationEntry = {

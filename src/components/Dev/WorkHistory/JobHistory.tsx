@@ -2,8 +2,8 @@ import { useMemo, useState, useId } from 'react';
 import clsx from 'clsx';
 import { FiChevronDown } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
-import Job from './Job';
-import type { TimelineExperience } from './types';
+import Job from '@/components/Dev/WorkHistory/Job';
+import type { TimelineExperience } from '@/components/Dev/WorkHistory/types';
 import { parseDateToTime } from '@/utils/dates';
 import useLabels from '@/hooks/useLabels';
 

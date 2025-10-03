@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import labels from '@/labels.json';
 import type { LanguageCode } from '@/utils/language';
-import usePreferredLanguage from './usePreferredLanguage';
+import usePreferredLanguage from '@/hooks/usePreferredLanguage';
 
 type LabelCatalog = typeof labels;
 type Labels = LabelCatalog[keyof LabelCatalog];

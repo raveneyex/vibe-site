@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { FiChevronDown } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
 import SkillChip from '@/components/Layout/SkillChip';
-import type { TimelineProject } from './types';
+import type { TimelineProject } from '@/components/Dev/WorkHistory/types';
 import { formatDateRange } from '@/utils/dates';
 import useLabels from '@/hooks/useLabels';
 

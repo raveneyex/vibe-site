@@ -1,5 +1,5 @@
-import HudFrame from "../Layout/HudFrame";
-import { NavCardVariant } from "./types";
+import HudFrame from "@/components/Layout/HudFrame";
+import { NavCardVariant } from "@/components/NavDeck/types";
 import clsx from "clsx";
 
 interface NavCardProps {

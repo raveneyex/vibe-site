@@ -1,12 +1,12 @@
 import { Route, Routes, useLocation } from 'react-router-dom';
-import Header from './components/Layout/Header';
-import Footer from './components/Layout/Footer';
-import Landing from './pages/Landing';
-import Dev from './pages/Dev';
-import Magick from './pages/Magick';
-import Tattoo from './pages/Tattoo';
-import PageShell from './components/Layout/PageShell';
-import BackgroundEffects from './components/Layout/BackgroundEffects';
+import Header from '@/components/Layout/Header';
+import Footer from '@/components/Layout/Footer';
+import Landing from '@/pages/Landing';
+import Dev from '@/pages/Dev';
+import Magick from '@/pages/Magick';
+import Tattoo from '@/pages/Tattoo';
+import PageShell from '@/components/Layout/PageShell';
+import BackgroundEffects from '@/components/Layout/BackgroundEffects';
 
 export default function App() {
   const location = useLocation();
