@@ -625,10 +625,10 @@
             "start": "2025-06-18",
             "end": null,
             "responsibilities": [
-              "Desarrollar interfaces y nuevas funcionalidades, usando TypeScript, React y Redux",
-              "Coordinar con el equipo de backend para integrar múltiples proveedores de pago",
-              "Añadir analítica a las nuevas funcionalidades para habilitar el seguimiento del uso de la plataforma",
-              "Colaborar y coordinar con el equipo de plataforma para el desarrollo y mantenimiento de paquetes de microfrontends"
+              "Diseñé e implementé interfaces y nuevas funcionalidades con TypeScript, React y Redux",
+              "Coordiné con el equipo backend la integración de múltiples proveedores de pago",
+              "Instrumenté las nuevas funcionalidades con analítica para permitir el seguimiento del uso de la plataforma",
+              "Colaboré estrechamente con el equipo de plataforma en el desarrollo y mantenimiento de paquetes de microfrontends"
             ],
             "technologies": [
               "React",
@@ -645,11 +645,11 @@
             "start": "2025-01-14",
             "end": "2025-04-09",
             "responsibilities": [
-              "Colaboré con el equipo de diseño para implementar interfaces de usuario pixel perfect",
-              "Participé en revisiones de código, tanto en repositorios backend como frontend",
-              "Desarrollé interfaces y nuevas funcionalidades, usando TypeScript, React y ReactQuery",
-              "Trabajé junto al equipo de diseño para establecer los primeros elementos del sistema de diseño de la compañía",
-              "Añadí instrumentación analítica a las nuevas funcionalidades para habilitar el seguimiento del uso de la plataforma"
+              "Colaboré con el equipo de diseño para implementar interfaces de usuario pixel-perfect",
+              "Participé en revisiones de código de repositorios backend y frontend",
+              "Implementé interfaces y nuevas funcionalidades con TypeScript, React y React Query",
+              "Trabajé con el equipo de diseño para definir los primeros componentes del sistema de diseño de la compañía",
+              "Instrumenté las nuevas funcionalidades con analítica para habilitar el seguimiento del uso de la plataforma"
             ],
             "technologies": [
               "React",
@@ -671,14 +671,14 @@
             "start": "2024-02-05",
             "end": "2024-11-07",
             "responsibilities": [
-              "Lideré a un equipo de tres personas durante la implementación de un nuevo vertical de negocio en la app móvil",
-              "Proporcioné estimaciones, diseños técnicos y colaboración cercana con diversos stakeholders",
-              "Implementé funcionalidades de producto con React Native, TypeScript y Expo",
-              "Creé pruebas unitarias y end-to-end para nuevas funciones con Jest y Cypress",
-              "Apliqué el lenguaje del sistema de diseño para entregar una UI consistente",
-              "Realicé revisiones de código continuas para el trabajo de nuevas funcionalidades",
-              "Colaboré con el equipo web mediante revisiones de código y discusiones técnicas",
-              "Trabajé de cerca con el equipo backend en Node.js mediante sesiones compartidas de diseño y revisión"
+              "Lideré un equipo de tres personas para lanzar un nuevo vertical de negocio en la app móvil",
+              "Entregué estimaciones y diseños técnicos y coordiné de cerca con múltiples stakeholders",
+              "Implementé nuevas funcionalidades de producto con React Native, TypeScript y Expo",
+              "Desarrollé pruebas unitarias y end-to-end para las nuevas funciones con Jest y Cypress",
+              "Apliqué el lenguaje del sistema de diseño para mantener una UI consistente",
+              "Realicé revisiones de código continuas sobre las nuevas funcionalidades",
+              "Colaboré con el equipo web mediante revisiones de código y debates técnicos",
+              "Trabajé estrechamente con el equipo backend en Node.js a través de sesiones conjuntas de diseño y revisión"
             ],
             "technologies": [
               "React Native",
@@ -699,12 +699,12 @@
             "start": "2022-01-10",
             "end": "2024-01-31",
             "responsibilities": [
-              "Implementé la GUI para la funcionalidad Supply Chain de Tanzu Application Platform",
+              "Implementé la interfaz de la funcionalidad Supply Chain en Tanzu Application Platform",
               "Colaboré con gestión de producto para descubrir y definir nuevas capacidades de Supply Chain",
-              "Trabajé con equipos aliados en Tanzu para integrar funcionalidades de Supply Chain",
-              "Dirigí el desarrollo y mantenimiento de la biblioteca ORM usada por proyectos frontend basados en Backstage",
-              "Me asocié con diseño para el look & feel y la UX de la biblioteca de componentes compartidos",
-              "Lideré el desarrollo y mantenimiento de la biblioteca de componentes compartidos adoptada por los frontends de TAP"
+              "Articulé el trabajo con equipos aliados de Tanzu para integrar funcionalidades de Supply Chain",
+              "Dirigí el desarrollo y mantenimiento de la biblioteca ORM utilizada por proyectos frontend basados en Backstage",
+              "Trabajé junto al equipo de diseño para definir el look & feel y la UX de la biblioteca de componentes compartidos",
+              "Lideré la evolución de la biblioteca de componentes compartidos adoptada por los frontends de TAP"
             ],
             "technologies": [
               "React",
@@ -725,14 +725,14 @@
             "start": "2018-11-26",
             "end": "2022-01-04",
             "responsibilities": [
-              "Colaboré con gestión de producto en la fase de descubrimiento de nuevas funcionalidades",
-              "Me reuní con clientes para recopilar información sobre capacidades en camino",
-              "Trabajé con diseño y UX para entregar nueva funcionalidad",
+              "Colaboré con gestión de producto durante la fase de discovery de nuevas funcionalidades",
+              "Me reuní con clientes para recopilar insumos sobre capacidades en camino",
+              "Colaboré con diseño y UX para entregar nuevas funcionalidades",
               "Implementé funcionalidades derivadas de los hallazgos de discovery",
               "Revisé código backend y frontend para asegurar calidad y consistencia",
-              "Analicé y propuse correcciones de alta calidad para incidentes en producción",
+              "Diagnosticé y propuse correcciones de alta calidad para incidentes en producción",
               "Contribuí a discusiones de frontend a nivel organizacional",
-              "Mantuve y extendí la biblioteca de UI de la compañía"
+              "Mantuve y extendí la biblioteca de UI corporativa"
             ],
             "technologies": [
               "React",
@@ -761,11 +761,11 @@
                 "start": "2016-06-04",
                 "end": "2018-11-09",
                 "responsibilities": [
-                  "Desarrollé nuevos componentes de interfaz alineados con los requisitos del producto",
-                  "Brindé soporte y mantenimiento a los componentes entregados",
-                  "Analicé e implementé correcciones de alta calidad para errores existentes",
-                  "Participé en discusiones de UI a nivel compañía",
-                  "Aporté actualizaciones a la biblioteca de UI de la empresa"
+                  "Diseñé e implementé nuevos componentes de interfaz alineados con los requisitos de producto",
+                  "Brindé soporte y mantenimiento continuo a los componentes entregados",
+                  "Diagnosticé e implementé correcciones de alta calidad para errores existentes",
+                  "Participé en conversaciones de UI a nivel compañía",
+                  "Contribuí con actualizaciones a la biblioteca de UI de la empresa"
                 ],
                 "technologies": [
                   "Node.js",
@@ -787,9 +787,9 @@
                 "start": "2015-08-03",
                 "end": "2016-06-17",
                 "responsibilities": [
-                  "Di soporte a la próxima aplicación Crowdcast",
-                  "Analicé errores e implementé correcciones de alta calidad",
-                  "Proporcioné análisis de impacto para las correcciones propuestas",
+                  "Brindé soporte a la siguiente versión de la aplicación Crowdcast",
+                  "Diagnosticé errores e implementé correcciones de alta calidad",
+                  "Elaboré análisis de impacto para las correcciones propuestas",
                   "Desarrollé nuevas funcionalidades para la aplicación"
                 ],
                 "technologies": [
@@ -810,10 +810,10 @@
                 "start": "2015-06-08",
                 "end": "2015-08-03",
                 "responsibilities": [
-                  "Di soporte a la aplicación híbrida existente SpigitMobile",
-                  "Analicé y resolví errores en navegadores y dispositivos",
+                  "Brindé soporte a la aplicación híbrida existente SpigitMobile",
+                  "Diagnosticé y resolví errores en navegadores y dispositivos",
                   "Entregué correcciones multiplataforma",
-                  "Proporcioné análisis de impacto para los ajustes solicitados"
+                  "Elaboré análisis de impacto para los ajustes solicitados"
                 ],
                 "technologies": [
                   "JSP backend",
@@ -840,10 +840,10 @@
                 "start": "2014-01-01",
                 "end": "2015-05-29",
                 "responsibilities": [
-                  "Proporcioné soporte tipo SWAT para aplicaciones existentes",
-                  "Analicé errores reportados y propuse soluciones",
-                  "Entregué análisis de impacto para los ajustes solicitados",
-                  "Desarrollé módulos pequeños para un backend basado en Django",
+                  "Presté soporte tipo SWAT a las aplicaciones existentes",
+                  "Analicé incidencias reportadas y propuse soluciones",
+                  "Elaboré análisis de impacto para los ajustes solicitados",
+                  "Desarrollé módulos puntuales para un backend basado en Django",
                   "Cumplí con las guías de codificación de National Geographic"
                 ],
                 "technologies": [
@@ -866,8 +866,8 @@
                 "end": "2013-12-20",
                 "responsibilities": [
                   "Reimplementé el frontend del portal web del cliente",
-                  "Cumplí con las guías de codificación y los mockups de diseño",
-                  "Trabajé dentro de metodologías ágiles"
+                  "Alineé el desarrollo con las guías de codificación y los mockups de diseño",
+                  "Trabajé bajo metodologías ágiles"
                 ],
                 "technologies": [
                   "Backbone.js",
@@ -894,10 +894,10 @@
                 "start": "2013-07-01",
                 "end": "2013-08-16",
                 "responsibilities": [
-                  "Implementé el frontend en AngularJS para la aplicación web de SEON",
-                  "Construí módulos reutilizables en AngularJS",
-                  "Desarrollé endpoints backend para servir servicios REST",
-                  "Integré la solución con un backend Java a través de REST",
+                  "Desarrollé el frontend de la aplicación web de SEON en AngularJS",
+                  "Construí módulos reutilizables con AngularJS",
+                  "Desarrollé endpoints backend para exponer servicios REST",
+                  "Integré la solución con un backend Java vía REST",
                   "Seguí los estándares de codificación de SEON dentro de Scrum"
                 ],
                 "technologies": [
@@ -957,9 +957,9 @@
                 "end": "2013-05-01",
                 "responsibilities": [
                   "Desarrollé el frontend de la siguiente generación del sistema WorkAssure",
-                  "Integré con un backend en C# a través de servicios REST",
+                  "Integré la solución con un backend en C# mediante servicios REST",
                   "Seguí las guías de codificación de Arris dentro de Scrum",
-                  "Participé en colaboración on-site en Portland, OR"
+                  "Participé en sesiones de colaboración on-site en Portland, OR"
                 ],
                 "technologies": [
                   "C# .NET",
@@ -1040,10 +1040,10 @@
             "client": "Universidad EAFIT",
             "clientUrl": "https://www.eafit.edu.co/",
             "responsibilities": [
-              "Di soporte a las aplicaciones existentes de la unidad SAI",
+              "Brindé soporte a las aplicaciones existentes de la unidad SAI",
               "Analicé y dimensioné nuevas solicitudes de funcionalidad",
               "Diseñé e implementé nuevas características según las necesidades del cliente",
-              "Investigué y resolví errores reportados",
+              "Investigé y resolví errores reportados",
               "Realicé análisis de impacto siguiendo las guías de EAFIT"
             ],
             "technologies": [
@@ -1065,10 +1065,10 @@
             "clientUrl": "http://www.otcfactex.com/",
             "responsibilities": [
               "Desarrollé una aplicación web para factoring e intercambio de facturas",
-              "Implementé los diseños provistos por los arquitectos del sistema",
-              "Entregué nuevas funcionalidades según los requisitos del cliente",
-              "Analicé y resolví errores reportados",
-              "Realicé análisis de impacto siguiendo las guías de codificación",
+              "Implementé los diseños suministrados por los arquitectos del sistema",
+              "Entregué nuevas funcionalidades alineadas con los requisitos del cliente",
+              "Diagnosticé y resolví errores reportados",
+              "Realicé análisis de impacto en línea con las guías de codificación",
               "Trabajé bajo la metodología Scrum"
             ],
             "technologies": [
