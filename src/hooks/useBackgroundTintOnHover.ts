@@ -1,4 +1,4 @@
-import { HoverCard } from "@/components/NavDeck/types";
+import type { HoverCard } from "@/components/NavDeck/types";
 import { useEffect } from "react";
 
 const root = document.documentElement;

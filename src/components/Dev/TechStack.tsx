@@ -4,7 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import HudFrame from "@/components/Layout/HudFrame";
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 import { SiReact, SiTypescript, SiTailwindcss, SiNodedotjs, SiVite, SiReactrouter, SiRedux, SiVitest, SiCypress } from "react-icons/si";
 import useLabels from '@/hooks/useLabels';
 

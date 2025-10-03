@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import type { IconType } from "react-icons";
 import { FiMail, FiDownload } from "react-icons/fi";
 import { SiGithub, SiLinkedin } from "react-icons/si";
 import useLabels from '@/hooks/useLabels';

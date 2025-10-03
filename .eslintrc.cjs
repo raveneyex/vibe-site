@@ -15,8 +15,14 @@ module.exports = {
   ],
   settings: { react: { version: 'detect' } },
   rules: {
-    'react/prop-types': 'off'
+    'react/prop-types': 'off',
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        disallowTypeAnnotations: false
+      }
+    ]
   },
   ignorePatterns: ['dist', 'node_modules']
 };
-
