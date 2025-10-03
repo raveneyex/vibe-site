@@ -39,12 +39,12 @@
       },
       "es": {
         "subtitle": {
-          "default": "Desarrollador Front-End / Artista del tatuaje / Raro tecnomágico",
+          "default": "Desarrollador Front-End / Tatuador / Techno-mago",
           "devOnly": "Desarrollador Front-End"
         },
         "dev": {
           "hoverTitle": "Andres Ossa",
-          "title": "Trabajo de Desarrollo",
+          "title": "Desarrollo de Software",
           "subtitle": "Desarrollo frontend, javascript, interfaces de usuario y diseño de sistemas.",
           "cta": "Explorar"
         },
@@ -56,7 +56,7 @@
         },
         "tattoo": {
           "hoverTitle": "Ojo de Cuervo",
-          "title": "Trabajo de Tatuajes",
+          "title": "Tatuajes",
           "subtitle": "Tatuajes personalizados en blackwork. Temas florales y oscuros.",
           "cta": "Descubrir"
         }
@@ -83,16 +83,16 @@
       },
       "es": {
         "title": "Raveneyex — Mago del Caos",
-        "subtitle": "De sigilos a sistemas: práctica oculta para la era digital.",
+        "subtitle": "Práctica oculta en la era digital.",
         "metadata": {
           "title": "Raveneyex — Mago del Caos",
-          "description": "Exploraciones en la magia del caos"
+          "description": "Práctica oculta en la era digital"
         },
-        "summary": "Hola, buscador. Soy raveneyex.\n\nTrabajo en la encrucijada entre tecnología, arte y magia. Como aprendiz de tatuador y practicante de Magia del Caos, exploro cómo los símbolos, los rituales y la creatividad moldean la realidad. Mi enfoque mezcla prácticas ocultas tradicionales con herramientas modernas: sigilos trazados en tinta y piel, scripts escritos en código y sistemas digitales tratados como estructuras simbólicas vivas.\n\nPara mí, la magia no está separada de la tecnología; es otra interfaz. Un diagrama ritual y un diagrama de arquitectura de software cumplen el mismo propósito: canalizar la intención, construir estructuras y llevar las ideas a la forma. Ya sea que esté bocetando un diseño, escribiendo un hechizo o programando un sistema, el trabajo siempre trata de transformación.\n\nMe fascina la superposición entre las tradiciones antiguas y la cultura moderna, la forma en que los patrones ocultos atraviesan ambas. Mi arte, mis tatuajes y mis rituales son experimentos para hacer visibles esos patrones y usarlos para generar cambio.",
+        "summary": "Hola criatura. Soy raveneyex.\n\nTrabajo en la encrucijada entre la tecnología, el arte y la magia. Como practicante de Magia del Caos exploro cómo los símbolos, los rituales y la creatividad moldean la realidad. Mi enfoque mezcla prácticas ocultas tradicionales con herramientas modernas: sigilos trazados en tinta y piel, scripts escritos en código y sistemas digitales tratados como estructuras simbólicas vivas.\n\nPara mí la magia no está separada de la tecnología; es tan solo otra interfaz — Un ritual y un diagrama de arquitectura de software cumplen el mismo propósito: canalizar la intención y proveer estructuras que permitan llevar las ideas a la realidad. Ya sea que trabajando en una ilustración o tatuaje, escribiendo un hechizo o programando un sistema, el trabajo siempre se trata de transformación.\n\nMe fascina la intersección entre las tradiciones antiguas y la cultura moderna, la forma en que los patrones ocultos atraviesan e influencian a ambas. Mi arte, mis tatuajes y mis rituales son experimentos para hacer visibles esos patrones y usarlos para generar cambio.",
         "interests": [
           "magia del caos",
-          "magia de sigilos",
-          "egregores y formas de pensamiento",
+          "sigilos",
+          "egregores y entidades psíquicas",
           "luciferianismo",
           "tecnomancia"
         ]
@@ -602,10 +602,10 @@
         "title": "Andres Ossa - Desarrollador FrontEnd",
         "subtitle": "Transformando ideas complejas en experiencias digitales intuitivas desde hace más de una década.",
         "metadata": {
-          "title": "Trabajo Dev — Andres Ossa",
+          "title": "Andres Ossa - Desarrollador FrontEnd",
           "description": "Desarrollo frontend, javascript, interfaces de usuario y diseño de sistemas."
         },
-        "summary": "Soy Andres Ossa, un desarrollador frontend con más de 12 años de experiencia transformando ideas complejas en interfaces limpias y funcionales. Mi trabajo vive en la intersección entre el detalle y la usabilidad: me importa escribir código mantenible tanto como crear experiencias que se sientan intuitivas para la gente real.\n\nHe construido productos para una amplia variedad de industrias, incluyendo medios, entretenimiento, apuestas en línea y viajes. Esa variedad afinó mi capacidad para adaptarme rápido, aprender los retos de cada dominio y diseñar soluciones que equilibran los requisitos técnicos con las necesidades de los usuarios.\n\nEstoy enfocado en tecnologías web modernas, frontends escalables y un diseño de interfaz intencional. Abordo el desarrollo con disciplina, curiosidad y el hábito de resolver problemas tanto a nivel arquitectónico como a nivel de píxel.\n\nCuando no estoy depurando ni lanzando funcionalidades, suelo experimentar con diseño, explorar nuevos frameworks o pulir mi oficio en otros medios creativos.",
+        "summary": "Soy Andres Ossa, desarrollador frontend con más de 12 años de experiencia transformando ideas complejas en interfaces limpias y funcionales. Mi trabajo vive en la intersección entre el detalle y la usabilidad: me interesa escribir código mantenible tanto como crear experiencias que se sientan intuitivas y claras.\n\nHe construido productos para una amplia variedad de industrias, incluyendo medios, entretenimiento, apuestas en línea y viajes. Esa variedad me ha permitido afinar mi capacidad para adaptarme rápido, aprender sobre cada dominio y diseñar soluciones que equilibran los requisitos técnicos con las necesidades de los usuarios.\n\nMe enfoco en tecnologías web modernas, frontends escalables y diseño de interfaces con intención y propósito. Abordo el desarrollo con disciplina y curiosidad, buscando siempre cultivar el hábito de resolver problemas tanto a nivel arquitectónico como a nivel de píxel.\n\nCuando no estoy diseñando interfaces o escribiendo código, suelo experimentar con diseño e ilustración, explorar nuevos frameworks o pulir mis habilidades en otros medios creativos.",
         "stats": {
           "experience": "12+ años",
           "industries": [
@@ -613,7 +613,7 @@
             "medios",
             "entretenimiento",
             "viajes",
-            "juego en línea",
+            "apuestas en línea",
             "herramientas para desarrolladores"
           ]
         },
@@ -625,10 +625,10 @@
             "start": "2025-06-18",
             "end": null,
             "responsibilities": [
-              "Desarrollo funcionalidades de interfaz con TypeScript, React y ReactQuery",
-              "Trabajo con los equipos de backend para integrar múltiples proveedores de pago",
-              "Incorporo analítica a las nuevas funciones para habilitar seguimiento casi en tiempo real del uso de la plataforma",
-              "Colaboro con el equipo de plataforma para entregar paquetes de microfrontends"
+              "Desarrollar interfaces y nuevas funcionalidades, usando TypeScript, React y Redux",
+              "Coordinar con el equipo de backend para integrar múltiples proveedores de pago",
+              "Añadir analítica a las nuevas funcionalidades para habilitar el seguimiento del uso de la plataforma",
+              "Colaborar y coordinar con el equipo de plataforma para el desarrollo y mantenimiento de paquetes de microfrontends"
             ],
             "technologies": [
               "React",
@@ -645,11 +645,11 @@
             "start": "2025-01-14",
             "end": "2025-04-09",
             "responsibilities": [
-              "Colaboré con diseño para implementar interfaces de usuario pixel perfect",
-              "Participé en revisiones de código tanto en repositorios backend como frontend",
-              "Desarrollé funcionalidades de interfaz con TypeScript, React y ReactQuery",
-              "Trabajé junto a diseño para establecer los primeros elementos del sistema de diseño de la compañía",
-              "Añadí instrumentación analítica a nuevas funciones para habilitar seguimiento casi en tiempo real"
+              "Colaboré con el equipo de diseño para implementar interfaces de usuario pixel perfect",
+              "Participé en revisiones de código, tanto en repositorios backend como frontend",
+              "Desarrollé interfaces y nuevas funcionalidades, usando TypeScript, React y ReactQuery",
+              "Trabajé junto al equipo de diseño para establecer los primeros elementos del sistema de diseño de la compañía",
+              "Añadí instrumentación analítica a las nuevas funcionalidades para habilitar el seguimiento del uso de la plataforma"
             ],
             "technologies": [
               "React",
@@ -671,8 +671,8 @@
             "start": "2024-02-05",
             "end": "2024-11-07",
             "responsibilities": [
-              "Lideré a un equipo de tres personas para implementar la app móvil de un nuevo vertical de negocio",
-              "Proporcioné estimaciones, diseños técnicos y colaboración cercana con la gestión del proyecto",
+              "Lideré a un equipo de tres personas durante la implementación de un nuevo vertical de negocio en la app móvil",
+              "Proporcioné estimaciones, diseños técnicos y colaboración cercana con diversos stakeholders",
               "Implementé funcionalidades de producto con React Native, TypeScript y Expo",
               "Creé pruebas unitarias y end-to-end para nuevas funciones con Jest y Cypress",
               "Apliqué el lenguaje del sistema de diseño para entregar una UI consistente",
