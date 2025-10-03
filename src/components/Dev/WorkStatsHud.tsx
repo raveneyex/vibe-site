@@ -17,7 +17,7 @@ export default function WorkStatsHud(props: WorkStatsHudProps) {
   const { stats } = props;
   const entries = Object.entries(stats ?? {});
   const labels = useLabels();
-  const statLabels = labels.dev.stats ?? {};
+  const statLabels = (labels.dev?.stats ?? {}) as Record<string, string>;
 
   if (entries.length === 0) {
     return null;
