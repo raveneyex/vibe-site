@@ -7,7 +7,7 @@ import {
   type LanguageCode,
   getStoredLanguage,
   setStoredLanguage,
-} from '@/components/Layout/language';
+} from '@/utils/language';
 
 const BOOT_KEY = 'booted';
 

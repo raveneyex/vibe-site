@@ -7,7 +7,7 @@ import {
   type LanguageCode,
   getStoredLanguage,
   setStoredLanguage,
-} from './language';
+} from '../../utils/language';
 
 function resolveInitialLanguage(): LanguageCode {
   return getStoredLanguage() ?? 'en';
