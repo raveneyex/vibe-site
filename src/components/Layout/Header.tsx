@@ -27,19 +27,6 @@ export default function Header() {
           </NavLink>
           {!devOnly && (
             <NavLink
-              to="/magick"
-              className={({ isActive }: { isActive: boolean }) =>
-                clsx(
-                  'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline',
-                  isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white'
-                )
-              }
-            >
-              Magick
-            </NavLink>
-          )}
-          {!devOnly && (
-            <NavLink
               to="/tattoo"
               className={({ isActive }: { isActive: boolean }) =>
                 clsx(
@@ -49,6 +36,19 @@ export default function Header() {
               }
             >
               Tattoo
+            </NavLink>
+          )}
+          {!devOnly && (
+            <NavLink
+              to="/magick"
+              className={({ isActive }: { isActive: boolean }) =>
+                clsx(
+                  'neo-link text-sm font-medium transition-colors focus:outline-none focus-visible:focus-outline',
+                  isActive ? 'text-neon-purple neon-text-purple' : 'text-slate-300 hover:text-white'
+                )
+              }
+            >
+              Magick
             </NavLink>
           )}
         </nav>

@@ -72,20 +72,6 @@ export default function NavDeck() {
           />
           {!devOnly && (
             <NavCard
-              onClick={() => nav('/magick')}
-              onMouseEnter={() => setHoverCard('magick')}
-              onMouseLeave={() => setHoverCard(null)}
-              variant={NavCardVariant.Purple}
-              logo={<MagickCardSVG />}
-              className={clsx('text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline')}
-              ariaLabel={`Enter ${magickCard.title}`}
-              text={magickCard.title}
-              subtitle={magickCard.subtitle}
-              cta={magickCard.cta}
-            />
-          )}
-          {!devOnly && (
-            <NavCard
               onClick={() => nav('/tattoo')}
               onMouseEnter={() => setHoverCard('tattoo')}
               onMouseLeave={() => setHoverCard(null)}
@@ -98,6 +84,21 @@ export default function NavDeck() {
               cta={tattooCard.cta}
             />
           )}
+          {!devOnly && (
+            <NavCard
+              onClick={() => nav('/magick')}
+              onMouseEnter={() => setHoverCard('magick')}
+              onMouseLeave={() => setHoverCard(null)}
+              variant={NavCardVariant.Purple}
+              logo={<MagickCardSVG />}
+              className={clsx('text-left hover:neon-glow-purple transition-shadow focus:outline-none focus-visible:focus-outline')}
+              ariaLabel={`Enter ${magickCard.title}`}
+              text={magickCard.title}
+              subtitle={magickCard.subtitle}
+              cta={magickCard.cta}
+            />
+          )}
+          
         </div>
       </div>
       <p className="sr-only">
