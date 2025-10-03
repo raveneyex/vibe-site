@@ -1,6 +1,5 @@
-import HudFrame from "./HudFrame";
-
-export type LanguageCode = 'en' | 'es';
+import HudFrame from './HudFrame';
+import type { LanguageCode } from './language';
 
 interface LanguageModalProps {
   onSelect: (language: LanguageCode) => void 

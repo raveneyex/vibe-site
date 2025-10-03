@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import NavDeck from '@/components/NavDeck/NavDeck';
-import LanguageModal, { type LanguageCode } from '@/components/Layout/LanguageModal';
+import LanguageModal from '@/components/Layout/LanguageModal';
+import {
+  LANGUAGE_CHANGE_EVENT,
+  LANGUAGE_LABEL,
+  type LanguageCode,
+  getStoredLanguage,
+  setStoredLanguage,
+} from '@/components/Layout/language';
 
 const BOOT_KEY = 'booted';
-const LANGUAGE_KEY = 'preferredLanguage';
-
-
-
-const LANGUAGE_LABEL: Record<LanguageCode, string> = {
-  en: 'english',
-  es: 'español',
-};
 
 function getBootMessages(language: LanguageCode) {
   const hex = (n: number) => n.toString(16).padStart(4, '0');
@@ -58,8 +57,7 @@ function getBootMessages(language: LanguageCode) {
 export default function Landing() {
   const [language, setLanguage] = useState<LanguageCode | null>(() => {
     if (typeof window === 'undefined') return null;
-    const stored = window.localStorage.getItem(LANGUAGE_KEY);
-    return stored === 'en' || stored === 'es' ? stored : null;
+    return getStoredLanguage();
   });
 
   const [bootDone, setBootDone] = useState(() => {
@@ -152,12 +150,29 @@ export default function Landing() {
     };
   }, [bootDone, language]);
 
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const handleLanguage = (event: Event) => {
+      const { detail } = event as CustomEvent<LanguageCode | undefined>;
+      if (!detail) return;
+      setLanguage(detail);
+    };
+
+    window.addEventListener(LANGUAGE_CHANGE_EVENT, handleLanguage);
+    return () => {
+      window.removeEventListener(LANGUAGE_CHANGE_EVENT, handleLanguage);
+    };
+  }, []);
+
   const handleLanguageSelect = (value: LanguageCode) => {
     setLanguage(value);
     setBootDone(false);
     setBootLines([]);
     if (typeof window !== 'undefined') {
-      window.localStorage.setItem(LANGUAGE_KEY, value);
+      setStoredLanguage(value);
       window.sessionStorage.removeItem(BOOT_KEY);
     }
   };
@@ -190,4 +205,3 @@ export default function Landing() {
 
   return <NavDeck />;
 }
-
