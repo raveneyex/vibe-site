@@ -12,23 +12,8 @@ import useTypewriter from '@/hooks/useTypewriter';
 import NavCard from './NavCard';
 import clsx from 'clsx';
 import formatTemplate from '@/utils/formatTemplate';
-import type { LanguageCode } from '@/utils/language';
+import { formatOptionsList } from '@/utils/language';
 
-function formatOptionsList(options: string[], language: LanguageCode) {
-  if (options.length <= 1) {
-    return options[0] ?? '';
-  }
-
-  const conjunction = language === 'es' ? 'o' : 'or';
-
-  if (options.length === 2) {
-    return `${options[0]} ${conjunction} ${options[1]}`;
-  }
-
-  const head = options.slice(0, -1).join(', ');
-  const tail = options[options.length - 1];
-  return `${head}, ${conjunction} ${tail}`;
-}
 
 export default function NavDeck() {
   const nav = useNavigate();
