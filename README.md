@@ -16,23 +16,3 @@ Vite + React + TypeScript + Tailwind single-page app for Andres Ossa.
 ## Requirements
 
 - Node.js 18+ (recommended 20)
-
-## Testing
-
-Vitest + Testing Library is configured. Run `npm test`.
-
-## Linting & Formatting
-
-ESLint with `@typescript-eslint`, `eslint-plugin-react`, and Prettier integration.
-
-## Accessibility
-
-- Skip link is provided.
-- Focus is moved to main content on route changes.
-- Animations respect `prefers-reduced-motion`.
-
-## Routing & Deployment
-
-App uses `BrowserRouter`. Ensure your host rewrites unknown routes to `/index.html`.
-For GitHub Pages, consider `HashRouter` or an SPA 404 redirect.
-
