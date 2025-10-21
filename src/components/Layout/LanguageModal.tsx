@@ -15,7 +15,7 @@ function LanguageModal(props: LanguageModalProps) {
     <section className="fixed inset-0 z-[80] flex items-start justify-center bg-noir-950/95 px-4 pt-40 pb-12 backdrop-blur sm:pt-32 md:items-center md:pt-32 md:pb-24">
       <HudFrame
         accent="cyan"
-        className="relative w-[min(92vw,30rem)] translate-y-0 overflow-hidden p-0 font-mono text-sm text-[#00ffa3] shadow-[0_0_84px_#00ffa344] sm:translate-y-12 md:translate-y-64"
+        className="relative w-[min(92vw,30rem)] translate-y-0 overflow-hidden p-0 font-mono text-sm text-[#00ffa3] shadow-[0_0_84px_#00ffa344] sm:translate-y-12 md:translate-y-24"
       >
         <div
           aria-hidden
