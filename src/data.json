@@ -1096,5 +1096,113 @@
         }
       }
     }
+  },
+  "tattoo": {
+    "translations": {
+      "en": {
+        "title": "Tattoo",
+        "subtitle": "Custom sigil tattoos and exploratory flash, blending craft and intent.",
+        "metadata": {
+          "title": "Tattoo — Ojo de Cuervo",
+          "description": "Custom sigil tattoos and experimental flash sets."
+        },
+        "highlights": {
+          "focus": "sigils, blackwork, linework",
+          "approach": "intent-led, collaborative, clean",
+          "booking": "by request (dm/instagram)"
+        },
+        "services": [
+          "Sigil design",
+          "Stencil prep",
+          "Aftercare"
+        ],
+        "instagramSpotlight": {
+          "description": "Booking, flash drops, healed shots, and process videos live on Instagram first. Slide into the DMs with your idea, placement, and preferred timing.",
+          "cta": "Open Instagram ▸"
+        },
+        "interestsSection": {
+          "title": "What I'm obsessing over",
+          "description": "A rotating mix of ritual motifs that spark the current season of work.",
+          "linkLabel": "{handle} on IG"
+        },
+        "interests": [
+          {
+            "title": "Blackwork Sigils",
+            "description": "Heavy contrast, ritual geometry, and high-commitment statement pieces crafted to feel ancient and alive."
+          },
+          {
+            "title": "Fine-Line Glyphs",
+            "description": "Delicate linear spells, micro details, and hidden runes that sit close to the skin and whisper rather than shout."
+          },
+          {
+            "title": "Esoteric Narratives",
+            "description": "Mythic symbolism, occult botanicals, and cosmic folklore woven into custom compositions just for you."
+          }
+        ],
+        "booking": {
+          "title": "Book your piece",
+          "description": "Interested in a piece? Reach me via Instagram DM at {handle} with a short note about the intention, placement, and size.",
+          "ctaHint": "Send me a DM with references, placement, and availability ▸"
+        },
+        "gallery": {
+          "title": "Portfolio preview",
+          "description": "A quick taste of the vibe — placeholders for now while the archive loads in.",
+          "tapHint": "Tap an image to open",
+          "imageAltPrefix": "Tattoo placeholder"
+        }
+      },
+      "es": {
+        "title": "Tatuajes",
+        "subtitle": "Tatuajes sigilo personalizados y flash exploratorio, uniendo oficio e intención.",
+        "metadata": {
+          "title": "Tatuajes — Ojo de Cuervo",
+          "description": "Tatuajes sigilo personalizados y sets de flash experimentales."
+        },
+        "highlights": {
+          "focus": "sigilos, blackwork, trazos",
+          "approach": "guiado por la intención, colaborativo, pulcro",
+          "booking": "por solicitud (dm/instagram)"
+        },
+        "services": [
+          "Diseño de sigilos",
+          "Preparación de stencil",
+          "Cuidados posteriores"
+        ],
+        "instagramSpotlight": {
+          "description": "Las reservas, los flash drops, las fotos de curación y los procesos aparecen primero en Instagram. Escríbeme por DM con tu idea, ubicación y disponibilidad preferida.",
+          "cta": "Abrir Instagram ▸"
+        },
+        "interestsSection": {
+          "title": "Obsesiones actuales",
+          "description": "Una mezcla rotativa de motivos rituales que encienden la temporada actual del trabajo.",
+          "linkLabel": "{handle} en IG"
+        },
+        "interests": [
+          {
+            "title": "Sigilos en blackwork",
+            "description": "Contraste pesado, geometría ritual y piezas de alto compromiso diseñadas para sentirse antiguas y vivas."
+          },
+          {
+            "title": "Glifos de línea fina",
+            "description": "Hechizos lineales delicados, microdetalles y runas ocultas que susurran en lugar de gritar."
+          },
+          {
+            "title": "Narrativas esotéricas",
+            "description": "Simbolismo mítico, botánica oculta y folclore cósmico tejidos en composiciones personalizadas para ti."
+          }
+        ],
+        "booking": {
+          "title": "Agenda tu pieza",
+          "description": "¿Interesado en una pieza? Escríbeme por Instagram DM a {handle} con una nota breve sobre la intención, ubicación y tamaño.",
+          "ctaHint": "Envíame un DM con referencias, ubicación y disponibilidad ▸"
+        },
+        "gallery": {
+          "title": "Vista previa del portafolio",
+          "description": "Un vistazo rápido a la vibra — referencias temporales por ahora mientras cargo el archivo.",
+          "tapHint": "Toca una imagen para abrirla",
+          "imageAltPrefix": "Placeholder de tatuaje"
+        }
+      }
+    }
   }
 }

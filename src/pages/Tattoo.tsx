@@ -7,34 +7,75 @@ import { Link } from 'react-router-dom';
 import data from '@/data.json';
 import usePageBranding from '@/hooks/usePageBranding';
 import useLabels from '@/hooks/useLabels';
+import usePreferredLanguage from '@/hooks/usePreferredLanguage';
+import type { LanguageCode } from '@/utils/language';
+
+type TattooContent = {
+  title: string;
+  subtitle: string;
+  metadata: {
+    title: string;
+    description: string;
+  };
+  highlights: {
+    focus: string;
+    approach: string;
+    booking: string;
+  };
+  services: string[];
+  instagramSpotlight: {
+    description: string;
+    cta: string;
+  };
+  interestsSection: {
+    title: string;
+    description: string;
+    linkLabel: string;
+  };
+  interests: Array<{ title: string; description: string }>;
+  booking: {
+    title: string;
+    description: string;
+    ctaHint: string;
+  };
+  gallery: {
+    title: string;
+    description: string;
+    tapHint: string;
+    imageAltPrefix: string;
+  };
+};
 
 const { links } = data;
 
 export default function Tattoo() {
+  const language = usePreferredLanguage();
   const labels = useLabels();
   const tattooLabels = labels.tattoo;
-  const [bookingBefore, bookingAfter = ''] = tattooLabels.bookingDescription.split('{handle}');
+  const tattooTranslations = data.tattoo.translations as Record<LanguageCode, TattooContent>;
+  const tattooData = tattooTranslations[language] ?? tattooTranslations.en;
+  const [bookingBefore, bookingAfter = ''] = tattooData.booking.description.split('{handle}');
   const [selectedImageId, setSelectedImageId] = useState<number | null>(null);
   const galleryImages = useMemo(
     () =>
       Array.from({ length: 12 }, (_, index) => ({
         id: index + 1,
         src: `https://picsum.photos/seed/tattoo-${index + 1}/900/900`,
-        alt: `${tattooLabels.gallery.imageAltPrefix} ${index + 1}`,
+        alt: `${tattooData.gallery.imageAltPrefix} ${index + 1}`,
       })),
-    [tattooLabels.gallery.imageAltPrefix],
+    [tattooData.gallery.imageAltPrefix],
   );
   const selectedImage = selectedImageId
     ? galleryImages.find((image) => image.id === selectedImageId) ?? null
     : null;
-  const instagramLinkLabel = tattooLabels.interestsSection.linkLabel.replace('{handle}', links.instagram.handle);
-  const interests = (tattooLabels.interests ?? []) as Array<{ title: string; description: string }>;
+  const instagramLinkLabel = tattooData.interestsSection.linkLabel.replace('{handle}', links.instagram.handle);
+  const interests = tattooData.interests;
 
   usePageBranding({
     tint: 'rgba(255,56,100,0.14)',
     crtRgb: '255,56,100',
-    title: tattooLabels.metaTitle,
-    description: tattooLabels.metaDescription,
+    title: tattooData.metadata.title,
+    description: tattooData.metadata.description,
   });
 
   const handleImageOpen = (id: number) => setSelectedImageId(id);
@@ -44,8 +85,8 @@ export default function Tattoo() {
     <section className="mx-auto max-w-5xl space-y-12 pb-16 font-sans">
       <header className="relative flex items-end justify-between gap-4 pb-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-magenta">{tattooLabels.title}</h1>
-          <p className="mt-2 max-w-3xl text-slate-300">{tattooLabels.subtitle}</p>
+          <h1 className="text-3xl font-bold tracking-wide text-slate-100 neon-text-magenta">{tattooData.title}</h1>
+          <p className="mt-2 max-w-3xl text-slate-300">{tattooData.subtitle}</p>
         </div>
         <Link to="/" className="font-mono text-sm text-slate-300 neo-link focus:outline-none focus-visible:focus-outline">
           {labels.shared.backToNexus}
@@ -57,21 +98,21 @@ export default function Tattoo() {
         <HudFrame accent="magenta" className="p-6 glass-border-magenta">
           <div className="grid gap-4 text-sm text-slate-300 sm:grid-cols-3">
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-slate-400">{tattooLabels.focus.label}</div>
-              <div className="font-mono">{tattooLabels.focus.value}</div>
+              <div className="text-[10px] uppercase tracking-wider text-slate-400">{tattooLabels.highlights.focus}</div>
+              <div className="font-mono">{tattooData.highlights.focus}</div>
             </div>
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-slate-400">{tattooLabels.approach.label}</div>
-              <div className="font-mono">{tattooLabels.approach.value}</div>
+              <div className="text-[10px] uppercase tracking-wider text-slate-400">{tattooLabels.highlights.approach}</div>
+              <div className="font-mono">{tattooData.highlights.approach}</div>
             </div>
             <div>
-              <div className="text-[10px] uppercase tracking-wider text-slate-400">{tattooLabels.booking.label}</div>
-              <div className="font-mono">{tattooLabels.booking.value}</div>
+              <div className="text-[10px] uppercase tracking-wider text-slate-400">{tattooLabels.highlights.booking}</div>
+              <div className="font-mono">{tattooData.highlights.booking}</div>
             </div>
           </div>
           <div className="mt-5 tick-divider-magenta" aria-hidden="true"></div>
           <div className="mt-5 flex flex-wrap gap-2">
-            {tattooLabels.services.map((service) => (
+            {tattooData.services.map((service) => (
               <SkillChip key={service} label={service} accent="magenta" />
             ))}
           </div>
@@ -86,7 +127,7 @@ export default function Tattoo() {
             <div>
               <span className="text-[10px] uppercase tracking-[0.45em] text-slate-400">{tattooLabels.instagramSpotlight.label}</span>
               <h2 className="mt-2 text-2xl font-semibold tracking-wide text-slate-100 neon-text-magenta">@{links.instagram.handle?.replace('@', '')}</h2>
-              <p className="mt-3 text-sm text-slate-300">{tattooLabels.instagramSpotlight.description}</p>
+              <p className="mt-3 text-sm text-slate-300">{tattooData.instagramSpotlight.description}</p>
             </div>
             <a
               href={links.instagram.url}
@@ -94,7 +135,7 @@ export default function Tattoo() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-neon-magenta/70 px-5 py-2 font-mono text-xs uppercase tracking-[0.35em] text-neon-magenta transition hover:border-neon-magenta hover:bg-neon-magenta/10"
             >
-              {tattooLabels.instagramSpotlight.cta}
+              {tattooData.instagramSpotlight.cta}
             </a>
           </div>
         </HudFrame>
@@ -103,8 +144,8 @@ export default function Tattoo() {
       <section className="space-y-6">
         <header className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-slate-100">{tattooLabels.interestsSection.title}</h2>
-            <p className="text-sm text-slate-300/80">{tattooLabels.interestsSection.description}</p>
+            <h2 className="text-xl font-semibold text-slate-100">{tattooData.interestsSection.title}</h2>
+            <p className="text-sm text-slate-300/80">{tattooData.interestsSection.description}</p>
           </div>
           <a
             href={links.instagram.url}
@@ -126,7 +167,7 @@ export default function Tattoo() {
       </section>
 
       <section className="rounded-2xl border border-neon-magenta/40 bg-noir-800/60 p-8 text-center shadow-[0_0_64px_rgba(255,56,100,0.25)]">
-        <h2 className="text-2xl font-semibold text-slate-100">{tattooLabels.bookingCta.title}</h2>
+        <h2 className="text-2xl font-semibold text-slate-100">{tattooData.booking.title}</h2>
         <p className="mt-3 text-base leading-relaxed text-slate-300">
           {bookingBefore}
           <a
@@ -139,16 +180,16 @@ export default function Tattoo() {
           </a>
           {bookingAfter}
         </p>
-        <p className="mt-4 font-mono text-xs uppercase tracking-[0.4em] text-neon-magenta">{tattooLabels.bookingCta.ctaHint}</p>
+        <p className="mt-4 font-mono text-xs uppercase tracking-[0.4em] text-neon-magenta">{tattooData.booking.ctaHint}</p>
       </section>
 
       <section className="space-y-5">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-slate-100">{tattooLabels.gallery.title}</h2>
-            <p className="text-sm text-slate-300/80">{tattooLabels.gallery.description}</p>
+            <h2 className="text-xl font-semibold text-slate-100">{tattooData.gallery.title}</h2>
+            <p className="text-sm text-slate-300/80">{tattooData.gallery.description}</p>
           </div>
-          <span className="font-mono text-[0.65rem] uppercase tracking-[0.45em] text-neon-magenta/70">{tattooLabels.gallery.tapHint}</span>
+          <span className="font-mono text-[0.65rem] uppercase tracking-[0.45em] text-neon-magenta/70">{tattooData.gallery.tapHint}</span>
         </div>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {galleryImages.map((image) => (
